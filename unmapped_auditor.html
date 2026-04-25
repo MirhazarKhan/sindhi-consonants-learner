@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unmapped Audio Auditor</title>
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 20px; background: #111; color: #eee; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+        .track { background: #222; border: 1px solid #444; border-radius: 6px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .track:hover { background: #333; border-color: #666; }
+        .track.playing { background: #4a4; color: #000; font-weight: bold; border-color: #6f6; }
+        .track.played { opacity: 0.5; }
+        h1 { margin-bottom: 5px; }
+        p { color: #aaa; margin-bottom: 20px; }
+        audio { display: none; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        button { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Unmapped Audio tracks</h1>
+    <p>Click any track to instantly play it. Use to find missing mappings for heh, hamza, ye.</p>
+    
+    <div class="controls">
+        <button id="stopBtn">Stop</button>
+        <button id="autoBtn" data-auto="false">Auto-play Next: OFF</button>
+    </div>
+
+    <audio id="player" controls></audio>
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const sounds = ["sound_0275.mp3","sound_0421.mp3","sound_0505.mp3","sound_0740.mp3","sound_0788.mp3","sound_0902.mp3","sound_1008.mp3","sound_1032.mp3","sound_1142.mp3","sound_1207.mp3","sound_1231.mp3","sound_1294.mp3","sound_1414.mp3","sound_1688.mp3","sound_1712.mp3","sound_1748.mp3","sound_1755.mp3","sound_1816.mp3","sound_1850.mp3","sound_1895.mp3","sound_1940.mp3","sound_1945.mp3","sound_2081.mp3","sound_2127.mp3","sound_2132.mp3","sound_2179.mp3","sound_2214.mp3","sound_2295.mp3","sound_2305.mp3","sound_2312.mp3","sound_2483.mp3","sound_2516.mp3","sound_2559.mp3","sound_2602.mp3","sound_2632.mp3","sound_2638.mp3","sound_2682.mp3","sound_2733.mp3","sound_2816.mp3","sound_2829.mp3","sound_2856.mp3","sound_2957.mp3","sound_3070.mp3","sound_3144.mp3","sound_3367.mp3","sound_3450.mp3","sound_3552.mp3","sound_3797.mp3","sound_3830.mp3","sound_3943.mp3","sound_4044.mp3","sound_4206.mp3","sound_4300.mp3","sound_4310.mp3","sound_4435.mp3","sound_4538.mp3","sound_4702.mp3","sound_4795.mp3","sound_4811.mp3","sound_4916.mp3","sound_5020.mp3","sound_5027.mp3","sound_5034.mp3","sound_5117.mp3","sound_5124.mp3","sound_5130.mp3","sound_5158.mp3","sound_5202.mp3","sound_5209.mp3","sound_5215.mp3","sound_5220.mp3","sound_5267.mp3","sound_5279.mp3","sound_5309.mp3","sound_5311.mp3","sound_5313.mp3","sound_5336.mp3","sound_5350.mp3","sound_5386.mp3","sound_5390.mp3","sound_5392.mp3","sound_5394.mp3","sound_5435.mp3","sound_5438.mp3","sound_5440.mp3","sound_5443.mp3","sound_5454.mp3","sound_5457.mp3","sound_5461.mp3","sound_5464.mp3","sound_5469.mp3","sound_5505.mp3","sound_5519.mp3","sound_5522.mp3","sound_5526.mp3","sound_5530.mp3","sound_5553.mp3","sound_5562.mp3","sound_5566.mp3","sound_5569.mp3","sound_5572.mp3","sound_5608.mp3","sound_5611.mp3","sound_5614.mp3","sound_5616.mp3","sound_5690.mp3","sound_5693.mp3","sound_5695.mp3","sound_5697.mp3","sound_5712.mp3","sound_5732.mp3","sound_5735.mp3","sound_5739.mp3","sound_5741.mp3","sound_5765.mp3","sound_5767.mp3","sound_5770.mp3","sound_5772.mp3","sound_5774.mp3","sound_5782.mp3","sound_5785.mp3","sound_5788.mp3","sound_5802.mp3","sound_5804.mp3","sound_5807.mp3","sound_5809.mp3","sound_5812.mp3","sound_5814.mp3","sound_5816.mp3","sound_5818.mp3","sound_5820.mp3","sound_5823.mp3","sound_5830.mp3","sound_5834.mp3","sound_5838.mp3","sound_5841.mp3","sound_5851.mp3","sound_5853.mp3","sound_5855.mp3","sound_5857.mp3","sound_5859.mp3","sound_5861.mp3","sound_5863.mp3","sound_5865.mp3","sound_5867.mp3","sound_5869.mp3","sound_5877.mp3","sound_5881.mp3","sound_5885.mp3","sound_5887.mp3","sound_5894.mp3","sound_5896.mp3","sound_5898.mp3","sound_5900.mp3","sound_5902.mp3","sound_5904.mp3","sound_5906.mp3","sound_5908.mp3","sound_5910.mp3","sound_5912.mp3","sound_5919.mp3","sound_5923.mp3","sound_5926.mp3","sound_5928.mp3","sound_5930.mp3","sound_5934.mp3","sound_5936.mp3","sound_5938.mp3","sound_5940.mp3","sound_5942.mp3","sound_5944.mp3","sound_5946.mp3","sound_5948.mp3","sound_5950.mp3","sound_5952.mp3","sound_5959.mp3","sound_5962.mp3","sound_5965.mp3","sound_5967.mp3","sound_5971.mp3","sound_5973.mp3","sound_5975.mp3","sound_5977.mp3","sound_5979.mp3","sound_5981.mp3","sound_5983.mp3","sound_5985.mp3","sound_5987.mp3","sound_5989.mp3","sound_5996.mp3","sound_5998.mp3","sound_6000.mp3","sound_6003.mp3","sound_6005.mp3","sound_6009.mp3","sound_6011.mp3","sound_6013.mp3","sound_6016.mp3","sound_6019.mp3","sound_6021.mp3","sound_6023.mp3","sound_6025.mp3","sound_6027.mp3","sound_6029.mp3","sound_6036.mp3","sound_6038.mp3","sound_6041.mp3","sound_6044.mp3","sound_6053.mp3","sound_6055.mp3","sound_6058.mp3","sound_6061.mp3","sound_6064.mp3","sound_6066.mp3","sound_6068.mp3","sound_6070.mp3","sound_6072.mp3","sound_6074.mp3","sound_6081.mp3","sound_6083.mp3","sound_6085.mp3","sound_6088.mp3","sound_6090.mp3","sound_6094.mp3","sound_6096.mp3","sound_6098.mp3","sound_6100.mp3","sound_6102.mp3","sound_6104.mp3","sound_6106.mp3","sound_6108.mp3","sound_6110.mp3","sound_6112.mp3","sound_6119.mp3","sound_6121.mp3","sound_6123.mp3","sound_6125.mp3","sound_6128.mp3","sound_6130.mp3","sound_6132.mp3","sound_6134.mp3","sound_6136.mp3","sound_6138.mp3","sound_6140.mp3","sound_6142.mp3","sound_6144.mp3","sound_6146.mp3","sound_6154.mp3","sound_6158.mp3","sound_6164.mp3","sound_6166.mp3","sound_6178.mp3","sound_6180.mp3","sound_6182.mp3","sound_6184.mp3","sound_6186.mp3","sound_6188.mp3","sound_6190.mp3","sound_6192.mp3","sound_6194.mp3","sound_6196.mp3","sound_6203.mp3","sound_6205.mp3","sound_6207.mp3","sound_6209.mp3","sound_6212.mp3","sound_6221.mp3","sound_6223.mp3","sound_6225.mp3","sound_6228.mp3","sound_6230.mp3","sound_6232.mp3","sound_6234.mp3","sound_6236.mp3","sound_6238.mp3","sound_6240.mp3","sound_6247.mp3","sound_6249.mp3","sound_6251.mp3","sound_6261.mp3","sound_6263.mp3","sound_6265.mp3","sound_6268.mp3","sound_6271.mp3","sound_6273.mp3","sound_6275.mp3","sound_6277.mp3","sound_6279.mp3","sound_6281.mp3","sound_6288.mp3","sound_6291.mp3","sound_6293.mp3","sound_6295.mp3","sound_6297.mp3","sound_6302.mp3","sound_6304.mp3","sound_6307.mp3","sound_6309.mp3","sound_6311.mp3","sound_6313.mp3","sound_6315.mp3","sound_6317.mp3","sound_6319.mp3","sound_6321.mp3","sound_6329.mp3","sound_6331.mp3","sound_6333.mp3","sound_6335.mp3","sound_6338.mp3","sound_6344.mp3","sound_6346.mp3","sound_6349.mp3","sound_6351.mp3","sound_6353.mp3","sound_6355.mp3","sound_6357.mp3","sound_6359.mp3","sound_6361.mp3","sound_6363.mp3","sound_6371.mp3","sound_6374.mp3","sound_6376.mp3","sound_6378.mp3","sound_6388.mp3","sound_6390.mp3","sound_6393.mp3","sound_6395.mp3","sound_6397.mp3","sound_6399.mp3","sound_6401.mp3","sound_6404.mp3","sound_6406.mp3","sound_6408.mp3","sound_6415.mp3","sound_6419.mp3","sound_6421.mp3","sound_6424.mp3","sound_6426.mp3","sound_6435.mp3","sound_6437.mp3","sound_6439.mp3","sound_6441.mp3","sound_6443.mp3","sound_6445.mp3","sound_6447.mp3","sound_6449.mp3","sound_6451.mp3","sound_6454.mp3","sound_6461.mp3","sound_6465.mp3","sound_6469.mp3","sound_6471.mp3","sound_6474.mp3","sound_6478.mp3","sound_6480.mp3","sound_6483.mp3","sound_6485.mp3","sound_6487.mp3","sound_6489.mp3","sound_6491.mp3","sound_6493.mp3","sound_6495.mp3","sound_6498.mp3","sound_6506.mp3","sound_6509.mp3","sound_6512.mp3","sound_6516.mp3","sound_6518.mp3","sound_6528.mp3","sound_6530.mp3","sound_6532.mp3","sound_6534.mp3","sound_6536.mp3","sound_6538.mp3","sound_6540.mp3","sound_6542.mp3","sound_6544.mp3","sound_6546.mp3","sound_6554.mp3","sound_6557.mp3","sound_6560.mp3","sound_6562.mp3","sound_6564.mp3","sound_6567.mp3","sound_6569.mp3","sound_6571.mp3","sound_6573.mp3","sound_6576.mp3","sound_6578.mp3","sound_6580.mp3","sound_6582.mp3","sound_6584.mp3","sound_6586.mp3","sound_6594.mp3","sound_6598.mp3","sound_6601.mp3","sound_6604.mp3","sound_6607.mp3","sound_6618.mp3","sound_6620.mp3","sound_6622.mp3","sound_6625.mp3","sound_6628.mp3","sound_6630.mp3","sound_6632.mp3","sound_6634.mp3","sound_6636.mp3","sound_6638.mp3","sound_6645.mp3","sound_6649.mp3","sound_6652.mp3","sound_6655.mp3","sound_6657.mp3","sound_6665.mp3","sound_6667.mp3","sound_6669.mp3","sound_6671.mp3","sound_6674.mp3","sound_6676.mp3","sound_6678.mp3","sound_6680.mp3","sound_6682.mp3","sound_6684.mp3","sound_6692.mp3","sound_6695.mp3","sound_6699.mp3","sound_6701.mp3","sound_6703.mp3","sound_6710.mp3","sound_6712.mp3","sound_6714.mp3","sound_6717.mp3","sound_6720.mp3","sound_6722.mp3","sound_6724.mp3","sound_6726.mp3","sound_6728.mp3","sound_6731.mp3","sound_6738.mp3","sound_6741.mp3","sound_6744.mp3","sound_6746.mp3","sound_6757.mp3","sound_6759.mp3","sound_6761.mp3","sound_6763.mp3","sound_6765.mp3","sound_6767.mp3","sound_6769.mp3","sound_6771.mp3","sound_6773.mp3","sound_6776.mp3","sound_6786.mp3","sound_6789.mp3","sound_6792.mp3","sound_6794.mp3","sound_6800.mp3","sound_6802.mp3","sound_6804.mp3","sound_6807.mp3","sound_6810.mp3","sound_6812.mp3","sound_6814.mp3","sound_6816.mp3","sound_6818.mp3","sound_6820.mp3","sound_6828.mp3","sound_6831.mp3","sound_6835.mp3","sound_6837.mp3","sound_6840.mp3","sound_6845.mp3","sound_6847.mp3","sound_6849.mp3","sound_6851.mp3","sound_6854.mp3","sound_6856.mp3","sound_6858.mp3","sound_6860.mp3","sound_6862.mp3","sound_6865.mp3","sound_6875.mp3","sound_6877.mp3","sound_6881.mp3","sound_6883.mp3","sound_6888.mp3","sound_6890.mp3","sound_6892.mp3","sound_6895.mp3","sound_6898.mp3","sound_6900.mp3","sound_6902.mp3","sound_6904.mp3","sound_6906.mp3","sound_6908.mp3","sound_6915.mp3","sound_6918.mp3","sound_6921.mp3","sound_6924.mp3","sound_6926.mp3","sound_6938.mp3","sound_6940.mp3","sound_6943.mp3","sound_6946.mp3","sound_6949.mp3","sound_6951.mp3","sound_6953.mp3","sound_6955.mp3","sound_6957.mp3","sound_6959.mp3","sound_6967.mp3","sound_6970.mp3","sound_6973.mp3","sound_6976.mp3","sound_6978.mp3","sound_6985.mp3","sound_6988.mp3","sound_6991.mp3","sound_6994.mp3","sound_6997.mp3","sound_6999.mp3","sound_7001.mp3","sound_7003.mp3","sound_7005.mp3","sound_7007.mp3","sound_7014.mp3","sound_7016.mp3","sound_7018.mp3","sound_7020.mp3","sound_7023.mp3","sound_7029.mp3","sound_7031.mp3","sound_7033.mp3","sound_7035.mp3","sound_7038.mp3","sound_7040.mp3","sound_7042.mp3","sound_7044.mp3","sound_7046.mp3","sound_7048.mp3","sound_7056.mp3","sound_7060.mp3","sound_7064.mp3","sound_7070.mp3","sound_7072.mp3","sound_7076.mp3","sound_7078.mp3","sound_7082.mp3","sound_7084.mp3","sound_7086.mp3","sound_7088.mp3","sound_7090.mp3","sound_7092.mp3","sound_7094.mp3","sound_7096.mp3","sound_7104.mp3","sound_7107.mp3","sound_7111.mp3","sound_7113.mp3","sound_7116.mp3","sound_7118.mp3","sound_7121.mp3","sound_7123.mp3","sound_7126.mp3","sound_7128.mp3","sound_7130.mp3","sound_7133.mp3","sound_7135.mp3","sound_7137.mp3","sound_7145.mp3","sound_7148.mp3","sound_7150.mp3","sound_7152.mp3","sound_7164.mp3","sound_7166.mp3","sound_7168.mp3","sound_7170.mp3","sound_7173.mp3","sound_7175.mp3","sound_7177.mp3","sound_7179.mp3","sound_7181.mp3","sound_7183.mp3","sound_7191.mp3","sound_7194.mp3","sound_7197.mp3","sound_7200.mp3","sound_7208.mp3","sound_7210.mp3","sound_7213.mp3","sound_7215.mp3","sound_7218.mp3","sound_7220.mp3","sound_7222.mp3","sound_7224.mp3","sound_7226.mp3","sound_7228.mp3","sound_7236.mp3","sound_7239.mp3","sound_7242.mp3","sound_7245.mp3","sound_7251.mp3","sound_7253.mp3","sound_7255.mp3","sound_7257.mp3","sound_7259.mp3","sound_7261.mp3","sound_7263.mp3","sound_7265.mp3","sound_7267.mp3","sound_7269.mp3","sound_7276.mp3","sound_7279.mp3","sound_7282.mp3","sound_7285.mp3","sound_7288.mp3","sound_7291.mp3","sound_7293.mp3","sound_7295.mp3","sound_7297.mp3","sound_7299.mp3","sound_7301.mp3","sound_7303.mp3","sound_7306.mp3","sound_7308.mp3","sound_7311.mp3","sound_7318.mp3","sound_7320.mp3","sound_7322.mp3","sound_7325.mp3","sound_7327.mp3","sound_7336.mp3","sound_7338.mp3","sound_7340.mp3","sound_7342.mp3","sound_7344.mp3","sound_7346.mp3","sound_7348.mp3","sound_7350.mp3","sound_7352.mp3","sound_7354.mp3","sound_7362.mp3","sound_7365.mp3","sound_7368.mp3","sound_7371.mp3","sound_7377.mp3","sound_7379.mp3","sound_7381.mp3","sound_7383.mp3","sound_7385.mp3","sound_7387.mp3","sound_7389.mp3","sound_7391.mp3","sound_7393.mp3","sound_7396.mp3","sound_7403.mp3","sound_7406.mp3","sound_7409.mp3","sound_7411.mp3","sound_7414.mp3","sound_7417.mp3","sound_7419.mp3","sound_7421.mp3","sound_7424.mp3","sound_7426.mp3","sound_7428.mp3","sound_7430.mp3","sound_7432.mp3","sound_7434.mp3","sound_7436.mp3","sound_7444.mp3","sound_7447.mp3","sound_7449.mp3","sound_7452.mp3","sound_7457.mp3","sound_7463.mp3","sound_7465.mp3","sound_7467.mp3","sound_7469.mp3","sound_7471.mp3","sound_7473.mp3","sound_7475.mp3","sound_7477.mp3","sound_7479.mp3","sound_7482.mp3","sound_7490.mp3","sound_7492.mp3","sound_7494.mp3","sound_7496.mp3","sound_7501.mp3","sound_7503.mp3","sound_7506.mp3","sound_7509.mp3","sound_7511.mp3","sound_7513.mp3","sound_7515.mp3","sound_7517.mp3","sound_7519.mp3","sound_7521.mp3","sound_7527.mp3","sound_7530.mp3","sound_7533.mp3","sound_7535.mp3","sound_7537.mp3"];
+        const grid = document.getElementById('grid');
+        const player = document.getElementById('player');
+        const stopBtn = document.getElementById('stopBtn');
+        const autoBtn = document.getElementById('autoBtn');
+        
+        let currentTrack = null;
+        let isAuto = false;
+
+        sounds.forEach((sound, index) => {
+            const div = document.createElement('div');
+            div.className = 'track';
+            div.textContent = sound;
+            div.onclick = () => playSound(sound, div, index);
+            grid.appendChild(div);
+        });
+
+        autoBtn.onclick = () => {
+            isAuto = !isAuto;
+            autoBtn.textContent = 'Auto-play Next: ' + (isAuto ? 'ON' : 'OFF');
+            autoBtn.style.background = isAuto ? '#28a745' : '#007bff';
+        };
+
+        stopBtn.onclick = () => {
+            player.pause();
+            if (currentTrack) currentTrack.classList.remove('playing');
+        };
+
+        function playSound(file, el, index) {
+            if (currentTrack) currentTrack.classList.remove('playing');
+            el.classList.add('playing');
+            el.classList.add('played');
+            currentTrack = el;
+            player.src = 'extracted_audio/' + file;
+            player.play();
+            player.onended = () => {
+                el.classList.remove('playing');
+                if (isAuto && index + 1 < sounds.length) {
+                    const nextEl = grid.children[index + 1];
+                    playSound(sounds[index + 1], nextEl, index + 1);
+                }
+            };
+        }
+    </script>
+</body>
+</html>

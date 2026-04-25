@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindhi Audio Mapper Tool</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; background: #111; color: #eee; max-width: 900px; margin: 0 auto; }
+    h1 { color: #f3d88a; }
+    p { color: #aaa; line-height: 1.5; }
+    .card { background: #222; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #444; }
+    input[type="file"] { margin: 15px 0; }
+    
+    .mapper-workspace { display: none; gap: 20px; grid-template-columns: 1fr 2fr; align-items: start; }
+    .sidebar { position: sticky; top: 20px; }
+    
+    .file-list { max-height: calc(100vh - 120px); overflow-y: auto; border: 1px solid #444; border-radius: 6px; padding: 10px; background: #1a1a1a; }
+    .file-item { padding: 8px; border-bottom: 1px solid #333; cursor: pointer; display: flex; justify-content: space-between; align-items: center;}
+    .file-item:hover { background: #333; }
+    .file-item.active { background: #3a2a0c; border-color: #f3d88a; font-weight: bold; color: #f3d88a; }
+    .file-item.mapped { color: #8a74ff; }
+    
+    .assignment-panel { display: flex; flex-direction: column; gap: 15px; }
+    .audio-player { width: 100%; margin-bottom: 10px; }
+    
+    .controls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    .target-btn { background: #333; border: 1px solid #555; color: #fff; padding: 10px; border-radius: 6px; cursor: pointer; }
+    .target-btn:hover { background: #444; }
+    .target-btn.assigned { background: #1f3f7a; border-color: #8a74ff; }
+    
+    .output-area { margin-top: 30px; }
+    textarea { width: 100%; height: 200px; background: #000; color: #0f0; font-family: monospace; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Sindhi Audio Mapper Tool</h1>
+  <p>Select the folder containing your sequentially named <code>.mp3</code> files. The tool will let you play each file and rapidly assign it to the correct lesson/tile/word.</p>
+  
+  <div class="card" id="setupCard">
+    <label for="folderInput" style="font-weight: bold;">1. Select your local audio folder:</label><br>
+    <input type="file" id="folderInput" webkitdirectory directory multiple />
+  </div>
+
+  <div class="mapper-workspace" id="workspace">
+    <div class="sidebar">
+      <h3>Local Files</h3>
+      <div class="file-list" id="fileList"></div>
+    </div>
+    <div class="assignment-panel">
+      <h3>Currently Auditioning: <span id="currentFileName" style="color:#f3d88a">-</span></h3>
+      <audio id="audioPlayer" class="audio-player" controls></audio>
+      
+      <div>
+        <label>Filter Targets (e.g., 'alif', 'tile'): </label>
+        <input type="text" id="targetFilter" style="padding:5px; width:200px; background:#333; color:white; border:1px solid #555;" />
+      </div>
+      
+      <div class="controls-grid" id="targetGrid"></div>
+      
+      <div style="margin-top:20px;">
+        <button id="nextBtn" style="padding:10px 20px; background:#f3d88a; color:#000; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Autoplay Next File &raquo;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="output-area card">
+    <h3>Generated Mapping</h3>
+    <textarea id="output" readonly>// Your mapping will appear here. Copy and paste this over baseExtractedStageAudio in stage-experience.js</textarea>
+  </div>
+
+  <script type="module">
+    // Load app data
+    let allTargets = [];
+    
+    try {
+      const resp = await fetch('sindhi_app_data.json');
+      const data = await resp.json();
+      if (data.stageLessons) {
+        data.stageLessons.forEach(l => {
+          if (l.info) allTargets.push(`${l.name}-info`);
+          if (l.main) allTargets.push(`${l.name}-main`);
+          if (l.meta) allTargets.push(`${l.name}-meta`);
+          if (l.example) allTargets.push(`${l.name}-example`);
+          if (l.tiles) {
+            l.tiles.forEach((t, i) => allTargets.push(`${l.name}-tile-${String(i+1).padStart(2, '0')}`));
+          }
+          if (l.words) {
+            l.words.forEach((w, i) => allTargets.push(`${l.name}-word-${String(i+1).padStart(2, '0')}`));
+          }
+        });
+      } else {
+        throw new Error("Missing stageLessons");
+      }
+    } catch (err) {
+      console.warn("Could not parse stageLessons. Using fallback targets.");
+      const fallbackIds = [
+        'alif', 'be', 'bbe', 'pe', 'bhe', 'te', 'the', 'tte', 'tthe', 'se',
+        'jeem', 'nye', 'jhe', 'nyay', 'che', 'chhe', 'he', 'khe', 'dal', 'dhal',
+        'ddal', 'ddha', 'ddhal', 'zal', 're', 'rre', 'ze', 'seen', 'sheen', 'swad',
+        'zwad', 'toe', 'zoe', 'ain', 'ghain', 'fe', 'phe', 'qaf', 'kaf', 'khaf',
+        'gaf', 'ggaf', 'ghaf', 'ngoe', 'lam', 'meem', 'noon', 'nnoon', 'waw', 'heh', 'hamza', 'ye'
+      ];
+      const suffixes = ['info', 'main', 'meta', 'example', 'tile-01', 'tile-02', 'tile-03', 'tile-04', 'tile-05', 'tile-06', 'tile-07', 'tile-08', 'tile-09', 'tile-10', 'word-01', 'word-02'];
+      fallbackIds.forEach(l => {
+        suffixes.forEach(s => allTargets.push(`${l}-${s}`));
+      });
+    }
+
+    const folderInput = document.getElementById('folderInput');
+    const fileList = document.getElementById('fileList');
+    const targetGrid = document.getElementById('targetGrid');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const currentFileName = document.getElementById('currentFileName');
+    const output = document.getElementById('output');
+    const targetFilter = document.getElementById('targetFilter');
+    
+    let files = [];
+    let currentFileIndex = -1;
+    let mapDict = {}; // { 'alif-tile-01': '1.mp3' }
+
+    function updateOutput() {
+      const finalMap = {};
+      for (const [key, val] of Object.entries(mapDict)) {
+        finalMap[key] = `/extracted_audio/${val}`;
+      }
+      output.value = `const baseExtractedStageAudio = ` + JSON.stringify(finalMap, null, 2) + `;`;
+    }
+
+    function renderTargets(filter = '') {
+      targetGrid.innerHTML = '';
+      const f = filter.toLowerCase();
+      allTargets.filter(t => t.includes(f)).forEach(target => {
+        const btn = document.createElement('button');
+        btn.className = 'target-btn';
+        if (Object.keys(mapDict).includes(target)) btn.classList.add('assigned');
+        btn.textContent = target;
+        btn.onclick = () => assignTarget(target);
+        targetGrid.appendChild(btn);
+      });
+    }
+
+    function assignTarget(target) {
+      if (currentFileIndex === -1) return;
+      const file = files[currentFileIndex];
+
+      if (mapDict[target] === file.name) {
+        // Toggle OFF (Undo)
+        delete mapDict[target];
+      } else {
+        // Assign
+        mapDict[target] = file.name;
+      }
+      
+      updateFileListUI();
+      renderTargets(targetFilter.value);
+      updateOutput();
+    }
+
+    function updateFileListUI() {
+      document.querySelectorAll('.file-item').forEach(el => {
+        el.classList.remove('mapped');
+        el.querySelector('.status').textContent = '';
+      });
+      for (const [target, fileName] of Object.entries(mapDict)) {
+        const fileIndex = files.findIndex(f => f.name === fileName);
+        if (fileIndex !== -1) {
+          const el = document.getElementById(`file-${fileIndex}`);
+          el.classList.add('mapped');
+          const statusEl = el.querySelector('.status');
+          if (statusEl.textContent) {
+            statusEl.textContent += `, ${target}`;
+          } else {
+            statusEl.textContent = `→ ${target}`;
+          }
+        }
+      }
+    }
+
+    window.playFile = function(index) {
+      currentFileIndex = index;
+      const file = files[index];
+      currentFileName.textContent = file.name;
+      
+      document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+      document.getElementById(`file-${index}`).classList.add('active');
+      
+      const fileURL = URL.createObjectURL(file);
+      audioPlayer.src = fileURL;
+      audioPlayer.play();
+    };
+
+    document.getElementById('nextBtn').onclick = () => {
+      audioPlayer.pause();
+      if (currentFileIndex < files.length - 1) {
+        window.playFile(currentFileIndex + 1);
+      }
+    };
+
+    targetFilter.addEventListener('input', (e) => renderTargets(e.target.value));
+
+    folderInput.addEventListener('change', (event) => {
+      files = Array.from(event.target.files).filter(f => f.name.endsWith('.mp3') || f.name.endsWith('.wav'));
+      files.sort((a, b) => a.name.localeCompare(b.name, undefined, {numeric: true, sensitivity: 'base'}));
+      
+      if (files.length === 0) {
+        alert("No MP3/WAV files found in this folder.");
+        return;
+      }
+      
+      document.getElementById('setupCard').style.display = 'none';
+      document.getElementById('workspace').style.display = 'grid';
+      
+      fileList.innerHTML = '';
+      files.forEach((f, i) => {
+        const div = document.createElement('div');
+        div.className = 'file-item';
+        div.id = `file-${i}`;
+        div.innerHTML = `<span>${f.name}</span> <span class="status" style="font-size:0.8em;opacity:0.7"></span>`;
+        div.onclick = () => window.playFile(i);
+        fileList.appendChild(div);
+      });
+      
+      renderTargets();
+    });
+  </script>
+</body>
+</html>

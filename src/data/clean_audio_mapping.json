@@ -1,0 +1,2604 @@
+[
+  {
+    "soundFile": "sound_1022.mp3",
+    "labels": [
+      "basket",
+      "tokri"
+    ]
+  },
+  {
+    "soundFile": "sound_1026.mp3",
+    "labels": [
+      "as 't' in 'tin'"
+    ]
+  },
+  {
+    "soundFile": "sound_1032.mp3",
+    "labels": [
+      "cap",
+      "topi"
+    ]
+  },
+  {
+    "soundFile": "sound_1037.mp3",
+    "labels": [
+      "tamato"
+    ]
+  },
+  {
+    "soundFile": "sound_1127.mp3",
+    "labels": [
+      "as 'th' in 'thug'"
+    ]
+  },
+  {
+    "soundFile": "sound_1134.mp3",
+    "labels": [
+      "seal,",
+      " stamp",
+      "thapo"
+    ]
+  },
+  {
+    "soundFile": "sound_1142.mp3",
+    "labels": [
+      "bald",
+      "thorho"
+    ]
+  },
+  {
+    "soundFile": "sound_1150.mp3",
+    "labels": [
+      "elbow",
+      "thuNthi"
+    ]
+  },
+  {
+    "soundFile": "sound_1224.mp3",
+    "labels": [
+      "as 's' in 'sin'"
+    ]
+  },
+  {
+    "soundFile": "sound_1231.mp3",
+    "labels": [
+      "proof",
+      "sabutu"
+    ]
+  },
+  {
+    "soundFile": "sound_1238.mp3",
+    "labels": [
+      "evidence",
+      "sabti"
+    ]
+  },
+  {
+    "soundFile": "sound_1245.mp3",
+    "labels": [
+      "good deed",
+      "savabu"
+    ]
+  },
+  {
+    "soundFile": "sound_1329.mp3",
+    "labels": [
+      "as 'j' in 'jug'"
+    ]
+  },
+  {
+    "soundFile": "sound_1336.mp3",
+    "labels": [
+      "answer",
+      "javabu"
+    ]
+  },
+  {
+    "soundFile": "sound_1342.mp3",
+    "labels": [
+      "mountain",
+      "jabalu"
+    ]
+  },
+  {
+    "soundFile": "sound_1349.mp3",
+    "labels": [
+      "ship",
+      "jahazu"
+    ]
+  },
+  {
+    "soundFile": "sound_1439.mp3",
+    "labels": [
+      "knowledge",
+      "jana"
+    ]
+  },
+  {
+    "soundFile": "sound_1446.mp3",
+    "labels": [
+      "net",
+      "jari"
+    ]
+  },
+  {
+    "soundFile": "sound_1453.mp3",
+    "labels": [
+      "tongue",
+      "jibha"
+    ]
+  },
+  {
+    "soundFile": "sound_1543.mp3",
+    "labels": [
+      "jungle",
+      "jhangalu"
+    ]
+  },
+  {
+    "soundFile": "sound_1549.mp3",
+    "labels": [
+      "flag",
+      "jhando"
+    ]
+  },
+  {
+    "soundFile": "sound_1556.mp3",
+    "labels": [
+      "sparrow",
+      "jhirki"
+    ]
+  },
+  {
+    "soundFile": "sound_1653.mp3",
+    "labels": [
+      "thirst",
+      "una"
+    ]
+  },
+  {
+    "soundFile": "sound_1663.mp3",
+    "labels": [
+      "identity",
+      "sunanapa"
+    ]
+  },
+  {
+    "soundFile": "sound_1669.mp3",
+    "labels": [
+      "bridegroom's",
+      " marriage procession",
+      "jana"
+    ]
+  },
+  {
+    "soundFile": "sound_1748.mp3",
+    "labels": [
+      "lips",
+      "chapa"
+    ]
+  },
+  {
+    "soundFile": "sound_1755.mp3",
+    "labels": [
+      "key",
+      "chabi"
+    ]
+  },
+  {
+    "soundFile": "sound_1760.mp3",
+    "labels": [
+      "as 'ch' in 'cheque'"
+    ]
+  },
+  {
+    "soundFile": "sound_1767.mp3",
+    "labels": [
+      "moon",
+      "chandu"
+    ]
+  },
+  {
+    "soundFile": "sound_1844.mp3",
+    "labels": [
+      "six",
+      "chhaha"
+    ]
+  },
+  {
+    "soundFile": "sound_1850.mp3",
+    "labels": [
+      "crown",
+      "chhatu"
+    ]
+  },
+  {
+    "soundFile": "sound_1857.mp3",
+    "labels": [
+      "umbrella",
+      "chhati"
+    ]
+  },
+  {
+    "soundFile": "sound_1933.mp3",
+    "labels": [
+      "as 'h' in 'hut'"
+    ]
+  },
+  {
+    "soundFile": "sound_1940.mp3",
+    "labels": [
+      "right",
+      "haku"
+    ]
+  },
+  {
+    "soundFile": "sound_1945.mp3",
+    "labels": [
+      "attack",
+      "hamlo"
+    ]
+  },
+  {
+    "soundFile": "sound_1951.mp3",
+    "labels": [
+      "barber",
+      "hajamu"
+    ]
+  },
+  {
+    "soundFile": "sound_2028.mp3",
+    "labels": [
+      "blood",
+      "khunu"
+    ]
+  },
+  {
+    "soundFile": "sound_2035.mp3",
+    "labels": [
+      "letter",
+      "khatu"
+    ]
+  },
+  {
+    "soundFile": "sound_2041.mp3",
+    "labels": [
+      "mule",
+      "khacharu"
+    ]
+  },
+  {
+    "soundFile": "sound_2127.mp3",
+    "labels": [
+      "door",
+      "daru"
+    ]
+  },
+  {
+    "soundFile": "sound_2132.mp3",
+    "labels": [
+      "window",
+      "dari"
+    ]
+  },
+  {
+    "soundFile": "sound_2136.mp3",
+    "labels": [
+      "as 'd' in 'Delhi'"
+    ]
+  },
+  {
+    "soundFile": "sound_2142.mp3",
+    "labels": [
+      "drum",
+      "duhilu"
+    ]
+  },
+  {
+    "soundFile": "sound_2214.mp3",
+    "labels": [
+      "rich",
+      "dhanvanu"
+    ]
+  },
+  {
+    "soundFile": "sound_2220.mp3",
+    "labels": [
+      "earth,",
+      " land",
+      "dharti"
+    ]
+  },
+  {
+    "soundFile": "sound_2226.mp3",
+    "labels": [
+      "washer man",
+      "dhobi"
+    ]
+  },
+  {
+    "soundFile": "sound_2253.mp3",
+    "labels": [
+      "&lt;┬║"
+    ]
+  },
+  {
+    "soundFile": "sound_2256.mp3",
+    "labels": [
+      "#&lt;"
+    ]
+  },
+  {
+    "soundFile": "sound_2271.mp3",
+    "labels": [
+      "&lt;┬¼"
+    ]
+  },
+  {
+    "soundFile": "sound_2278.mp3",
+    "labels": [
+      "&lt;┬ª"
+    ]
+  },
+  {
+    "soundFile": "sound_2295.mp3",
+    "labels": [
+      "south",
+      "dakhanu"
+    ]
+  },
+  {
+    "soundFile": "sound_2305.mp3",
+    "labels": [
+      "ten",
+      "daha"
+    ]
+  },
+  {
+    "soundFile": "sound_2312.mp3",
+    "labels": [
+      "frog",
+      "dedaru"
+    ]
+  },
+  {
+    "soundFile": "sound_2384.mp3",
+    "labels": [
+      "fear",
+      "dapu"
+    ]
+  },
+  {
+    "soundFile": "sound_2390.mp3",
+    "labels": [
+      "carpenter",
+      "dakhanu"
+    ]
+  },
+  {
+    "soundFile": "sound_2397.mp3",
+    "labels": [
+      "peahen",
+      "dela"
+    ]
+  },
+  {
+    "soundFile": "sound_2401.mp3",
+    "labels": [
+      "as 'd' in 'day'"
+    ]
+  },
+  {
+    "soundFile": "sound_2471.mp3",
+    "labels": [
+      "dhaku",
+      "lid,cover"
+    ]
+  },
+  {
+    "soundFile": "sound_2477.mp3",
+    "labels": [
+      "dhala",
+      "tax"
+    ]
+  },
+  {
+    "soundFile": "sound_2483.mp3",
+    "labels": [
+      "ox",
+      "dhago"
+    ]
+  },
+  {
+    "soundFile": "sound_2504.mp3",
+    "labels": [
+      "ox",
+      "dhago"
+    ]
+  },
+  {
+    "soundFile": "sound_2553.mp3",
+    "labels": [
+      "intelligent",
+      "zahinu"
+    ]
+  },
+  {
+    "soundFile": "sound_2559.mp3",
+    "labels": [
+      "caste",
+      "zati"
+    ]
+  },
+  {
+    "soundFile": "sound_2565.mp3",
+    "labels": [
+      "a little",
+      "zaro"
+    ]
+  },
+  {
+    "soundFile": "sound_2569.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_2632.mp3",
+    "labels": [
+      "blood",
+      "ratu"
+    ]
+  },
+  {
+    "soundFile": "sound_2638.mp3",
+    "labels": [
+      "juice",
+      "rasu"
+    ]
+  },
+  {
+    "soundFile": "sound_2642.mp3",
+    "labels": [
+      "as 'r' in 'rat'"
+    ]
+  },
+  {
+    "soundFile": "sound_2649.mp3",
+    "labels": [
+      "bear",
+      "richhu"
+    ]
+  },
+  {
+    "soundFile": "sound_2727.mp3",
+    "labels": [
+      "bolt",
+      "karo"
+    ]
+  },
+  {
+    "soundFile": "sound_2733.mp3",
+    "labels": [
+      "shout",
+      "rari"
+    ]
+  },
+  {
+    "soundFile": "sound_2739.mp3",
+    "labels": [
+      "attic, mansion",
+      "mari"
+    ]
+  },
+  {
+    "soundFile": "sound_2810.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_2816.mp3",
+    "labels": [
+      "land",
+      "zamina"
+    ]
+  },
+  {
+    "soundFile": "sound_2822.mp3",
+    "labels": [
+      "poison",
+      "zahiru"
+    ]
+  },
+  {
+    "soundFile": "sound_2829.mp3",
+    "labels": [
+      "chain",
+      "zanjira"
+    ]
+  },
+  {
+    "soundFile": "sound_2900.mp3",
+    "labels": [
+      "maize, corn",
+      "sangu"
+    ]
+  },
+  {
+    "soundFile": "sound_2904.mp3",
+    "labels": [
+      "seven",
+      "sata"
+    ]
+  },
+  {
+    "soundFile": "sound_2910.mp3",
+    "labels": [
+      "truth",
+      "sachu"
+    ]
+  },
+  {
+    "soundFile": "sound_2914.mp3",
+    "labels": [
+      "as 's' in 'sun'"
+    ]
+  },
+  {
+    "soundFile": "sound_2992.mp3",
+    "labels": [
+      "as 'sh' in 'show'"
+    ]
+  },
+  {
+    "soundFile": "sound_3000.mp3",
+    "labels": [
+      "city",
+      "shaharu",
+      "shahiru"
+    ]
+  },
+  {
+    "soundFile": "sound_3007.mp3",
+    "labels": [
+      "doubt",
+      "shaku"
+    ]
+  },
+  {
+    "soundFile": "sound_3013.mp3",
+    "labels": [
+      "lion",
+      "shiNhuN"
+    ]
+  },
+  {
+    "soundFile": "sound_3093.mp3",
+    "labels": [
+      "trunk",
+      "sanduka"
+    ]
+  },
+  {
+    "soundFile": "sound_3099.mp3",
+    "labels": [
+      "clean",
+      "safa"
+    ]
+  },
+  {
+    "soundFile": "sound_3105.mp3",
+    "labels": [
+      "suggestion",
+      "salaha"
+    ]
+  },
+  {
+    "soundFile": "sound_3108.mp3",
+    "labels": [
+      "as 's' in 'sun'"
+    ]
+  },
+  {
+    "soundFile": "sound_3147.mp3",
+    "labels": [
+      "vvs┬º"
+    ]
+  },
+  {
+    "soundFile": "sound_3153.mp3",
+    "labels": [
+      "vvs┬»"
+    ]
+  },
+  {
+    "soundFile": "sound_3171.mp3",
+    "labels": [
+      "vvs┬╗"
+    ]
+  },
+  {
+    "soundFile": "sound_3184.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_3191.mp3",
+    "labels": [
+      "certainly",
+      "zarur"
+    ]
+  },
+  {
+    "soundFile": "sound_3197.mp3",
+    "labels": [
+      "need",
+      "zarurata"
+    ]
+  },
+  {
+    "soundFile": "sound_3203.mp3",
+    "labels": [
+      "weak",
+      "zaifu"
+    ]
+  },
+  {
+    "soundFile": "sound_3287.mp3",
+    "labels": [
+      "parrot",
+      "toto"
+    ]
+  },
+  {
+    "soundFile": "sound_3294.mp3",
+    "labels": [
+      "direction,",
+      " side",
+      "tarfu",
+      "├▓za┼á"
+    ]
+  },
+  {
+    "soundFile": "sound_3301.mp3",
+    "labels": [
+      "drum",
+      "tablo",
+      "├▓zB┼ô┬º"
+    ]
+  },
+  {
+    "soundFile": "sound_3306.mp3",
+    "labels": [
+      "as 't' in 'Taiwan'"
+    ]
+  },
+  {
+    "soundFile": "sound_3382.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_3387.mp3",
+    "labels": [
+      "visible",
+      "zahiru"
+    ]
+  },
+  {
+    "soundFile": "sound_3393.mp3",
+    "labels": [
+      "tyranny",
+      "zulmu"
+    ]
+  },
+  {
+    "soundFile": "sound_3399.mp3",
+    "labels": [
+      "cruel",
+      "zalimu"
+    ]
+  },
+  {
+    "soundFile": "sound_3478.mp3",
+    "labels": [
+      "spectacles",
+      "ainaka"
+    ]
+  },
+  {
+    "soundFile": "sound_3486.mp3",
+    "labels": [
+      "wisdom",
+      "akulu"
+    ]
+  },
+  {
+    "soundFile": "sound_3492.mp3",
+    "labels": [
+      "image",
+      "aksu"
+    ]
+  },
+  {
+    "soundFile": "sound_3574.mp3",
+    "labels": [
+      "poor",
+      "garibu"
+    ]
+  },
+  {
+    "soundFile": "sound_3579.mp3",
+    "labels": [
+      "mistake",
+      "galti"
+    ]
+  },
+  {
+    "soundFile": "sound_3585.mp3",
+    "labels": [
+      "carpet",
+      "galicho"
+    ]
+  },
+  {
+    "soundFile": "sound_0363.mp3",
+    "labels": [
+      "as 'b' in 'bus'"
+    ]
+  },
+  {
+    "soundFile": "sound_3662.mp3",
+    "labels": [
+      "lantern",
+      "fanusu"
+    ]
+  },
+  {
+    "soundFile": "sound_3670.mp3",
+    "labels": [
+      "beggar",
+      "fakiru"
+    ]
+  },
+  {
+    "soundFile": "sound_3677.mp3",
+    "labels": [
+      "duty",
+      "farzu",
+      "├▓ΓÇ╣avr"
+    ]
+  },
+  {
+    "soundFile": "sound_3681.mp3",
+    "labels": [
+      "as ' f ' in 'fan'"
+    ]
+  },
+  {
+    "soundFile": "sound_3765.mp3",
+    "labels": [
+      "fruits",
+      "phala"
+    ]
+  },
+  {
+    "soundFile": "sound_3772.mp3",
+    "labels": [
+      "comb",
+      "phanoto"
+    ]
+  },
+  {
+    "soundFile": "sound_0377.mp3",
+    "labels": [
+      "ice",
+      "barfa"
+    ]
+  },
+  {
+    "soundFile": "sound_3779.mp3",
+    "labels": [
+      "wheel",
+      "phitho"
+    ]
+  },
+  {
+    "soundFile": "sound_0384.mp3",
+    "labels": [
+      "bus",
+      "basi"
+    ]
+  },
+  {
+    "soundFile": "sound_3875.mp3",
+    "labels": [
+      "pen",
+      "kalamu"
+    ]
+  },
+  {
+    "soundFile": "sound_3883.mp3",
+    "labels": [
+      "step",
+      "kadamu"
+    ]
+  },
+  {
+    "soundFile": "sound_3890.mp3",
+    "labels": [
+      "debt",
+      "karzu"
+    ]
+  },
+  {
+    "soundFile": "sound_3895.mp3",
+    "labels": [
+      "as 'k' in 'kin'"
+    ]
+  },
+  {
+    "soundFile": "sound_3971.mp3",
+    "labels": [
+      "ears",
+      "kana"
+    ]
+  },
+  {
+    "soundFile": "sound_3977.mp3",
+    "labels": [
+      "work",
+      "kamu"
+    ]
+  },
+  {
+    "soundFile": "sound_3983.mp3",
+    "labels": [
+      "dog",
+      "kuto"
+    ]
+  },
+  {
+    "soundFile": "sound_4060.mp3",
+    "labels": [
+      "cot",
+      "khata"
+    ]
+  },
+  {
+    "soundFile": "sound_4066.mp3",
+    "labels": [
+      "skin",
+      "khala"
+    ]
+  },
+  {
+    "soundFile": "sound_4071.mp3",
+    "labels": [
+      "sour",
+      "khato"
+    ]
+  },
+  {
+    "soundFile": "sound_4075.mp3",
+    "labels": [
+      "as 'kh' in 'sikh'"
+    ]
+  },
+  {
+    "soundFile": "sound_4152.mp3",
+    "labels": [
+      "as 'g' in 'gun'"
+    ]
+  },
+  {
+    "soundFile": "sound_4158.mp3",
+    "labels": [
+      "warm",
+      "garamu"
+    ]
+  },
+  {
+    "soundFile": "sound_4164.mp3",
+    "labels": [
+      "carrot",
+      "gajara"
+    ]
+  },
+  {
+    "soundFile": "sound_4173.mp3",
+    "labels": [
+      "donkey",
+      "gadahu"
+    ]
+  },
+  {
+    "soundFile": "sound_4250.mp3",
+    "labels": [
+      "neck",
+      "gichi"
+    ]
+  },
+  {
+    "soundFile": "sound_4256.mp3",
+    "labels": [
+      "cheek",
+      "gilu"
+    ]
+  },
+  {
+    "soundFile": "sound_4263.mp3",
+    "labels": [
+      "worry",
+      "ganti"
+    ]
+  },
+  {
+    "soundFile": "sound_4348.mp3",
+    "labels": [
+      "house",
+      "gharu"
+    ]
+  },
+  {
+    "soundFile": "sound_4355.mp3",
+    "labels": [
+      "more, much,",
+      " how much",
+      "ghano"
+    ]
+  },
+  {
+    "soundFile": "sound_4361.mp3",
+    "labels": [
+      "horse",
+      "ghoro"
+    ]
+  },
+  {
+    "soundFile": "sound_4461.mp3",
+    "labels": [
+      "horns",
+      "sina",
+      "#k├ª=&amp;&amp;┬½"
+    ]
+  },
+  {
+    "soundFile": "sound_4467.mp3",
+    "labels": [
+      "engagement,",
+      " betrothel",
+      "manno"
+    ]
+  },
+  {
+    "soundFile": "sound_4474.mp3",
+    "labels": [
+      "good, ok",
+      "chano"
+    ]
+  },
+  {
+    "soundFile": "sound_4550.mp3",
+    "labels": [
+      "as 'l' in 'line'"
+    ]
+  },
+  {
+    "soundFile": "sound_4554.mp3",
+    "labels": [
+      "as 'l' in 'luck'"
+    ]
+  },
+  {
+    "soundFile": "sound_4560.mp3",
+    "labels": [
+      "word",
+      "lafzu"
+    ]
+  },
+  {
+    "soundFile": "sound_4567.mp3",
+    "labels": [
+      "smooth",
+      "laso"
+    ]
+  },
+  {
+    "soundFile": "sound_4574.mp3",
+    "labels": [
+      "lakunu",
+      "walking stick"
+    ]
+  },
+  {
+    "soundFile": "sound_4651.mp3",
+    "labels": [
+      "peacock",
+      "moru"
+    ]
+  },
+  {
+    "soundFile": "sound_4658.mp3",
+    "labels": [
+      "house fly",
+      "makhi"
+    ]
+  },
+  {
+    "soundFile": "sound_4664.mp3",
+    "labels": [
+      "head",
+      "matho"
+    ]
+  },
+  {
+    "soundFile": "sound_4668.mp3",
+    "labels": [
+      "as 'm' in 'moon'"
+    ]
+  },
+  {
+    "soundFile": "sound_4742.mp3",
+    "labels": [
+      "as 'n' in 'neck'"
+    ]
+  },
+  {
+    "soundFile": "sound_4749.mp3",
+    "labels": [
+      "nose",
+      "naku"
+    ]
+  },
+  {
+    "soundFile": "sound_4754.mp3",
+    "labels": [
+      "no",
+      "na"
+    ]
+  },
+  {
+    "soundFile": "sound_4761.mp3",
+    "labels": [
+      "nose ring",
+      "natha"
+    ]
+  },
+  {
+    "soundFile": "sound_4836.mp3",
+    "labels": [
+      "tree",
+      "vanu"
+    ]
+  },
+  {
+    "soundFile": "sound_4841.mp3",
+    "labels": [
+      "water",
+      "pani"
+    ]
+  },
+  {
+    "soundFile": "sound_4848.mp3",
+    "labels": [
+      "queen",
+      "rani"
+    ]
+  },
+  {
+    "soundFile": "sound_4934.mp3",
+    "labels": [
+      "as 'v' in 'van'"
+    ]
+  },
+  {
+    "soundFile": "sound_4941.mp3",
+    "labels": [
+      "big",
+      "vado",
+      "=┬ª&lt;┬ª"
+    ]
+  },
+  {
+    "soundFile": "sound_4947.mp3",
+    "labels": [
+      "creeper",
+      "vali"
+    ]
+  },
+  {
+    "soundFile": "sound_4953.mp3",
+    "labels": [
+      "carpenter",
+      "vadho"
+    ]
+  },
+  {
+    "soundFile": "sound_5020.mp3",
+    "labels": [
+      "deer",
+      "haranu"
+    ]
+  },
+  {
+    "soundFile": "sound_5027.mp3",
+    "labels": [
+      "hands",
+      "hatha"
+    ]
+  },
+  {
+    "soundFile": "sound_5034.mp3",
+    "labels": [
+      "air",
+      "hava"
+    ]
+  },
+  {
+    "soundFile": "sound_5037.mp3",
+    "labels": [
+      "as 'h' in 'hut'"
+    ]
+  },
+  {
+    "soundFile": "sound_5117.mp3",
+    "labels": [
+      "mother",
+      "mau"
+    ]
+  },
+  {
+    "soundFile": "sound_5124.mp3",
+    "labels": [
+      "cow",
+      "gaNi"
+    ]
+  },
+  {
+    "soundFile": "sound_5130.mp3",
+    "labels": [
+      "crow",
+      "kaNu"
+    ]
+  },
+  {
+    "soundFile": "sound_5202.mp3",
+    "labels": [
+      "one stringed",
+      " musical instrument",
+      "yaktaro"
+    ]
+  },
+  {
+    "soundFile": "sound_0520.mp3",
+    "labels": [
+      "bakri",
+      "goat"
+    ]
+  },
+  {
+    "soundFile": "sound_5215.mp3",
+    "labels": [
+      "at once",
+      "yakdamu"
+    ]
+  },
+  {
+    "soundFile": "sound_5220.mp3",
+    "labels": [
+      "as 'y' in 'yet'"
+    ]
+  },
+  {
+    "soundFile": "sound_0526.mp3",
+    "labels": [
+      "boat",
+      "beri"
+    ]
+  },
+  {
+    "soundFile": "sound_5311.mp3",
+    "labels": [
+      "ice",
+      "barfa"
+    ]
+  },
+  {
+    "soundFile": "sound_5313.mp3",
+    "labels": [
+      "bus",
+      "basi"
+    ]
+  },
+  {
+    "soundFile": "sound_0532.mp3",
+    "labels": [
+      "cat",
+      "bili"
+    ]
+  },
+  {
+    "soundFile": "sound_5350.mp3",
+    "labels": [
+      "as 'b' in 'bus'"
+    ]
+  },
+  {
+    "soundFile": "sound_5390.mp3",
+    "labels": [
+      "bakri",
+      "goat"
+    ]
+  },
+  {
+    "soundFile": "sound_5392.mp3",
+    "labels": [
+      "boat",
+      "beri"
+    ]
+  },
+  {
+    "soundFile": "sound_5394.mp3",
+    "labels": [
+      "cat",
+      "bili"
+    ]
+  },
+  {
+    "soundFile": "sound_5435.mp3",
+    "labels": [
+      "a kind of fish",
+      "palo"
+    ]
+  },
+  {
+    "soundFile": "sound_5438.mp3",
+    "labels": [
+      "potato",
+      "patato"
+    ]
+  },
+  {
+    "soundFile": "sound_5440.mp3",
+    "labels": [
+      "leaf",
+      "panu"
+    ]
+  },
+  {
+    "soundFile": "sound_5443.mp3",
+    "labels": [
+      "as 'p' in 'rope'"
+    ]
+  },
+  {
+    "soundFile": "sound_5454.mp3",
+    "labels": [
+      "monkey",
+      "bholro"
+    ]
+  },
+  {
+    "soundFile": "sound_5457.mp3",
+    "labels": [
+      "wall",
+      "bhiti"
+    ]
+  },
+  {
+    "soundFile": "sound_5461.mp3",
+    "labels": [
+      "vegetable",
+      "bhaji"
+    ]
+  },
+  {
+    "soundFile": "sound_5464.mp3",
+    "labels": [
+      "as 'bh' in 'Bharat'"
+    ]
+  },
+  {
+    "soundFile": "sound_5519.mp3",
+    "labels": [
+      "as  't' in 'Taiwan'"
+    ]
+  },
+  {
+    "soundFile": "sound_5522.mp3",
+    "labels": [
+      "seven",
+      "sata"
+    ]
+  },
+  {
+    "soundFile": "sound_5526.mp3",
+    "labels": [
+      "frying pan",
+      "tai"
+    ]
+  },
+  {
+    "soundFile": "sound_5530.mp3",
+    "labels": [
+      "star",
+      "taro"
+    ]
+  },
+  {
+    "soundFile": "sound_5566.mp3",
+    "labels": [
+      "plate",
+      "thalhi"
+    ]
+  },
+  {
+    "soundFile": "sound_5569.mp3",
+    "labels": [
+      "stone",
+      "patharu"
+    ]
+  },
+  {
+    "soundFile": "sound_5572.mp3",
+    "labels": [
+      "pillar",
+      "thambhu"
+    ]
+  },
+  {
+    "soundFile": "sound_5608.mp3",
+    "labels": [
+      "cap",
+      "topi"
+    ]
+  },
+  {
+    "soundFile": "sound_5611.mp3",
+    "labels": [
+      "tomato",
+      "tamato"
+    ]
+  },
+  {
+    "soundFile": "sound_5614.mp3",
+    "labels": [
+      "as 't' in 'tin'"
+    ]
+  },
+  {
+    "soundFile": "sound_5616.mp3",
+    "labels": [
+      "basket",
+      "tokri"
+    ]
+  },
+  {
+    "soundFile": "sound_5650.mp3",
+    "labels": [
+      "as 'th' in 'thug'"
+    ]
+  },
+  {
+    "soundFile": "sound_5654.mp3",
+    "labels": [
+      "seal,",
+      " stamp",
+      "thapo"
+    ]
+  },
+  {
+    "soundFile": "sound_5656.mp3",
+    "labels": [
+      "bald",
+      "thorho"
+    ]
+  },
+  {
+    "soundFile": "sound_5658.mp3",
+    "labels": [
+      "elbow",
+      "thuNthi"
+    ]
+  },
+  {
+    "soundFile": "sound_5690.mp3",
+    "labels": [
+      "good deed",
+      "savabu"
+    ]
+  },
+  {
+    "soundFile": "sound_5693.mp3",
+    "labels": [
+      "proof",
+      "sabutu"
+    ]
+  },
+  {
+    "soundFile": "sound_5695.mp3",
+    "labels": [
+      "evidence",
+      "sabti"
+    ]
+  },
+  {
+    "soundFile": "sound_5697.mp3",
+    "labels": [
+      "as 's' in 'sin'"
+    ]
+  },
+  {
+    "soundFile": "sound_5732.mp3",
+    "labels": [
+      "ship",
+      "jahazu"
+    ]
+  },
+  {
+    "soundFile": "sound_5735.mp3",
+    "labels": [
+      "mountain",
+      "jabalu"
+    ]
+  },
+  {
+    "soundFile": "sound_5739.mp3",
+    "labels": [
+      "answer",
+      "javabu"
+    ]
+  },
+  {
+    "soundFile": "sound_5741.mp3",
+    "labels": [
+      "as 'j' in 'jug'"
+    ]
+  },
+  {
+    "soundFile": "sound_5782.mp3",
+    "labels": [
+      "tongue",
+      "jibha"
+    ]
+  },
+  {
+    "soundFile": "sound_5785.mp3",
+    "labels": [
+      "knowledge",
+      "jana"
+    ]
+  },
+  {
+    "soundFile": "sound_5788.mp3",
+    "labels": [
+      "net",
+      "jari"
+    ]
+  },
+  {
+    "soundFile": "sound_5830.mp3",
+    "labels": [
+      "sparrow",
+      "jhirki"
+    ]
+  },
+  {
+    "soundFile": "sound_5834.mp3",
+    "labels": [
+      "flag",
+      "jhando"
+    ]
+  },
+  {
+    "soundFile": "sound_5838.mp3",
+    "labels": [
+      "jungle",
+      "jhangalu"
+    ]
+  },
+  {
+    "soundFile": "sound_5877.mp3",
+    "labels": [
+      "bridegroom's",
+      " marriage procession",
+      "jana"
+    ]
+  },
+  {
+    "soundFile": "sound_5881.mp3",
+    "labels": [
+      "thirst",
+      "una"
+    ]
+  },
+  {
+    "soundFile": "sound_5885.mp3",
+    "labels": [
+      "identity",
+      "sunanapa"
+    ]
+  },
+  {
+    "soundFile": "sound_5919.mp3",
+    "labels": [
+      "moon",
+      "chandu"
+    ]
+  },
+  {
+    "soundFile": "sound_5923.mp3",
+    "labels": [
+      "lips",
+      "chapa"
+    ]
+  },
+  {
+    "soundFile": "sound_5926.mp3",
+    "labels": [
+      "key",
+      "chabi"
+    ]
+  },
+  {
+    "soundFile": "sound_5928.mp3",
+    "labels": [
+      "as 'ch' in 'cheque'"
+    ]
+  },
+  {
+    "soundFile": "sound_5959.mp3",
+    "labels": [
+      "umbrella",
+      "chhati"
+    ]
+  },
+  {
+    "soundFile": "sound_5962.mp3",
+    "labels": [
+      "six",
+      "chhaha"
+    ]
+  },
+  {
+    "soundFile": "sound_5965.mp3",
+    "labels": [
+      "crown",
+      "chhatu"
+    ]
+  },
+  {
+    "soundFile": "sound_5996.mp3",
+    "labels": [
+      "barber",
+      "hajamu"
+    ]
+  },
+  {
+    "soundFile": "sound_5998.mp3",
+    "labels": [
+      "attack",
+      "hamlo"
+    ]
+  },
+  {
+    "soundFile": "sound_6000.mp3",
+    "labels": [
+      "right",
+      "haku"
+    ]
+  },
+  {
+    "soundFile": "sound_6003.mp3",
+    "labels": [
+      "as 'h' in 'hut'"
+    ]
+  },
+  {
+    "soundFile": "sound_6036.mp3",
+    "labels": [
+      "mule",
+      "khacharu"
+    ]
+  },
+  {
+    "soundFile": "sound_6038.mp3",
+    "labels": [
+      "blood",
+      "khunu"
+    ]
+  },
+  {
+    "soundFile": "sound_6041.mp3",
+    "labels": [
+      "letter",
+      "khatu"
+    ]
+  },
+  {
+    "soundFile": "sound_6081.mp3",
+    "labels": [
+      "drum",
+      "duhilu"
+    ]
+  },
+  {
+    "soundFile": "sound_6083.mp3",
+    "labels": [
+      "as 'd' in 'Delhi'"
+    ]
+  },
+  {
+    "soundFile": "sound_6085.mp3",
+    "labels": [
+      "door",
+      "daru"
+    ]
+  },
+  {
+    "soundFile": "sound_6088.mp3",
+    "labels": [
+      "window",
+      "dari"
+    ]
+  },
+  {
+    "soundFile": "sound_6119.mp3",
+    "labels": [
+      "rich",
+      "dhanvanu"
+    ]
+  },
+  {
+    "soundFile": "sound_6121.mp3",
+    "labels": [
+      "washer man",
+      "dhobi"
+    ]
+  },
+  {
+    "soundFile": "sound_6123.mp3",
+    "labels": [
+      "earth,",
+      " land",
+      "dharti"
+    ]
+  },
+  {
+    "soundFile": "sound_6130.mp3",
+    "labels": [
+      "&lt;┬║"
+    ]
+  },
+  {
+    "soundFile": "sound_6132.mp3",
+    "labels": [
+      "#&lt;"
+    ]
+  },
+  {
+    "soundFile": "sound_6140.mp3",
+    "labels": [
+      "&lt;┬¼"
+    ]
+  },
+  {
+    "soundFile": "sound_6144.mp3",
+    "labels": [
+      "&lt;┬ª"
+    ]
+  },
+  {
+    "soundFile": "sound_6154.mp3",
+    "labels": [
+      "frog",
+      "dedaru"
+    ]
+  },
+  {
+    "soundFile": "sound_6158.mp3",
+    "labels": [
+      "south",
+      "dakhanu"
+    ]
+  },
+  {
+    "soundFile": "sound_6164.mp3",
+    "labels": [
+      "ten",
+      "daha"
+    ]
+  },
+  {
+    "soundFile": "sound_6203.mp3",
+    "labels": [
+      "peahen",
+      "dela"
+    ]
+  },
+  {
+    "soundFile": "sound_6205.mp3",
+    "labels": [
+      "fear",
+      "dapu"
+    ]
+  },
+  {
+    "soundFile": "sound_6207.mp3",
+    "labels": [
+      "carpenter",
+      "dakhanu"
+    ]
+  },
+  {
+    "soundFile": "sound_6209.mp3",
+    "labels": [
+      "as 'd' in 'day'"
+    ]
+  },
+  {
+    "soundFile": "sound_0621.mp3",
+    "labels": [
+      "as 'p' in 'rope'"
+    ]
+  },
+  {
+    "soundFile": "sound_6247.mp3",
+    "labels": [
+      "dhaku",
+      "lid,cover"
+    ]
+  },
+  {
+    "soundFile": "sound_6249.mp3",
+    "labels": [
+      "dhala",
+      "tax"
+    ]
+  },
+  {
+    "soundFile": "sound_6288.mp3",
+    "labels": [
+      "a little",
+      "zaro"
+    ]
+  },
+  {
+    "soundFile": "sound_0628.mp3",
+    "labels": [
+      "leaf",
+      "panu"
+    ]
+  },
+  {
+    "soundFile": "sound_6291.mp3",
+    "labels": [
+      "intelligent",
+      "zahinu"
+    ]
+  },
+  {
+    "soundFile": "sound_6293.mp3",
+    "labels": [
+      "caste",
+      "zati"
+    ]
+  },
+  {
+    "soundFile": "sound_6295.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_6329.mp3",
+    "labels": [
+      "bear",
+      "richhu"
+    ]
+  },
+  {
+    "soundFile": "sound_6331.mp3",
+    "labels": [
+      "as 'r' in 'rat'"
+    ]
+  },
+  {
+    "soundFile": "sound_6333.mp3",
+    "labels": [
+      "blood",
+      "ratu"
+    ]
+  },
+  {
+    "soundFile": "sound_6335.mp3",
+    "labels": [
+      "juice",
+      "rasu"
+    ]
+  },
+  {
+    "soundFile": "sound_0636.mp3",
+    "labels": [
+      "potato",
+      "patato"
+    ]
+  },
+  {
+    "soundFile": "sound_6371.mp3",
+    "labels": [
+      "attic, mansion",
+      "mari"
+    ]
+  },
+  {
+    "soundFile": "sound_6374.mp3",
+    "labels": [
+      "bolt",
+      "karo"
+    ]
+  },
+  {
+    "soundFile": "sound_6376.mp3",
+    "labels": [
+      "shout",
+      "rari"
+    ]
+  },
+  {
+    "soundFile": "sound_6415.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_6419.mp3",
+    "labels": [
+      "land",
+      "zamina"
+    ]
+  },
+  {
+    "soundFile": "sound_6421.mp3",
+    "labels": [
+      "poison",
+      "zahiru"
+    ]
+  },
+  {
+    "soundFile": "sound_6424.mp3",
+    "labels": [
+      "chain",
+      "zanjira"
+    ]
+  },
+  {
+    "soundFile": "sound_0642.mp3",
+    "labels": [
+      "a kind of fish",
+      "palo"
+    ]
+  },
+  {
+    "soundFile": "sound_6461.mp3",
+    "labels": [
+      "maize, corn",
+      "sangu"
+    ]
+  },
+  {
+    "soundFile": "sound_6465.mp3",
+    "labels": [
+      "seven",
+      "sata"
+    ]
+  },
+  {
+    "soundFile": "sound_6469.mp3",
+    "labels": [
+      "truth",
+      "sachu"
+    ]
+  },
+  {
+    "soundFile": "sound_6471.mp3",
+    "labels": [
+      "as 's' in 'sun'"
+    ]
+  },
+  {
+    "soundFile": "sound_6506.mp3",
+    "labels": [
+      "as 'sh' in 'show'"
+    ]
+  },
+  {
+    "soundFile": "sound_6509.mp3",
+    "labels": [
+      "city",
+      "shahiru",
+      "shaharu"
+    ]
+  },
+  {
+    "soundFile": "sound_6512.mp3",
+    "labels": [
+      "doubt",
+      "shaku"
+    ]
+  },
+  {
+    "soundFile": "sound_6516.mp3",
+    "labels": [
+      "lion",
+      "shiNhuN"
+    ]
+  },
+  {
+    "soundFile": "sound_6554.mp3",
+    "labels": [
+      "trunk",
+      "sanduka"
+    ]
+  },
+  {
+    "soundFile": "sound_6557.mp3",
+    "labels": [
+      "clean",
+      "safa"
+    ]
+  },
+  {
+    "soundFile": "sound_6560.mp3",
+    "labels": [
+      "suggestion",
+      "salaha"
+    ]
+  },
+  {
+    "soundFile": "sound_6562.mp3",
+    "labels": [
+      "as 's' in 'sun'"
+    ]
+  },
+  {
+    "soundFile": "sound_6569.mp3",
+    "labels": [
+      "vvs┬╗"
+    ]
+  },
+  {
+    "soundFile": "sound_6580.mp3",
+    "labels": [
+      "vvs┬»"
+    ]
+  },
+  {
+    "soundFile": "sound_6584.mp3",
+    "labels": [
+      "vvs┬º"
+    ]
+  },
+  {
+    "soundFile": "sound_6594.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_6598.mp3",
+    "labels": [
+      "certainly",
+      "zarur"
+    ]
+  },
+  {
+    "soundFile": "sound_6601.mp3",
+    "labels": [
+      "need",
+      "zarurata"
+    ]
+  },
+  {
+    "soundFile": "sound_6604.mp3",
+    "labels": [
+      "weak",
+      "zaifu"
+    ]
+  },
+  {
+    "soundFile": "sound_6645.mp3",
+    "labels": [
+      "parrot",
+      "toto"
+    ]
+  },
+  {
+    "soundFile": "sound_6649.mp3",
+    "labels": [
+      "drum",
+      "tablo",
+      "├▓zB┼ô┬º"
+    ]
+  },
+  {
+    "soundFile": "sound_6652.mp3",
+    "labels": [
+      "direction,",
+      " side",
+      "tarfu",
+      "├▓za┼á"
+    ]
+  },
+  {
+    "soundFile": "sound_6655.mp3",
+    "labels": [
+      "as 't' in 'Taiwan'"
+    ]
+  },
+  {
+    "soundFile": "sound_6692.mp3",
+    "labels": [
+      "as 'z' in 'zoo'"
+    ]
+  },
+  {
+    "soundFile": "sound_6695.mp3",
+    "labels": [
+      "visible",
+      "zahiru"
+    ]
+  },
+  {
+    "soundFile": "sound_6699.mp3",
+    "labels": [
+      "tyranny",
+      "zulmu"
+    ]
+  },
+  {
+    "soundFile": "sound_6701.mp3",
+    "labels": [
+      "cruel",
+      "zalimu"
+    ]
+  },
+  {
+    "soundFile": "sound_6738.mp3",
+    "labels": [
+      "spectacles",
+      "ainaka"
+    ]
+  },
+  {
+    "soundFile": "sound_6741.mp3",
+    "labels": [
+      "image",
+      "aksu"
+    ]
+  },
+  {
+    "soundFile": "sound_6744.mp3",
+    "labels": [
+      "wisdom",
+      "akulu"
+    ]
+  },
+  {
+    "soundFile": "sound_6786.mp3",
+    "labels": [
+      "poor",
+      "garibu"
+    ]
+  },
+  {
+    "soundFile": "sound_6789.mp3",
+    "labels": [
+      "mistake",
+      "galti"
+    ]
+  },
+  {
+    "soundFile": "sound_6792.mp3",
+    "labels": [
+      "carpet",
+      "galicho"
+    ]
+  },
+  {
+    "soundFile": "sound_0679.mp3",
+    "labels": [
+      "as 'bh' in 'Bharat'"
+    ]
+  },
+  {
+    "soundFile": "sound_6828.mp3",
+    "labels": [
+      "lantern",
+      "fanusu"
+    ]
+  },
+  {
+    "soundFile": "sound_6831.mp3",
+    "labels": [
+      "beggar",
+      "fakiru"
+    ]
+  },
+  {
+    "soundFile": "sound_6835.mp3",
+    "labels": [
+      "duty",
+      "farzu",
+      "├▓ΓÇ╣avr"
+    ]
+  },
+  {
+    "soundFile": "sound_6837.mp3",
+    "labels": [
+      "as ' f ' in 'fan'"
+    ]
+  },
+  {
+    "soundFile": "sound_6875.mp3",
+    "labels": [
+      "fruits",
+      "phala"
+    ]
+  },
+  {
+    "soundFile": "sound_6877.mp3",
+    "labels": [
+      "comb",
+      "phanoto"
+    ]
+  },
+  {
+    "soundFile": "sound_6881.mp3",
+    "labels": [
+      "wheel",
+      "phitho"
+    ]
+  },
+  {
+    "soundFile": "sound_6915.mp3",
+    "labels": [
+      "pen",
+      "kalamu"
+    ]
+  },
+  {
+    "soundFile": "sound_6918.mp3",
+    "labels": [
+      "step",
+      "kadamu"
+    ]
+  },
+  {
+    "soundFile": "sound_6921.mp3",
+    "labels": [
+      "debt",
+      "karzu"
+    ]
+  },
+  {
+    "soundFile": "sound_6924.mp3",
+    "labels": [
+      "as 'k' in 'kin'"
+    ]
+  },
+  {
+    "soundFile": "sound_0692.mp3",
+    "labels": [
+      "monkey",
+      "bholro"
+    ]
+  },
+  {
+    "soundFile": "sound_6967.mp3",
+    "labels": [
+      "as 'k' in 'kin'"
+    ]
+  },
+  {
+    "soundFile": "sound_6970.mp3",
+    "labels": [
+      "ears",
+      "kana"
+    ]
+  },
+  {
+    "soundFile": "sound_6973.mp3",
+    "labels": [
+      "work",
+      "kamu"
+    ]
+  },
+  {
+    "soundFile": "sound_6976.mp3",
+    "labels": [
+      "dog",
+      "kuto"
+    ]
+  },
+  {
+    "soundFile": "sound_0698.mp3",
+    "labels": [
+      "wall",
+      "bhiti"
+    ]
+  },
+  {
+    "soundFile": "sound_7014.mp3",
+    "labels": [
+      "cot",
+      "khata"
+    ]
+  },
+  {
+    "soundFile": "sound_7016.mp3",
+    "labels": [
+      "sour",
+      "khato"
+    ]
+  },
+  {
+    "soundFile": "sound_7018.mp3",
+    "labels": [
+      "skin",
+      "khala"
+    ]
+  },
+  {
+    "soundFile": "sound_7020.mp3",
+    "labels": [
+      "as 'kh' in 'sikh'"
+    ]
+  },
+  {
+    "soundFile": "sound_0704.mp3",
+    "labels": [
+      "vegetable",
+      "bhaji"
+    ]
+  },
+  {
+    "soundFile": "sound_7056.mp3",
+    "labels": [
+      "as 'g' in 'gun'"
+    ]
+  },
+  {
+    "soundFile": "sound_7060.mp3",
+    "labels": [
+      "warm",
+      "garamu"
+    ]
+  },
+  {
+    "soundFile": "sound_7064.mp3",
+    "labels": [
+      "carrot",
+      "gajara"
+    ]
+  },
+  {
+    "soundFile": "sound_7070.mp3",
+    "labels": [
+      "donkey",
+      "gadahu"
+    ]
+  },
+  {
+    "soundFile": "sound_7104.mp3",
+    "labels": [
+      "neck",
+      "gichi"
+    ]
+  },
+  {
+    "soundFile": "sound_7107.mp3",
+    "labels": [
+      "cheek",
+      "gilu"
+    ]
+  },
+  {
+    "soundFile": "sound_7111.mp3",
+    "labels": [
+      "worry",
+      "ganti"
+    ]
+  },
+  {
+    "soundFile": "sound_7145.mp3",
+    "labels": [
+      "house",
+      "gharu"
+    ]
+  },
+  {
+    "soundFile": "sound_7148.mp3",
+    "labels": [
+      "more, much,",
+      " how much",
+      "ghano"
+    ]
+  },
+  {
+    "soundFile": "sound_7150.mp3",
+    "labels": [
+      "horse",
+      "ghoro"
+    ]
+  },
+  {
+    "soundFile": "sound_7191.mp3",
+    "labels": [
+      "horns",
+      "sina",
+      "#k├ª=&amp;&amp;┬½"
+    ]
+  },
+  {
+    "soundFile": "sound_7194.mp3",
+    "labels": [
+      "engagement,",
+      " betrothel",
+      "manno",
+      "manni"
+    ]
+  },
+  {
+    "soundFile": "sound_7197.mp3",
+    "labels": [
+      "good, ok",
+      "chano"
+    ]
+  },
+  {
+    "soundFile": "sound_7236.mp3",
+    "labels": [
+      "word",
+      "lafzu"
+    ]
+  },
+  {
+    "soundFile": "sound_7239.mp3",
+    "labels": [
+      "smooth",
+      "laso"
+    ]
+  },
+  {
+    "soundFile": "sound_7242.mp3",
+    "labels": [
+      "lakunu",
+      "walking stick"
+    ]
+  },
+  {
+    "soundFile": "sound_7276.mp3",
+    "labels": [
+      "peacock",
+      "moru"
+    ]
+  },
+  {
+    "soundFile": "sound_7279.mp3",
+    "labels": [
+      "head",
+      "matho"
+    ]
+  },
+  {
+    "soundFile": "sound_7282.mp3",
+    "labels": [
+      "house fly",
+      "makhi"
+    ]
+  },
+  {
+    "soundFile": "sound_7285.mp3",
+    "labels": [
+      "as 'm' in 'moon'"
+    ]
+  },
+  {
+    "soundFile": "sound_7318.mp3",
+    "labels": [
+      "as 'n' in 'neck'"
+    ]
+  },
+  {
+    "soundFile": "sound_7320.mp3",
+    "labels": [
+      "nose",
+      "naku"
+    ]
+  },
+  {
+    "soundFile": "sound_7322.mp3",
+    "labels": [
+      "no",
+      "na"
+    ]
+  },
+  {
+    "soundFile": "sound_7325.mp3",
+    "labels": [
+      "nose ring",
+      "natha"
+    ]
+  },
+  {
+    "soundFile": "sound_7362.mp3",
+    "labels": [
+      "tree",
+      "vanu"
+    ]
+  },
+  {
+    "soundFile": "sound_7365.mp3",
+    "labels": [
+      "water",
+      "pani"
+    ]
+  },
+  {
+    "soundFile": "sound_7368.mp3",
+    "labels": [
+      "queen",
+      "rani"
+    ]
+  },
+  {
+    "soundFile": "sound_7403.mp3",
+    "labels": [
+      "big",
+      "vado",
+      "=┬ª&lt;┬ª"
+    ]
+  },
+  {
+    "soundFile": "sound_7406.mp3",
+    "labels": [
+      "creeper",
+      "vali"
+    ]
+  },
+  {
+    "soundFile": "sound_7409.mp3",
+    "labels": [
+      "as 'v' in 'van'"
+    ]
+  },
+  {
+    "soundFile": "sound_7411.mp3",
+    "labels": [
+      "carpenter",
+      "vadho"
+    ]
+  },
+  {
+    "soundFile": "sound_7444.mp3",
+    "labels": [
+      "deer",
+      "haranu"
+    ]
+  },
+  {
+    "soundFile": "sound_7447.mp3",
+    "labels": [
+      "hands",
+      "hatha"
+    ]
+  },
+  {
+    "soundFile": "sound_7449.mp3",
+    "labels": [
+      "air",
+      "hava"
+    ]
+  },
+  {
+    "soundFile": "sound_7452.mp3",
+    "labels": [
+      "as 'h' in 'hut'"
+    ]
+  },
+  {
+    "soundFile": "sound_7490.mp3",
+    "labels": [
+      "mother",
+      "mau"
+    ]
+  },
+  {
+    "soundFile": "sound_7492.mp3",
+    "labels": [
+      "cow",
+      "gaNi"
+    ]
+  },
+  {
+    "soundFile": "sound_7494.mp3",
+    "labels": [
+      "crow",
+      "kaNu"
+    ]
+  },
+  {
+    "soundFile": "sound_7527.mp3",
+    "labels": [
+      "one stringed",
+      " musical instrument",
+      "yaktaro"
+    ]
+  },
+  {
+    "soundFile": "sound_7533.mp3",
+    "labels": [
+      "at once",
+      "yakdamu"
+    ]
+  },
+  {
+    "soundFile": "sound_7535.mp3",
+    "labels": [
+      "as 'y' in 'yet'"
+    ]
+  },
+  {
+    "soundFile": "sound_0816.mp3",
+    "labels": [
+      "as  't' in 'Taiwan'"
+    ]
+  },
+  {
+    "soundFile": "sound_0830.mp3",
+    "labels": [
+      "frying pan",
+      "tai"
+    ]
+  },
+  {
+    "soundFile": "sound_0837.mp3",
+    "labels": [
+      "star",
+      "taro"
+    ]
+  },
+  {
+    "soundFile": "sound_0844.mp3",
+    "labels": [
+      "seven",
+      "sata"
+    ]
+  },
+  {
+    "soundFile": "sound_0925.mp3",
+    "labels": [
+      "pillar",
+      "thambhu"
+    ]
+  },
+  {
+    "soundFile": "sound_0932.mp3",
+    "labels": [
+      "plate",
+      "thalhi"
+    ]
+  },
+  {
+    "soundFile": "sound_0939.mp3",
+    "labels": [
+      "stone",
+      "patharu"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+# Exclude raw FLA source files (thousands of XML files - not needed for web app)
+FLA/
+
+# Exclude large media & dev files
+*.swf
+*.mp4
+reference.mp4
+files_to_convert/
+
+# Python scripts
+*.py
+*.pyc
+__pycache__/
+
+# Dev tools
+tile-editor.html
+auditor.html
+alif-test.html
+_trimmed_audio_map.txt
+sindhialphabets_logic.code-workspace
+
+*.zip

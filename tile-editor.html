@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sindhi Tile Editor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f0f13;
+      color: #e0e0e0;
+      padding: 20px 28px;
+    }
+
+    h1 {
+      color: #8a74ff;
+      font-size: 22px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    /* ── toolbar ── */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f0f13;
+      padding: 10px 0 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #222;
+      margin-bottom: 20px;
+    }
+
+    .tb-btn {
+      padding: 8px 18px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      background: #1a1a24;
+      color: #ccc;
+      transition: all .15s;
+    }
+
+    .tb-btn:hover {
+      background: #25253a;
+      border-color: #555;
+      color: #fff;
+    }
+
+    .tb-btn.primary {
+      background: #2cc37f;
+      color: #000;
+      border-color: #2cc37f;
+    }
+
+    .tb-btn.primary:hover {
+      background: #3dd48f;
+    }
+
+    .tb-btn.warn {
+      background: #c0392b;
+      color: #fff;
+      border-color: #c0392b;
+    }
+
+    .tb-btn.warn:hover {
+      background: #e74c3c;
+    }
+
+    .mode-indicator {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
+    }
+
+    .mode-indicator b {
+      color: #ffba63;
+    }
+
+    /* ── group ── */
+    .group {
+      margin-bottom: 28px;
+      background: #15151e;
+      border: 1px solid #1e1e2a;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .group.collapsed .tile-row {
+      display: none;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #8a74ff;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .group-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    .group-intro-btn {
+      padding: 3px 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      background: #1a1a2a;
+      color: #4d96ff;
+      font-family: monospace;
+    }
+
+    .group-intro-btn:hover {
+      background: #222240;
+    }
+
+    .group-intro-btn.playing {
+      background: #4d96ff;
+      color: #fff;
+    }
+
+    .group-sound-count {
+      font-size: 11px;
+      color: #555;
+      margin-left: auto;
+    }
+
+    .collapse-arrow {
+      color: #555;
+      font-size: 14px;
+      transition: transform .2s;
+    }
+
+    .group.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+
+    /* ── tiles ── */
+    .tile-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-height: 80px;
+      padding: 4px 0;
+    }
+
+    .tile {
+      position: relative;
+      width: 110px;
+      padding: 10px 8px;
+      border: 2px solid #2a2a3a;
+      border-radius: 8px;
+      background: #1a1a28;
+      cursor: grab;
+      user-select: none;
+      text-align: center;
+      transition: all .15s;
+    }
+
+    .tile:hover {
+      border-color: #444;
+      background: #20203a;
+    }
+
+    .tile.dragging {
+      opacity: 0.25;
+      transform: scale(0.95);
+    }
+
+    .tile.drag-over {
+      border-color: #8a74ff;
+      background: #22224a;
+      box-shadow: 0 0 12px #8a74ff33;
+    }
+
+    .tile.selected {
+      border-color: #ffba63;
+      background: #2a2520;
+      box-shadow: 0 0 10px #ffba6333;
+    }
+
+    .tile.playing-tile {
+      border-color: #2cc37f;
+    }
+
+    .tile-pos {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .tile-sound {
+      font-size: 12px;
+      color: #4d96ff;
+      font-family: monospace;
+      margin-bottom: 4px;
+      word-break: break-all;
+    }
+
+    .tile-labels {
+      font-size: 10px;
+      color: #888;
+      min-height: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    .tile-play {
+      margin-top: 6px;
+      padding: 3px 10px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      background: #111;
+      color: #aaa;
+    }
+
+    .tile-play:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    /* ── drop placeholder ── */
+    .drop-indicator {
+      width: 4px;
+      background: #8a74ff;
+      border-radius: 2px;
+      margin: 0 -2px;
+      align-self: stretch;
+      min-height: 60px;
+      transition: opacity .1s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .drop-indicator.visible {
+      opacity: 1;
+    }
+
+    /* ── toast ── */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #2cc37f;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 200;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Sindhi Tile Editor</h1>
+  <p class="subtitle">Drag tiles to reorder, or click two tiles to swap. Click ▶ to preview audio. Save when done.</p>
+
+  <div class="toolbar">
+    <button class="tb-btn primary" onclick="saveJSON()">💾 Save JSON</button>
+    <button class="tb-btn" onclick="downloadJSON()">⬇ Download JSON</button>
+    <button class="tb-btn warn" onclick="reloadJSON()">↻ Reload</button>
+    <button class="tb-btn" onclick="expandAll()">Expand All</button>
+    <button class="tb-btn" onclick="collapseAll()">Collapse All</button>
+    <span class="mode-indicator">Mode: <b>Drag</b> or <b>Click-to-swap</b> (click two tiles)</span>
+  </div>
+
+  <div id="groups"></div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Lesson definitions matching stage-experience.js order
+    const LESSONS = [
+      { id: 'alif', letter: 'ا', name: 'alif' },
+      { id: 'be', letter: 'ب', name: 'be' },
+      { id: 'bbe', letter: 'ٻ', name: 'bbe' },
+      { id: 'pe', letter: 'پ', name: 'pe' },
+      { id: 'bhe', letter: 'ڀ', name: 'bhe' },
+      { id: 'te', letter: 'ت', name: 'te' },
+      { id: 'the', letter: 'ٿ', name: 'the' },
+      { id: 'tte', letter: 'ٽ', name: 'tte' },
+      { id: 'tthe', letter: 'ٺ', name: 'tthe' },
+      { id: 'se', letter: 'ث', name: 'se' },
+      { id: 'jeem', letter: 'ج', name: 'jeem' },
+      { id: 'nye', letter: 'ڄ', name: 'nye' },
+      { id: 'jhe', letter: 'جھ', name: 'jhe' },
+      { id: 'che', letter: 'چ', name: 'che' },
+      { id: 'chhe', letter: 'ڇ', name: 'chhe' },
+      { id: 'he', letter: 'ح', name: 'he' },
+      { id: 'khe', letter: 'خ', name: 'khe' },
+      { id: 'dal', letter: 'د', name: 'dal' },
+      { id: 'dhal', letter: 'ڌ', name: 'dhal' },
+      { id: 'ddal', letter: 'ڊ', name: 'ddal' },
+      { id: 'ddhal', letter: 'ڏ', name: 'ddhal' },
+      { id: 'zal', letter: 'ذ', name: 'zal' },
+      { id: 're', letter: 'ر', name: 're' },
+      { id: 'rre', letter: 'ڙ', name: 'rre' },
+      { id: 'ze', letter: 'ز', name: 'ze' },
+      { id: 'seen', letter: 'س', name: 'seen' },
+      { id: 'sheen', letter: 'ش', name: 'sheen' },
+      { id: 'swad', letter: 'ص', name: 'swad' },
+      { id: 'zwad', letter: 'ض', name: 'zwad' },
+      { id: 'toe', letter: 'ط', name: 'toe' },
+      { id: 'zoe', letter: 'ظ', name: 'zoe' },
+      { id: 'ain', letter: 'ع', name: 'ain' },
+      { id: 'ghain', letter: 'غ', name: 'ghain' },
+      { id: 'fe', letter: 'ف', name: 'fe' },
+      { id: 'phe', letter: 'ڦ', name: 'phe' },
+      { id: 'qaf', letter: 'ق', name: 'qaf' },
+      { id: 'kaf', letter: 'ڪ', name: 'kaf' },
+      { id: 'khaf', letter: 'ک', name: 'khaf' },
+      { id: 'gaf', letter: 'گ', name: 'gaf' },
+      { id: 'ggaf', letter: 'ڳ', name: 'ggaf' },
+      { id: 'ngoe', letter: 'ڱ', name: 'ngoe' },
+      { id: 'lam', letter: 'ل', name: 'lam' },
+      { id: 'meem', letter: 'م', name: 'meem' },
+      { id: 'noon', letter: 'ن', name: 'noon' },
+      { id: 'nnoon', letter: 'ڻ', name: 'nnoon' },
+      { id: 'waw', letter: 'و', name: 'waw' },
+      { id: 'heh', letter: 'ه', name: 'heh' },
+      { id: 'hamza', letter: 'ء', name: 'hamza' },
+      { id: 'ye', letter: 'ي', name: 'ye' }
+    ];
+
+    let groups = [];
+    let selectedTile = null;
+    let currentAudio = null;
+    let currentPlayingEl = null;
+    let dirty = false;
+
+    // ── Load & Parse ──
+    async function loadJSON() {
+      const resp = await fetch('sindhi_app_data.json', { cache: 'no-store' });
+      const rows = await resp.json();
+      groups = [];
+      let current = null;
+      for (const row of rows) {
+        if (row.type === 'letter_sound' && row.isLetterTile === true) {
+          if (current) groups.push(current);
+          current = { intro: row, tiles: [] };
+        } else if (current) {
+          current.tiles.push({ ...row });
+        }
+      }
+      if (current) groups.push(current);
+
+      // Merge adjacent small groups
+      for (let i = groups.length - 1; i > 0; i--) {
+        if (groups[i].tiles.length < 10 && groups[i - 1].tiles.length < 10) {
+          groups[i - 1].tiles.push(...groups[i].tiles);
+          groups.splice(i, 1);
+        }
+      }
+
+      dirty = false;
+      render();
+    }
+
+    // ── Render ──
+    function render() {
+      const container = document.getElementById('groups');
+      container.innerHTML = '';
+      groups.forEach((g, gi) => {
+        const lesson = LESSONS[gi];
+        const div = document.createElement('div');
+        div.className = 'group';
+        div.dataset.group = gi;
+
+        const header = document.createElement('div');
+        header.className = 'group-header';
+        const lessonLabel = lesson
+          ? `<span style="font-size:22px;font-family:Lateef,serif;color:#ffba63">${lesson.letter}</span> <b>${lesson.name}</b>`
+          : `<b>Extra group</b>`;
+        header.innerHTML = `
+      <span class="collapse-arrow">▼</span>
+      <span class="group-num">${gi + 1}</span>
+      <span class="group-title">${lessonLabel} — <code style="color:#4d96ff;font-size:11px">${g.intro.soundFile}</code></span>
+      <button class="group-intro-btn" data-sound="${g.intro.soundFile}">▶ Intro</button>
+      <span class="group-sound-count">${g.tiles.length} tiles</span>
+    `;
+        header.querySelector('.group-intro-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          playSound(g.intro.soundFile, e.currentTarget);
+        });
+        header.addEventListener('click', (e) => {
+          if (e.target.closest('.group-intro-btn')) return;
+          div.classList.toggle('collapsed');
+        });
+        div.appendChild(header);
+
+        const row = document.createElement('div');
+        row.className = 'tile-row';
+        row.dataset.group = gi;
+
+        g.tiles.forEach((t, ti) => {
+          const tile = createTileEl(t, gi, ti);
+          row.appendChild(tile);
+        });
+
+        div.appendChild(row);
+        container.appendChild(div);
+      });
+    }
+
+    function createTileEl(t, gi, ti) {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      tile.draggable = true;
+      tile.dataset.group = gi;
+      tile.dataset.tile = ti;
+
+      const labels = (t.labels || []).join(', ') || '(no label)';
+      const soundNum = t.soundFile.replace('sound_', '').replace('.mp3', '');
+
+      tile.innerHTML = `
+    <div class="tile-pos">#${ti + 1}</div>
+    <div class="tile-sound">${soundNum}</div>
+    <div class="tile-labels" title="${labels}">${labels}</div>
+    <button class="tile-play">▶</button>
+  `;
+
+      // play
+      tile.querySelector('.tile-play').addEventListener('click', (e) => {
+        e.stopPropagation();
+        playSound(t.soundFile, tile);
+      });
+
+      // click-to-swap
+      tile.addEventListener('click', (e) => {
+        if (e.target.closest('.tile-play')) return;
+        handleSwapClick(gi, ti, tile);
+      });
+
+      // drag events
+      tile.addEventListener('dragstart', (e) => {
+        tile.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', JSON.stringify({ gi, ti }));
+      });
+      tile.addEventListener('dragend', () => {
+        tile.classList.remove('dragging');
+        clearDropIndicators();
+      });
+      tile.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        tile.classList.add('drag-over');
+      });
+      tile.addEventListener('dragleave', () => {
+        tile.classList.remove('drag-over');
+      });
+      tile.addEventListener('drop', (e) => {
+        e.preventDefault();
+        tile.classList.remove('drag-over');
+        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+        if (data.gi === gi && data.ti !== ti) {
+          swapTiles(gi, data.ti, ti);
+        }
+      });
+
+      return tile;
+    }
+
+    // ── Swap ──
+    function swapTiles(gi, fromIdx, toIdx) {
+      const arr = groups[gi].tiles;
+      [arr[fromIdx], arr[toIdx]] = [arr[toIdx], arr[fromIdx]];
+      selectedTile = null;
+      dirty = true;
+      render();
+      const lesson = LESSONS[gi];
+      toast(`Swapped tile ${fromIdx + 1} ↔ ${toIdx + 1} in ${lesson ? lesson.name : 'group ' + (gi + 1)}`);
+    }
+
+    function handleSwapClick(gi, ti, el) {
+      if (!selectedTile) {
+        selectedTile = { gi, ti };
+        el.classList.add('selected');
+      } else {
+        if (selectedTile.gi === gi && selectedTile.ti !== ti) {
+          swapTiles(gi, selectedTile.ti, ti);
+        } else {
+          // deselect or cross-group (ignore)
+          selectedTile = null;
+          render();
+        }
+      }
+    }
+
+    // ── Audio ──
+    function playSound(soundFile, el) {
+      if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+      if (currentPlayingEl) { currentPlayingEl.classList.remove('playing', 'group-intro-btn-playing', 'playing-tile'); }
+      const url = `extracted_audio/${soundFile}`;
+      currentAudio = new Audio(url);
+      currentPlayingEl = el;
+      el.classList.add(el.classList.contains('group-intro-btn') ? 'playing' : 'playing-tile');
+      currentAudio.onended = () => {
+        el.classList.remove('playing', 'playing-tile');
+        currentPlayingEl = null;
+      };
+      currentAudio.play().catch(() => {
+        el.classList.remove('playing', 'playing-tile');
+        currentPlayingEl = null;
+      });
+    }
+
+    function clearDropIndicators() {
+      document.querySelectorAll('.drag-over').forEach(e => e.classList.remove('drag-over'));
+    }
+
+    // ── Save / Download ──
+    function groupsToJSON() {
+      const rows = [];
+      for (const g of groups) {
+        rows.push(g.intro);
+        for (const t of g.tiles) rows.push(t);
+      }
+      return JSON.stringify(rows, null, 2);
+    }
+
+    async function saveJSON() {
+      const json = groupsToJSON();
+      try {
+        const resp = await fetch('sindhi_app_data.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: json });
+        if (resp.ok) { toast('Saved sindhi_app_data.json ✓'); return; }
+      } catch { }
+      // http-server doesn't support PUT, fall back to download
+      downloadJSON();
+    }
+
+    function downloadJSON() {
+      const blob = new Blob([groupsToJSON()], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'sindhi_app_data.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast('Downloaded sindhi_app_data.json');
+    }
+
+    async function reloadJSON() {
+      selectedTile = null;
+      await loadJSON();
+      toast('Reloaded from disk');
+    }
+
+    // ── Collapse helpers ──
+    function expandAll() { document.querySelectorAll('.group').forEach(g => g.classList.remove('collapsed')); }
+    function collapseAll() { document.querySelectorAll('.group').forEach(g => g.classList.add('collapsed')); }
+
+    // ── Toast ──
+    function toast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    // ── Init ──
+    loadJSON();
+  </script>
+</body>
+
+</html>

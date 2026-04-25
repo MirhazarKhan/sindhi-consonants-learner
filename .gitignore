@@ -1,0 +1,28 @@
+# Large media files
+*.swf
+*.mp4
+*.wav
+
+# Extracted audio assets are needed for production
+# extracted_audio/
+files_to_convert/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# VS Codewqwq
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+.vercel
+*.zip
+
+.vercel

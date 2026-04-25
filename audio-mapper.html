@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sindhi Audio Mapper Tool V2 (Server-based)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; background: #0b1120; color: #e2e8f0; max-width: 1400px; margin: 0 auto; }
+    h1 { color: #facc15; }
+    p { color: #94a3b8; line-height: 1.5; }
+    .card { background: #1e293b; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #334155; }
+    
+    .mapper-workspace { display: grid; gap: 20px; grid-template-columns: 1fr 2fr; align-items: start; }
+    .sidebar { position: sticky; top: 20px; }
+    
+    .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    
+    .file-list { 
+      max-height: calc(100vh - 120px); 
+      overflow-y: auto; 
+      border: 1px solid #334155; 
+      border-radius: 6px; 
+      padding: 10px; 
+      background: #0f172a; 
+      scrollbar-width: thin;
+      scrollbar-color: #64748b #0f172a;
+    }
+    .file-item { 
+      padding: 8px; 
+      border-bottom: 1px solid #1e293b; 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      transition: background 0.1s;
+    }
+    .file-item:hover { background: #334155; }
+    .file-item.active { background: #3b82f6; border-color: #60a5fa; font-weight: bold; color: white; }
+    .file-item.mapped { color: #a78bfa; }
+    
+    .assignment-panel { display: flex; flex-direction: column; gap: 15px; }
+    .audio-player { width: 100%; margin-bottom: 10px; height: 40px; }
+    
+    .controls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; max-height: 50vh; overflow-y: auto; padding-right: 10px;}
+    .target-btn { background: #1e293b; border: 1px solid #475569; color: #cbd5e1; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 0.85em; }
+    .target-btn:hover { background: #334155; }
+    .target-btn.assigned { background: #10b981; border-color: #059669; color: white; font-weight: 500;}
+    .target-btn.assigned-elsewhere { background: #334155; border-color: #64748b; color: #94a3b8; opacity: 0.7;}
+    
+    .output-area { margin-top: 30px; }
+    textarea { width: 100%; height: 200px; background: #000; color: #4ade80; font-family: monospace; padding: 10px; border-radius: 6px; border: 1px solid #334155; }
+    
+    .search-bar { width: 100%; padding: 8px; margin-bottom: 10px; background: #1e293b; border: 1px solid #475569; color: white; border-radius: 4px; }
+    .btn { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .btn:hover { background: #2563eb; }
+    
+    .assigned-label { font-size: 0.75em; display: block; opacity: 0.8; margin-top: 4px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Sindhi Audio Mapper Tool V2</h1>
+  <p>Play files directly from the server. Pre-loaded with existing config. Easily find unmapped audios and assign them.</p>
+
+  <div class="mapper-workspace" id="workspace">
+    <div class="sidebar">
+      <div class="header-actions">
+        <h3 style="margin:0;">Server Audios</h3>
+        <button class="btn" id="hideMappedBtn" style="font-size: 0.8em; padding: 4px 8px;">Hide Mapped</button>
+      </div>
+      <input type="text" class="search-bar" id="fileFilter" placeholder="Filter audio files..." />
+      <div class="file-list" id="fileList">Loading...</div>
+    </div>
+    
+    <div class="assignment-panel">
+      <h3>Currently Auditioning: <span id="currentFileName" style="color:#facc15">-</span></h3>
+      <audio id="audioPlayer" class="audio-player" controls></audio>
+      
+      <div>
+        <button class="btn" id="prevBtn" style="margin-bottom: 10px; margin-right: 10px;">&laquo; Previous</button>
+        <button class="btn" id="nextBtn" style="margin-bottom: 10px;">Play Next Audio &raquo;</button>
+      </div>
+      
+      <div>
+        <label style="display:block; margin-bottom:5px;">Filter Targets (e.g., 'alif', 'main')</label>
+        <input type="text" class="search-bar" id="targetFilter" />
+      </div>
+      
+      <div class="controls-grid" id="targetGrid"></div>
+    </div>
+  </div>
+
+  <div class="output-area card">
+    <h3>Generated Mapping JSON</h3>
+    <textarea id="output" readonly>// Your mapping will appear here. Copy and paste...</textarea>
+  </div>
+
+  <script type="module">
+    // Global state
+    let serverFiles = [];
+    let mapDict = {}; // { 'target-key': 'sound_0123.mp3' }
+    let allTargets = [];
+    let currentFileIndex = -1;
+    let hideMapped = false;
+    
+    const fileListEl = document.getElementById('fileList');
+    const targetGridEl = document.getElementById('targetGrid');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const currentFileNameEl = document.getElementById('currentFileName');
+    const outputEl = document.getElementById('output');
+    const fileFilterEl = document.getElementById('fileFilter');
+    const targetFilterEl = document.getElementById('targetFilter');
+
+    async function init() {
+      try {
+        const resp = await fetch('sindhi_app_data.json');
+        const data = await resp.json();
+        
+        const filesSet = new Set();
+        data.forEach(item => {
+          if (item.soundFile) filesSet.add(item.soundFile);
+          if (item.audio_path) filesSet.add(item.audio_path.split('/').pop());
+        });
+        serverFiles = Array.from(filesSet).sort((a, b) => a.localeCompare(b, undefined, {numeric: true}));
+        
+        if (serverFiles.length === 0) throw new Error("No files found format");
+      } catch (err) {
+        console.error("Error loading server files", err);
+        fileListEl.innerHTML = "<div style='color:red'>Failed to load sindhi_app_data.json</div>";
+        return;
+      }
+
+      const fallbackIds = [
+        'alif', 'be', 'bbe', 'pe', 'bhe', 'te', 'the', 'tte', 'tthe', 'se',
+        'jeem', 'nye', 'jhe', 'nyay', 'che', 'chhe', 'he', 'khe', 'dal', 'dhal',
+        'ddal', 'ddha', 'ddhal', 'zal', 're', 'rre', 'ze', 'seen', 'sheen', 'swad',
+        'zwad', 'toe', 'zoe', 'ain', 'ghain', 'fe', 'phe', 'qaf', 'kaf', 'khaf',
+        'gaf', 'ggaf', 'ghaf', 'ngoe', 'lam', 'meem', 'noon', 'nnoon', 'waw', 'heh', 'hamza', 'ye'
+      ];
+      const suffixes = ['info', 'main', 'meta', 'example', 'tile-01', 'tile-02', 'tile-03', 'tile-04', 'tile-05', 'tile-06', 'tile-07', 'tile-08', 'tile-09', 'tile-10', 'word-01', 'word-02'];
+      
+      allTargets = [];
+      fallbackIds.forEach(id => {
+        suffixes.forEach(suffix => {
+          allTargets.push(id + "-" + suffix);
+        });
+      });
+
+      try {
+        const stageResp = await fetch('stage-experience.js');
+        const stageText = await stageResp.text();
+        const match = stageText.match(/const baseExtractedStageAudio = (\{[\s\S]*?\});/);
+        if (match) {
+          const parsed = JSON.parse(match[1]);
+          for (const [key, path] of Object.entries(parsed)) {
+            const fileName = path.split('/').pop();
+            mapDict[key] = fileName;
+          }
+        }
+      } catch (err) {
+        console.error("Error loading existing map", err);
+      }
+
+      renderFileList();
+      renderTargets();
+      updateOutput();
+    }
+
+    function renderFileList() {
+      const filterStr = fileFilterEl.value.toLowerCase();
+      fileListEl.innerHTML = '';
+      
+      serverFiles.forEach((file, index) => {
+        if (filterStr && !file.toLowerCase().includes(filterStr)) return;
+        
+        const assignedTargets = Object.entries(mapDict)
+          .filter(([k, v]) => v === file)
+          .map(([k, v]) => k);
+          
+        if (hideMapped && assignedTargets.length > 0) return;
+
+        const div = document.createElement('div');
+        div.className = 'file-item';
+        div.id = 'file-' + index;
+        if (assignedTargets.length > 0) div.classList.add('mapped');
+        if (currentFileIndex === index) div.classList.add('active');
+
+        div.innerHTML = "<span>" + file + "</span><span style='font-size:0.75em; opacity:0.8; text-align:right;'>" + assignedTargets.join(', ') + "</span>";
+        div.onclick = () => window.playFile(index);
+        fileListEl.appendChild(div);
+      });
+    }
+
+    function renderTargets() {
+      const filterStr = targetFilterEl.value.toLowerCase();
+      targetGridEl.innerHTML = '';
+
+      const currentFile = currentFileIndex !== -1 ? serverFiles[currentFileIndex] : null;
+
+      allTargets.forEach(target => {
+        if (filterStr && !target.toLowerCase().includes(filterStr)) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'target-btn';
+        
+        const mappedFile = mapDict[target];
+        if (mappedFile) {
+          if (mappedFile === currentFile) {
+            btn.classList.add('assigned'); 
+          } else {
+            btn.classList.add('assigned-elsewhere');
+          }
+        }
+
+        btn.innerHTML = "<div>" + target + "</div><div class='assigned-label'>" + (mappedFile || 'Unassigned') + "</div>";
+        btn.onclick = () => assignTarget(target);
+        targetGridEl.appendChild(btn);
+      });
+    }
+
+    function assignTarget(target) {
+      if (currentFileIndex === -1) return;
+      const file = serverFiles[currentFileIndex];
+
+      if (mapDict[target] === file) {
+        delete mapDict[target];
+      } else {
+        mapDict[target] = file;
+      }
+      
+      updateOutput();
+      renderTargets();
+      renderFileList();
+    }
+
+    function updateOutput() {
+      const finalMap = {};
+      for (const [key, val] of Object.entries(mapDict)) {
+        finalMap[key] = "/extracted_audio/" + val;
+      }
+      
+      let outputStr = "const baseExtractedStageAudio = {\\n";
+      const entries = Object.entries(finalMap).sort((a,b) => a[0].localeCompare(b[0]));
+      entries.forEach(([k, v], i) => {
+        outputStr += "    \\\"" + k + "\\\": \\\"" + v + "\\\"" + (i < entries.length - 1 ? ',' : '') + "\\n";
+      });
+      outputStr += "  };";
+      outputEl.value = outputStr;
+    }
+
+    window.playFile = function(index) {
+      currentFileIndex = index;
+      const file = serverFiles[index];
+      currentFileNameEl.textContent = file;
+      
+      document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+      const activeEl = document.getElementById('file-' + index);
+      if(activeEl) {
+        activeEl.classList.add('active');
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      audioPlayer.src = "/extracted_audio/" + file;
+      audioPlayer.play().catch(e => console.warn("Autoplay blocked/failed", e));
+      
+      renderTargets();
+    };
+
+    document.getElementById('nextBtn').onclick = () => {
+      audioPlayer.pause();
+      let scanIndex = currentFileIndex + 1;
+      while(scanIndex < serverFiles.length) {
+         if (hideMapped) {
+            const isMapped = Object.values(mapDict).includes(serverFiles[scanIndex]);
+            if (isMapped) { scanIndex++; continue; }
+         }
+         window.playFile(scanIndex);
+         break;
+      }
+    };
+    
+    document.getElementById('prevBtn').onclick = () => {
+      audioPlayer.pause();
+      let scanIndex = currentFileIndex - 1;
+      while(scanIndex >= 0) {
+         if (hideMapped) {
+            const isMapped = Object.values(mapDict).includes(serverFiles[scanIndex]);
+            if (isMapped) { scanIndex--; continue; }
+         }
+         window.playFile(scanIndex);
+         break;
+      }
+    };
+
+    fileFilterEl.addEventListener('input', () => renderFileList());
+    targetFilterEl.addEventListener('input', () => renderTargets());
+
+    document.getElementById('hideMappedBtn').onclick = (e) => {
+      hideMapped = !hideMapped;
+      e.target.textContent = hideMapped ? "Show Mapped" : "Hide Mapped";
+      renderFileList();
+    };
+
+    init();
+
+  </script>
+</body>
+</html>

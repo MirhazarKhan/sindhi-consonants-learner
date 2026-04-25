@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sindhi Audio Auditor</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: monospace; background: #111; color: #eee; padding: 20px; }
+  h1 { color: #8a74ff; margin-bottom: 6px; }
+  p { color: #888; margin-bottom: 20px; font-size: 13px; }
+  .letter-section { margin-bottom: 32px; }
+  .letter-section h2 { color: #ffba63; margin-bottom: 10px; font-size: 15px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+  .row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .filename { color: #4d96ff; min-width: 220px; font-size: 13px; }
+  .play-btn { background: #1e1e2e; border: 1px solid #444; color: #eee; padding: 4px 12px; cursor: pointer; border-radius: 4px; font-family: monospace; }
+  .play-btn:hover { background: #2a2a3e; }
+  .play-btn.playing { background: #8a74ff; border-color: #8a74ff; }
+  .label-btn { padding: 4px 10px; border: 1px solid #333; border-radius: 4px; cursor: pointer; font-family: monospace; font-size: 12px; background: #1a1a1a; color: #aaa; }
+  .label-btn:hover { border-color: #666; color: #eee; }
+  .label-btn.active-info    { background: #2c3e50; border-color: #4d96ff; color: #4d96ff; }
+  .label-btn.active-main    { background: #2c3e50; border-color: #8a74ff; color: #8a74ff; }
+  .label-btn.active-meta    { background: #2c3e50; border-color: #ffd166; color: #ffd166; }
+  .label-btn.active-word    { background: #2c3e50; border-color: #2cc37f; color: #2cc37f; }
+  .label-btn.active-example { background: #2c3e50; border-color: #ff6b6b; color: #ff6b6b; }
+  .label-btn.active-tile    { background: #2c3e50; border-color: #27b8cc; color: #27b8cc; }
+  .label-btn.active-skip    { background: #2a1a1a; border-color: #555; color: #555; }
+  .output-section { margin-top: 40px; }
+  .output-section h2 { color: #2cc37f; margin-bottom: 10px; }
+  textarea { width: 100%; height: 500px; background: #0a0a0a; color: #7ee787; border: 1px solid #333; padding: 14px; font-family: monospace; font-size: 12px; border-radius: 6px; }
+  .gen-btn { margin-top: 10px; background: #2cc37f; color: #000; border: none; padding: 10px 24px; cursor: pointer; border-radius: 6px; font-family: monospace; font-weight: bold; font-size: 14px; }
+  .gen-btn:hover { background: #3dd48f; }
+  .status { font-size: 12px; color: #666; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Sindhi Audio Auditor</h1>
+<p>Play each sound, then click what it is. When done, click "Generate Mapping" to get the JS to paste.</p>
+
+<div id="sections"></div>
+
+<div class="output-section">
+  <h2>Generated Mapping</h2>
+  <button class="gen-btn" onclick="generateMapping()">Generate Mapping</button>
+  <div class="status" id="status"></div>
+  <textarea id="output" placeholder="Click 'Generate Mapping' after labelling sounds above..."></textarea>
+</div>
+
+<script>
+const LETTERS = [
+  {
+    id: 'alif',
+    sounds: ['0241','0269','0274','0275','0278','0283','0287','0291','0295','0299','0303','0308','0338']
+  },
+  {
+    id: 'be',
+    sounds: ['0308','0338','0363','0377','0384','0393','0398','0402','0407','0413','0418','0421','0424','0427','0430','0434']
+  },
+  {
+    id: 'bbe',
+    sounds: ['0434','0455','0474','0478','0483','0487','0491','0495','0498','0501','0505','0508','0520','0526','0532']
+  },
+  {
+    id: 'pe',
+    sounds: ['0549','0573','0577','0581','0585','0589','0593','0596','0599','0603','0607','0621','0628','0636','0642','0657']
+  },
+  {
+    id: 'bhe',
+    sounds: ['0657','0679','0692','0698','0704','0708','0711','0714','0717','0720','0724','0728','0732']
+  }
+];
+
+const LABELS = ['info','main','meta','word','example','tile','skip'];
+const labels = {}; // filename → label
+let currentAudio = null;
+let currentBtn = null;
+
+function play(url, btn) {
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  if (currentBtn) currentBtn.classList.remove('playing');
+  currentAudio = new Audio(url);
+  currentBtn = btn;
+  btn.classList.add('playing');
+  currentAudio.onended = () => btn.classList.remove('playing');
+  currentAudio.play().catch(() => btn.classList.remove('playing'));
+}
+
+function setLabel(filename, label, allBtns) {
+  labels[filename] = label;
+  allBtns.forEach(b => b.classList.remove(...LABELS.map(l => 'active-' + l)));
+  const target = allBtns.find(b => b.dataset.label === label);
+  if (target) target.classList.add('active-' + label);
+}
+
+function buildSections() {
+  const container = document.getElementById('sections');
+  LETTERS.forEach(letter => {
+    const section = document.createElement('div');
+    section.className = 'letter-section';
+    section.innerHTML = `<h2>${letter.id.toUpperCase()}</h2>`;
+
+    letter.sounds.forEach(num => {
+      const filename = `sound_${num}.mp3`;
+      const url = `extracted_audio/${filename}`;
+      const row = document.createElement('div');
+      row.className = 'row';
+
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'filename';
+      nameSpan.textContent = filename;
+
+      const playBtn = document.createElement('button');
+      playBtn.className = 'play-btn';
+      playBtn.textContent = '▶ Play';
+      playBtn.onclick = () => play(url, playBtn);
+
+      const labelBtns = LABELS.map(l => {
+        const b = document.createElement('button');
+        b.className = 'label-btn';
+        b.textContent = l;
+        b.dataset.label = l;
+        b.onclick = () => setLabel(filename, l, labelBtns);
+        // restore saved label
+        if (labels[filename] === l) b.classList.add('active-' + l);
+        return b;
+      });
+
+      row.appendChild(nameSpan);
+      row.appendChild(playBtn);
+      labelBtns.forEach(b => row.appendChild(b));
+      section.appendChild(row);
+    });
+
+    container.appendChild(section);
+  });
+}
+
+function generateMapping() {
+  const result = {};
+  const tileCounters = {};
+  const wordCounters = {};
+
+  // Group by letter
+  LETTERS.forEach(letter => {
+    const id = letter.id;
+    tileCounters[id] = 0;
+    wordCounters[id] = 0;
+
+    // collect tile sounds in order to reverse them
+    const tileSounds = [];
+
+    letter.sounds.forEach(num => {
+      const filename = `sound_${num}.mp3`;
+      const label = labels[filename];
+      if (!label || label === 'skip') return;
+
+      const url = `extracted_audio/${filename}`;
+
+      if (label === 'info')    { result[`${id}-info`] = url; }
+      if (label === 'main')    { result[`${id}-main`] = url; }
+      if (label === 'meta')    { result[`${id}-meta`] = url; }
+      if (label === 'example') { result[`${id}-example`] = url; }
+      if (label === 'word') {
+        wordCounters[id]++;
+        result[`${id}-word-${String(wordCounters[id]).padStart(2,'0')}`] = url;
+      }
+      if (label === 'tile') {
+        tileSounds.push(url);
+      }
+    });
+
+    // Reverse tiles for RTL→LTR correction
+    const reversed = [...tileSounds].reverse();
+    reversed.forEach((url, i) => {
+      result[`${id}-tile-${String(i+1).padStart(2,'0')}`] = url;
+    });
+  });
+
+  // Format as JS
+  const lines = Object.entries(result).map(([k,v]) => `  '${k}': '${v}',`);
+  const output = `// Auditor-generated mapping — paste into baseExtractedStageAudio\n{\n${lines.join('\n')}\n}`;
+  document.getElementById('output').value = output;
+
+  const labelled = Object.values(labels).filter(l => l !== 'skip').length;
+  document.getElementById('status').textContent = `${labelled} sounds labelled across ${Object.keys(result).length} keys generated.`;
+}
+
+buildSections();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alif Sound Mapping Test</title>
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 2rem; background: #121723; color: white; display: flex; gap: 40px; }
+        .column { max-width: 400px; }
+        .row { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #333; }
+        .syllable-row { padding: 10px; border-bottom: 1px solid #333; font-size: 1.2rem; }
+        .serial { font-weight: bold; color: #7c8cff; display: inline-block; width: 30px; }
+        .sound-name { color: #8792a8; font-size: 0.9em; margin-left: 10px; }
+        button { background: #8a74ff; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #9d8afe; }
+        .sindhi { font-size: 1.5rem; color: #ffba63; margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="column">
+        <h2>Audio Files</h2>
+        <p>Listen and note which number plays what sound.</p>
+        <div id="sounds"></div>
+    </div>
+
+    <div class="column">
+        <h2>Syllable Tiles</h2>
+        <p>Match the Audio Number to the Tile Number.</p>
+        <div id="tiles"></div>
+    </div>
+
+    <script>
+        const sounds = [
+            '269', '274', '278', '283', '287', 
+            '291', '295', '299', '303', '308'
+        ];
+
+        const tiles = [
+            { id: 1, text: 'اَ', roman: 'a' },
+            { id: 2, text: 'آ', roman: 'aa' },
+            { id: 3, text: 'اِ', roman: 'i' },
+            { id: 4, text: 'اِي', roman: 'ii' },
+            { id: 5, text: 'اُ', roman: 'u' },
+            { id: 6, text: 'اُو', roman: 'oo' },
+            { id: 7, text: 'اي', roman: 'e' },
+            { id: 8, text: 'اَي', roman: 'ai' },
+            { id: 9, text: 'او', roman: 'o' },
+            { id: 10, text: 'آو', roman: 'aao' }
+        ];
+
+        const soundsContainer = document.getElementById('sounds');
+        sounds.forEach((id, index) => {
+            const row = document.createElement('div');
+            row.className = 'row';
+            
+            const left = document.createElement('div');
+            left.innerHTML = `<span class="serial">${index + 1}.</span><span class="sound-name">sound_0${id}</span>`;
+            
+            const btn = document.createElement('button');
+            btn.innerText = "▶ Play";
+            btn.onclick = () => {
+                new Audio(`extracted_audio/sound_0${id}.mp3`).play();
+            };
+
+            row.appendChild(left);
+            row.appendChild(btn);
+            soundsContainer.appendChild(row);
+        });
+
+        const tilesContainer = document.getElementById('tiles');
+        tiles.forEach(tile => {
+            const row = document.createElement('div');
+            row.className = 'syllable-row';
+            row.innerHTML = `<span class="serial">Tile ${tile.id}:</span><span class="sindhi">${tile.text}</span> (${tile.roman})`;
+            tilesContainer.appendChild(row);
+        });
+    </script>
+</body>
+</html>
