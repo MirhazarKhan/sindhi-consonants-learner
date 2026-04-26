@@ -1316,6 +1316,17 @@ import { playAudio, stopAudio } from './audio-manager.js';
     }
   }
 
+  // Invert tthe tile order: 01..10 should play as 10..01.
+  const ttheTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    ttheTileUrls.push(stageAudio[`tthe-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`tthe-tile-${suffix}`] = ttheTileUrls[10 - i];
+  }
+
   // Invert se tile order: 01..10 should play as 10..01.
   const seTileUrls = [];
   for (let i = 1; i <= 10; i++) {
@@ -1347,6 +1358,31 @@ import { playAudio, stopAudio } from './audio-manager.js';
         stageAudio[targetKey] = stageAudio[sourceKey];
       }
     }
+  }
+
+  // Invert he tile order: 01..10 should play as 10..01.
+  const heTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    heTileUrls.push(stageAudio[`he-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`he-tile-${suffix}`] = heTileUrls[10 - i];
+  }
+
+  // Final lock: keep Jeem tile variations on sound_1278..sound_1314.
+  const jeemTileSounds = [1278, 1282, 1286, 1290, 1294, 1298, 1302, 1306, 1310, 1314];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`jeem-tile-${suffix}`] = `/extracted_audio/sound_${jeemTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: keep Chhe tile variations on sound_1801..sound_1828.
+  const chheTileSounds = [1801, 1804, 1807, 1810, 1813, 1816, 1819, 1822, 1825, 1828];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`chhe-tile-${suffix}`] = `/extracted_audio/sound_${chheTileSounds[i - 1]}.mp3`;
   }
 
   // Final lock: keep Hamza audio on the intended custom set.
