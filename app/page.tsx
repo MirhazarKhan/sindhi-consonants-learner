@@ -4,16 +4,37 @@ import { useEffect } from "react";
 
 export default function Page() {
   useEffect(() => {
-    // Load the vanilla JS only after React hydration is complete
-    // so that React doesn't wipe out the DOM mutations.
-    const script = document.createElement("script");
-    script.src = "/stage-experience.js?v=" + Date.now();
-    script.type = "module";
-    document.body.appendChild(script);
+    // Load GSAP first, then stage script, so motion upgrades are available immediately.
+    const existingGsap = typeof window !== "undefined" && (window as { gsap?: unknown }).gsap;
+    let gsapScript: HTMLScriptElement | null = null;
+
+    const stageScript = document.createElement("script");
+    stageScript.src = "/stage-experience.js?v=" + Date.now();
+    stageScript.type = "module";
+
+    const mountStageScript = () => {
+      if (!document.body.contains(stageScript)) {
+        document.body.appendChild(stageScript);
+      }
+    };
+
+    if (existingGsap) {
+      mountStageScript();
+    } else {
+      gsapScript = document.createElement("script");
+      gsapScript.src = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
+      gsapScript.defer = true;
+      gsapScript.onload = mountStageScript;
+      gsapScript.onerror = mountStageScript;
+      document.head.appendChild(gsapScript);
+    }
     
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      if (document.body.contains(stageScript)) {
+        document.body.removeChild(stageScript);
+      }
+      if (gsapScript && document.head.contains(gsapScript)) {
+        document.head.removeChild(gsapScript);
       }
     };
   }, []);

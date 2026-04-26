@@ -1401,14 +1401,34 @@ import { playAudio, stopAudio } from './audio-manager.js';
     return stageLessons[state.lessonIndex];
   }
 
+  function showInfoPanel(lesson = getCurrentLesson()) {
+    return lesson.id !== 'alif';
+  }
+
+  function showMetaPanel(lesson = getCurrentLesson()) {
+    return lesson.id !== 'alif';
+  }
+
   let isPlaying = false;
   let currentAutoplayStage = 'Awaiting input';
 
+  function getIntroSurfaceCount(lesson = getCurrentLesson()) {
+    let count = 2; // main + example
+    if (showInfoPanel(lesson)) count += 1;
+    if (showMetaPanel(lesson)) count += 1;
+    return count;
+  }
+
   function getLessonSurfaceCount(lesson = getCurrentLesson()) {
-    return 4 + lesson.tiles.length + lesson.words.length;
+    return getIntroSurfaceCount(lesson) + lesson.tiles.length + lesson.words.length;
   }
 
   function getSurfaceProgressCount(lesson = getCurrentLesson()) {
+    const infoOffset = showInfoPanel(lesson) ? 1 : 0;
+    const mainOffset = infoOffset + 1;
+    const metaOffset = mainOffset + (showMetaPanel(lesson) ? 1 : 0);
+    const tileOffset = metaOffset;
+
     if (currentAutoplayStage === 'Lesson complete') {
       return getLessonSurfaceCount(lesson);
     }
@@ -1419,17 +1439,17 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
     switch (state.activeSurface.type) {
       case 'info':
-        return 1;
+        return infoOffset;
       case 'main':
-        return 2;
+        return mainOffset;
       case 'meta':
-        return 3;
+        return metaOffset;
       case 'tile':
-        return 4 + state.activeSurface.index;
+        return tileOffset + state.activeSurface.index;
       case 'word':
-        return 4 + lesson.tiles.length + state.activeSurface.index;
+        return tileOffset + lesson.tiles.length + state.activeSurface.index;
       case 'example':
-        return 4 + lesson.tiles.length + lesson.words.length;
+        return getLessonSurfaceCount(lesson);
       default:
         return 0;
     }
@@ -1533,9 +1553,46 @@ import { playAudio, stopAudio } from './audio-manager.js';
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function prefersLightMotion() {
+    if (prefersReducedMotion()) {
+      return true;
+    }
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    const lowCpu = typeof navigator !== 'undefined' && Number.isFinite(navigator.hardwareConcurrency) && navigator.hardwareConcurrency <= 4;
+    return coarsePointer || lowCpu;
+  }
+
+  function getGSAP() {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+    const lib = window.gsap;
+    return lib && typeof lib.to === 'function' ? lib : null;
+  }
+
   function animateElement(element, keyframes, options) {
     if (!element || prefersReducedMotion()) {
       return Promise.resolve();
+    }
+
+    const gsap = getGSAP();
+    if (gsap && Array.isArray(keyframes) && keyframes.length >= 2) {
+      const fromFrame = keyframes[0] || {};
+      const toFrame = keyframes[keyframes.length - 1] || {};
+      const durationMs = Number(options?.duration || 0);
+      const delayMs = Number(options?.delay || 0);
+
+      return new Promise((resolve) => {
+        gsap.killTweensOf(element);
+        gsap.fromTo(element, { ...fromFrame }, {
+          ...toFrame,
+          duration: durationMs / 1000,
+          delay: delayMs / 1000,
+          ease: options?.easing || 'power3.out',
+          onComplete: () => resolve(),
+          onInterrupt: () => resolve()
+        });
+      });
     }
 
     const animation = element.animate(keyframes, { ...options, fill: 'none' });
@@ -1546,6 +1603,25 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   function pulseElement(element) {
     if (!element || prefersReducedMotion()) {
+      return;
+    }
+
+    const gsap = getGSAP();
+    if (gsap) {
+      gsap.killTweensOf(element);
+      gsap.timeline()
+        .to(element, {
+          y: -4,
+          scale: 1.018,
+          duration: 0.12,
+          ease: 'power2.out'
+        })
+        .to(element, {
+          y: 0,
+          scale: 1,
+          duration: 0.18,
+          ease: 'power2.out'
+        });
       return;
     }
 
@@ -1587,10 +1663,47 @@ import { playAudio, stopAudio } from './audio-manager.js';
       return;
     }
 
+    const gsap = getGSAP();
+    const lightMotion = prefersLightMotion();
+    const lessonPills = Array.from(dom.lessonRail?.querySelectorAll('.stage-lesson-pill') || []);
+    const activePillTargets = lessonPills.filter((_, index) => Math.abs(index - state.lessonIndex) <= 2);
     const revealTargets = [
+      dom.infoBtn,
+      dom.letterBtn,
+      dom.metaBtn,
+      dom.exampleBtn,
+      ...Array.from(dom.wordsPanel?.querySelectorAll('.stage-word-button') || []),
       ...Array.from(dom.tiles.querySelectorAll('.stage-tile')),
-      ...Array.from(dom.lessonRail?.querySelectorAll('.stage-lesson-pill') || [])
+      ...Array.from(dom.bottomDock?.querySelectorAll('.stage-control') || []),
+      ...activePillTargets
     ].filter(Boolean);
+
+    if (gsap && revealTargets.length) {
+      const offset = direction > 0 ? 16 : -16;
+      gsap.killTweensOf(revealTargets);
+      await new Promise((resolve) => {
+        gsap.fromTo(revealTargets,
+          {
+            opacity: lightMotion ? 0.65 : 0,
+            x: offset,
+            y: lightMotion ? 6 : 10,
+            scale: lightMotion ? 0.994 : 0.985
+          },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: lightMotion ? 0.2 : 0.3,
+            ease: 'power3.out',
+            stagger: lightMotion ? 0.008 : 0.014,
+            onComplete: () => resolve(),
+            onInterrupt: () => resolve()
+          }
+        );
+      });
+      return;
+    }
 
     await Promise.all(revealTargets.map((element, index) => animateElement(element, [
       { opacity: 1, transform: `translate3d(${direction > 0 ? 10 : -10}px, 8px, 0) scale(0.992)` },
@@ -1734,7 +1847,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     `;
 
     if (dom.infoBtn) {
-      dom.infoBtn.innerHTML = `
+      if (showInfoPanel(lesson)) {
+        dom.infoBtn.hidden = false;
+        dom.infoBtn.innerHTML = `
         <span class="stage-panel-label">Notes</span>
         <div class="stage-info-copy">
           <span class="stage-info-title">${lesson.caption}</span>
@@ -1742,6 +1857,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
         </div>
         ${eqBarsHTML}
       `;
+      } else {
+        dom.infoBtn.hidden = true;
+        dom.infoBtn.innerHTML = '';
+      }
     }
 
     if (dom.letterBtn) {
@@ -1754,7 +1873,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     }
 
     if (dom.metaBtn) {
-      dom.metaBtn.innerHTML = `
+      if (showMetaPanel(lesson)) {
+        dom.metaBtn.hidden = false;
+        dom.metaBtn.innerHTML = `
         <span class="stage-panel-label">Pronunciation</span>
         <div class="stage-meta-copy">
           <span>${lesson.classification || 'Consonant'}</span>
@@ -1762,6 +1883,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
         </div>
         ${eqBarsHTML}
       `;
+      } else {
+        dom.metaBtn.hidden = true;
+        dom.metaBtn.innerHTML = '';
+      }
     }
 
     if (dom.wordsPanel) {
@@ -1874,6 +1999,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     if (state.isTransitioning) return;
     const { fromAutoplay = false } = options;
     const lesson = getCurrentLesson();
+    if (!showInfoPanel(lesson)) return;
     if (!fromAutoplay) stopAutoplay();
     setActiveSurface('info');
     setManualStage('Intro panels · info');
@@ -1898,6 +2024,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     if (state.isTransitioning) return;
     const { fromAutoplay = false } = options;
     const lesson = getCurrentLesson();
+    if (!showMetaPanel(lesson)) return;
     if (!fromAutoplay) stopAutoplay();
     setActiveSurface('meta');
     setManualStage('Intro panels · meta');
@@ -2005,10 +2132,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
     setAutoplayStage('Intro panels');
 
     const panelSteps = [
-      { play: () => playInfo({ fromAutoplay: true }), label: 'info' },
+      showInfoPanel(lesson) ? { play: () => playInfo({ fromAutoplay: true }), label: 'info' } : null,
       { play: () => playMainLetter({ fromAutoplay: true }), label: 'letter' },
-      { play: () => playMeta({ fromAutoplay: true }), label: 'meta' }
-    ];
+      showMetaPanel(lesson) ? { play: () => playMeta({ fromAutoplay: true }), label: 'meta' } : null
+    ].filter(Boolean);
 
     for (const step of panelSteps) {
       if (!state.autoplaying || currentToken !== state.autoplayToken) {
@@ -2232,16 +2359,37 @@ import { playAudio, stopAudio } from './audio-manager.js';
     }
   });
 
-  if (!prefersReducedMotion()) {
-    dom.sceneCard.addEventListener('mousemove', (e) => {
-      const rect = dom.sceneCard.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      dom.sceneCard.style.transform = `perspective(1200px) rotateY(${x * 2.5}deg) rotateX(${y * -2.5}deg)`;
-    });
-    dom.sceneCard.addEventListener('mouseleave', () => {
-      dom.sceneCard.style.transform = '';
-    });
+  if (!prefersLightMotion()) {
+    const gsap = getGSAP();
+    if (gsap) {
+      const tiltX = gsap.quickTo(dom.sceneCard, 'rotationX', { duration: 0.3, ease: 'power3.out' });
+      const tiltY = gsap.quickTo(dom.sceneCard, 'rotationY', { duration: 0.3, ease: 'power3.out' });
+
+      gsap.set(dom.sceneCard, { transformPerspective: 1200, transformOrigin: 'center center' });
+
+      dom.sceneCard.addEventListener('mousemove', (e) => {
+        const rect = dom.sceneCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        tiltY(x * 2.2);
+        tiltX(y * -2.2);
+      });
+
+      dom.sceneCard.addEventListener('mouseleave', () => {
+        tiltX(0);
+        tiltY(0);
+      });
+    } else {
+      dom.sceneCard.addEventListener('mousemove', (e) => {
+        const rect = dom.sceneCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        dom.sceneCard.style.transform = `perspective(1200px) rotateY(${x * 2.5}deg) rotateX(${y * -2.5}deg)`;
+      });
+      dom.sceneCard.addEventListener('mouseleave', () => {
+        dom.sceneCard.style.transform = '';
+      });
+    }
   }
 
   window.addEventListener('beforeunload', () => {
