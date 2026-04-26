@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "learn-sindhi-language",
+  "framework": "nextjs",
   "headers": [
     {
       "source": "/extracted_audio/(.*)",
