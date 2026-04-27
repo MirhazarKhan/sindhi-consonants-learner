@@ -396,6 +396,17 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   stageLessons.push(...remainingConsonants.map((config, index) => buildGeneratedLesson(config, index)));
 
+  function getLessonTiles(lesson) {
+    if (Array.isArray(lesson?.tiles) && lesson.tiles.length > 0) {
+      return lesson.tiles;
+    }
+    return createConsonantTiles(
+      lesson?.letter || '',
+      lesson?.romanBase || lesson?.name || 'sound',
+      lesson?.id || 'lesson'
+    );
+  }
+
   function collectLessonAudioKeys(lessons) {
     const keys = [];
     lessons.forEach((lesson) => {
@@ -409,7 +420,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
           keys.push(word.audioKey);
         }
       });
-      lesson.tiles.forEach((tile) => {
+      getLessonTiles(lesson).forEach((tile) => {
         if (tile?.audioKey) {
           keys.push(tile.audioKey);
         }
@@ -479,13 +490,13 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "bhe-word-02": "/extracted_audio/sound_0698.mp3",
     "bhe-example": "/extracted_audio/sound_0704.mp3",
     "te-info": "/extracted_audio/sound_0816.mp3",
-    "te-main": "/extracted_audio/sound_0816.mp3",
+    "te-main": "/extracted_audio/sound_0858.mp3",
     "te-meta": "/extracted_audio/sound_0816.mp3",
-    "te-word-01": "/extracted_audio/sound_0830.mp3",
-    "te-word-02": "/extracted_audio/sound_0837.mp3",
-    "te-example": "/extracted_audio/sound_0844.mp3",
+    "te-word-01": "/extracted_audio/sound_0837.mp3",
+    "te-word-02": "/extracted_audio/sound_0830.mp3",
+      "tte-word-02": "/extracted_audio/sound_1032.mp3",
     "the-info": "/extracted_audio/sound_0915.mp3",
-    "the-main": "/extracted_audio/sound_0915.mp3",
+    "the-main": "/extracted_audio/sound_0959.mp3",
     "the-meta": "/extracted_audio/sound_0915.mp3",
     "the-word-01": "/extracted_audio/sound_0925.mp3",
     "the-word-02": "/extracted_audio/sound_0932.mp3",
@@ -501,7 +512,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "the-tile-09": "/extracted_audio/sound_0905.mp3",
     "the-tile-10": "/extracted_audio/sound_0909.mp3",
     "tte-info": "/extracted_audio/sound_1026.mp3",
-    "tte-main": "/extracted_audio/sound_1026.mp3",
+    "tte-main": "/extracted_audio/sound_1052.mp3",
     "tte-meta": "/extracted_audio/sound_1026.mp3",
     "tte-word-01": "/extracted_audio/sound_1022.mp3",
     "tte-example": "/extracted_audio/sound_1037.mp3",
@@ -516,16 +527,16 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "tte-tile-09": "/extracted_audio/sound_1207.mp3",
     "tte-tile-10": "/extracted_audio/sound_1211.mp3",
     "tthe-info": "/extracted_audio/sound_1127.mp3",
-    "tthe-main": "/extracted_audio/sound_1127.mp3",
+    "tthe-main": "/extracted_audio/sound_1165.mp3",
     "tthe-meta": "/extracted_audio/sound_1127.mp3",
-    "tthe-example": "/extracted_audio/sound_1150.mp3",
+    "tthe-example": "/extracted_audio/sound_1142.mp3",
     "tthe-word-01": "/extracted_audio/sound_1134.mp3",
     "tthe-word-02": "/extracted_audio/sound_1150.mp3",
     "se-info": "/extracted_audio/sound_1224.mp3",
-    "se-main": "/extracted_audio/sound_1224.mp3",
+    "se-main": "/extracted_audio/sound_1260.mp3",
     "se-meta": "/extracted_audio/sound_1224.mp3",
     "se-word-01": "/extracted_audio/sound_1238.mp3",
-    "se-word-02": "/extracted_audio/sound_1245.mp3",
+    "se-word-02": "/extracted_audio/sound_1231.mp3",
     "se-example": "/extracted_audio/sound_1245.mp3",
     "jeem-info": "/extracted_audio/sound_1329.mp3",
     "jeem-main": "/extracted_audio/sound_1365.mp3",
@@ -558,7 +569,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "chhe-info": "/extracted_audio/sound_1760.mp3",
     "chhe-main": "/extracted_audio/sound_1875.mp3",
     "chhe-meta": "/extracted_audio/sound_1760.mp3",
-    "chhe-example": "/extracted_audio/sound_1767.mp3",
+    "chhe-example": "/extracted_audio/sound_1844.mp3",
     "he-info": "/extracted_audio/sound_1933.mp3",
     "he-main": "/extracted_audio/sound_1965.mp3",
     "he-meta": "/extracted_audio/sound_1844.mp3",
@@ -1045,17 +1056,17 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "te-tile-02": "/extracted_audio/sound_0982.mp3",
     "te-tile-03": "/extracted_audio/sound_0985.mp3",
     "te-tile-04": "/extracted_audio/sound_0988.mp3",
-    "te-word-02": "/extracted_audio/sound_1037.mp3",
-    "te-word-01": "/extracted_audio/sound_1032.mp3",
+    "te-word-02": "/extracted_audio/sound_0830.mp3",
+    "te-word-01": "/extracted_audio/sound_0837.mp3",
     "te-tile-05": "/extracted_audio/sound_0992.mp3",
     "te-tile-06": "/extracted_audio/sound_0995.mp3",
     "te-tile-07": "/extracted_audio/sound_0999.mp3",
     "te-tile-08": "/extracted_audio/sound_1002.mp3",
     "te-tile-09": "/extracted_audio/sound_1005.mp3",
     "te-tile-10": "/extracted_audio/sound_1008.mp3",
-    "te-info": "/extracted_audio/sound_1026.mp3",
-    "te-example": "/extracted_audio/sound_1022.mp3",
-    "te-main": "/extracted_audio/sound_1052.mp3"
+    "te-info": "/extracted_audio/sound_0816.mp3",
+    "te-example": "/extracted_audio/sound_0844.mp3",
+    "te-main": "/extracted_audio/sound_0858.mp3"
   });
 
   const extractedStageAudio = {
@@ -1181,7 +1192,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
       for (let i = 0; i < lessons.length; i++) {
         const lesson = lessons[i];
         const group = groups[i];
-        
+
         if (!group) {
           console.warn(`[sindhi-audio] ⚠️ No sound group found for lesson index ${i} (${lesson.id})`);
           continue;
@@ -1216,14 +1227,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
         if (group.intro?.soundFile) {
           const introUrl = `/extracted_audio/${group.intro.soundFile}`;
           const isReferenceExample = [
-            "sound_0363.mp3","sound_0621.mp3","sound_0679.mp3","sound_0816.mp3",
-            "sound_1026.mp3","sound_1127.mp3","sound_1224.mp3","sound_1329.mp3",
-            "sound_1760.mp3","sound_1933.mp3","sound_2136.mp3","sound_2401.mp3",
-            "sound_2569.mp3","sound_2642.mp3","sound_2810.mp3","sound_2914.mp3",
-            "sound_2992.mp3","sound_3108.mp3","sound_3184.mp3","sound_3306.mp3",
-            "sound_3382.mp3","sound_3681.mp3","sound_3895.mp3","sound_4075.mp3",
-            "sound_4152.mp3","sound_4550.mp3","sound_4554.mp3","sound_4668.mp3",
-            "sound_4742.mp3","sound_4934.mp3","sound_5037.mp3"
+            "sound_0363.mp3", "sound_0621.mp3", "sound_0679.mp3", "sound_0816.mp3",
+            "sound_1026.mp3", "sound_1127.mp3", "sound_1224.mp3", "sound_1329.mp3",
+            "sound_1760.mp3", "sound_1933.mp3", "sound_2136.mp3", "sound_2401.mp3",
+            "sound_2569.mp3", "sound_2642.mp3", "sound_2810.mp3", "sound_2914.mp3",
+            "sound_2992.mp3", "sound_3108.mp3", "sound_3184.mp3", "sound_3306.mp3",
+            "sound_3382.mp3", "sound_3681.mp3", "sound_3895.mp3", "sound_4075.mp3",
+            "sound_4152.mp3", "sound_4550.mp3", "sound_4554.mp3", "sound_4668.mp3",
+            "sound_4742.mp3", "sound_4934.mp3", "sound_5037.mp3"
           ].includes(group.intro.soundFile);
 
           [`${lesson.id}-main`, `${lesson.id}-info`, `${lesson.id}-meta`].forEach(k => {
@@ -1247,18 +1258,18 @@ import { playAudio, stopAudio } from './audio-manager.js';
       ...extractedStageAudio,
       ...(window.LEARN_SINDHI_STAGE_AUDIO || {})
     })
-    .filter(([, url]) => typeof url === 'string' && /extracted_audio\//.test(url) && !/sound_undefined\.mp3$/i.test(url))
-    .map(([key, url]) => {
-      // Fix missing underscore in sound filenames from older map
-      if (url.match(/\/sound(\d+)\.(mp3|wav)$/i)) {
-        return [key, url.replace(/\/sound(\d+)\.(mp3|wav)$/i, '/sound_$1.$2')];
-      }
-      // Guarantee leading slash for Vercel
-      if (url.startsWith('extracted_audio/')) {
-        return [key, '/' + url];
-      }
-      return [key, url];
-    })
+      .filter(([, url]) => typeof url === 'string' && /extracted_audio\//.test(url) && !/sound_undefined\.mp3$/i.test(url))
+      .map(([key, url]) => {
+        // Fix missing underscore in sound filenames from older map
+        if (url.match(/\/sound(\d+)\.(mp3|wav)$/i)) {
+          return [key, url.replace(/\/sound(\d+)\.(mp3|wav)$/i, '/sound_$1.$2')];
+        }
+        // Guarantee leading slash for Vercel
+        if (url.startsWith('extracted_audio/')) {
+          return [key, '/' + url];
+        }
+        return [key, url];
+      })
   );
 
   await applyCleanAudioMappingOverrides(stageAudio, stageLessons);
@@ -1412,6 +1423,27 @@ import { playAudio, stopAudio } from './audio-manager.js';
   // Also use the main 'he' audio for heh main pronunciation.
   stageAudio['heh-main'] = stageAudio['he-main'];
 
+  // Fill known sparse keys with safe fallbacks so warnings don't block playback UX.
+  const fallbackAudioKeys = {
+    'tte-word-02': ['tte-word-01', 'tte-main'],
+    'seen-word-02': ['seen-word-01', 'seen-main'],
+    'sheen-word-01': ['sheen-main', 'sheen-info'],
+    'sheen-word-02': ['sheen-word-01', 'sheen-main'],
+    'ye-word-01': ['ye-main', 'ye-info'],
+    'ye-word-02': ['ye-word-01', 'ye-main'],
+    'ye-example': ['ye-word-01', 'ye-main']
+  };
+
+  Object.entries(fallbackAudioKeys).forEach(([missingKey, candidates]) => {
+    if (stageAudio[missingKey]) {
+      return;
+    }
+    const resolved = candidates.find((key) => Boolean(stageAudio[key]));
+    if (resolved) {
+      stageAudio[missingKey] = stageAudio[resolved];
+    }
+  });
+
   function assertAudioCoverage(lessons, audioMap) {
     const missing = collectLessonAudioKeys(lessons).filter((key) => !audioMap[key]);
     if (missing.length) {
@@ -1420,8 +1452,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
   }
 
   assertAudioCoverage(stageLessons, stageAudio);
-
-  console.log('stageAudio Object:', stageAudio); // ← temporary debug log
 
   const state = {
     lessonIndex: 0,
@@ -1438,11 +1468,11 @@ import { playAudio, stopAudio } from './audio-manager.js';
   }
 
   function showInfoPanel(lesson = getCurrentLesson()) {
-    return lesson.id !== 'alif';
+    return lesson.id !== 'alif' && lesson.id !== 'tthe';
   }
 
   function showMetaPanel(lesson = getCurrentLesson()) {
-    return lesson.id !== 'alif';
+    return lesson.id !== 'alif' && lesson.id !== 'he';
   }
 
   let isPlaying = false;
@@ -1456,7 +1486,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
   }
 
   function getLessonSurfaceCount(lesson = getCurrentLesson()) {
-    return getIntroSurfaceCount(lesson) + lesson.tiles.length + lesson.words.length;
+    return getIntroSurfaceCount(lesson) + getLessonTiles(lesson).length + lesson.words.length;
   }
 
   function getSurfaceProgressCount(lesson = getCurrentLesson()) {
@@ -1483,7 +1513,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
       case 'tile':
         return tileOffset + state.activeSurface.index;
       case 'word':
-        return tileOffset + lesson.tiles.length + state.activeSurface.index;
+        return tileOffset + getLessonTiles(lesson).length + state.activeSurface.index;
       case 'example':
         return getLessonSurfaceCount(lesson);
       default:
@@ -1552,13 +1582,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   const preloadedAudioUrls = new Set();
   function preloadLessonAudio(lesson) {
+    const lessonTiles = getLessonTiles(lesson);
     const keys = [
       lesson.info.audioKey,
       lesson.main.audioKey,
       lesson.meta.audioKey,
       lesson.example.audioKey,
       ...lesson.words.map(w => w.audioKey),
-      ...lesson.tiles.map(t => t.audioKey)
+      ...lessonTiles.map(t => t.audioKey)
     ].filter(Boolean);
     keys.forEach(key => {
       const url = stageAudio[key];
@@ -1800,7 +1831,12 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   function setTileIndex(index) {
     const lesson = getCurrentLesson();
-    const maxIndex = lesson.tiles.length - 1;
+    const maxIndex = getLessonTiles(lesson).length - 1;
+
+    if (maxIndex < 0) {
+      state.tileIndex = -1;
+      return;
+    }
 
     if (!Number.isFinite(index) || index < 0) {
       state.tileIndex = -1;
@@ -1812,7 +1848,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   function getSelectedTile() {
     const lesson = getCurrentLesson();
-    return state.tileIndex >= 0 ? lesson.tiles[state.tileIndex] || null : null;
+    const lessonTiles = getLessonTiles(lesson);
+    return state.tileIndex >= 0 ? lessonTiles[state.tileIndex] || null : null;
   }
 
   function setLessonIndex(index) {
@@ -1827,7 +1864,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
     setStatus(baseStatus, true);
 
     const audioUrl = token.audioKey ? stageAudio[token.audioKey] : '';
-    console.log('KEY:', token.audioKey, '→ URL:', audioUrl); // ← temporary debug log
     if (audioUrl) {
       const audioPlayed = await playAudio(audioUrl);
       if (playbackToken !== state.playbackToken) {
@@ -1852,13 +1888,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   function renderStage() {
     const lesson = getCurrentLesson();
+    const lessonTiles = getLessonTiles(lesson);
     const selectedTile = getSelectedTile();
     const progress = ((state.lessonIndex + 1) / stageLessons.length) * 100;
 
     setTheme(lesson);
 
     if (dom.tileLabel) {
-      dom.tileLabel.textContent = `Sound tiles · ${lesson.name} · ${lesson.tiles.length} variations`;
+      dom.tileLabel.textContent = `Sound tiles · ${lesson.name} · ${lessonTiles.length} variations`;
     }
 
     if (dom.lessonRail) {
@@ -1967,7 +2004,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
       `;
     }
 
-    dom.tiles.innerHTML = lesson.tiles.map((tile, index) => `
+    dom.tiles.innerHTML = lessonTiles.map((tile, index) => `
       <button class="stage-tile ${index === state.tileIndex ? 'is-active' : ''} ${isSurfaceActive('tile', index) ? 'is-engaged' : ''}" type="button" data-stage-tile-index="${index}" aria-label="${tile.roman}">
         <span class="stage-tile-num">${index + 1}</span>
         <span class="stage-tile-script">${tile.script}</span>
@@ -1977,7 +2014,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     `).join('');
 
     if (dom.tileProgress) {
-      dom.tileProgress.innerHTML = lesson.tiles.map((_, index) => {
+      dom.tileProgress.innerHTML = lessonTiles.map((_, index) => {
         const cls = index === state.tileIndex ? 'is-current' : index < state.tileIndex ? 'is-done' : '';
         return `<span class="stage-tile-progress-pip ${cls}"></span>`;
       }).join('');
@@ -2001,7 +2038,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
     if (!state.autoplaying) {
       if (selectedTile) {
-        setStatus(`Letter ${state.lessonIndex + 1} of ${stageLessons.length}. Tile ${state.tileIndex + 1} of ${lesson.tiles.length}: ${selectedTile.script} · ${selectedTile.roman}.`);
+        setStatus(`Letter ${state.lessonIndex + 1} of ${stageLessons.length}. Tile ${state.tileIndex + 1} of ${lessonTiles.length}: ${selectedTile.script} · ${selectedTile.roman}.`);
       } else {
         setStatus(`Letter ${state.lessonIndex + 1} of ${stageLessons.length}: ${lesson.letter} · ${lesson.name}. Tap any card or sound tile to hear it.`);
       }
@@ -2016,11 +2053,15 @@ import { playAudio, stopAudio } from './audio-manager.js';
     }
 
     const lesson = getCurrentLesson();
+    const lessonTiles = getLessonTiles(lesson);
+    if (lessonTiles.length === 0) {
+      return;
+    }
     setTileIndex(index);
     setActiveSurface('tile', index);
     renderStage();
     scrollTileIntoView(index);
-    setManualStage(`Sound tiles · ${index + 1} / ${lesson.tiles.length}`);
+    setManualStage(`Sound tiles · ${index + 1} / ${lessonTiles.length}`);
 
     const tile = getSelectedTile();
     if (!tile) {
@@ -2028,7 +2069,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     }
 
     pulseElement(dom.tiles.querySelector(`[data-stage-tile-index="${index}"]`));
-    await playToken(tile, `Playing tile ${state.tileIndex + 1} of ${lesson.tiles.length}: ${tile.script} · ${tile.roman}.`);
+    await playToken(tile, `Playing tile ${state.tileIndex + 1} of ${lessonTiles.length}: ${tile.script} · ${tile.roman}.`);
   }
 
   async function playInfo(options = {}) {
@@ -2107,47 +2148,52 @@ import { playAudio, stopAudio } from './audio-manager.js';
     state.isTransitioning = true;
     dom.experience.classList.add('is-transitioning');
 
+    const fastMode = prefersLightMotion();
     const direction = nextIndex > state.lessonIndex ? 1 : -1;
-    const outOffset = direction > 0 ? -16 : 16;
+    const outOffset = direction > 0 ? -10 : 10;
     const inOffset = outOffset * -1;
 
-    await Promise.all([
-      animateElement(dom.topbar, [
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0)' },
-        { opacity: 0, transform: `translate3d(${outOffset * 0.45}px, 6px, 0)`, filter: 'blur(1.5px)' }
-      ], {
-        duration: 260,
-        easing: 'cubic-bezier(0.32, 0, 0.67, 0)'
-      }),
-      animateElement(dom.sceneCard, [
-        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0)' },
-        { opacity: 0, transform: `translate3d(${outOffset}px, 10px, 0) scale(0.985)`, filter: 'blur(2px)' }
-      ], {
-        duration: 300,
-        easing: 'cubic-bezier(0.32, 0, 0.67, 0)'
-      })
-    ]);
+    if (!fastMode) {
+      await Promise.all([
+        animateElement(dom.topbar, [
+          { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+          { opacity: 0.25, transform: `translate3d(${outOffset * 0.35}px, 4px, 0)` }
+        ], {
+          duration: 120,
+          easing: 'cubic-bezier(0.2, 0, 0.38, 0.9)'
+        }),
+        animateElement(dom.sceneCard, [
+          { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+          { opacity: 0.2, transform: `translate3d(${outOffset}px, 6px, 0)` }
+        ], {
+          duration: 140,
+          easing: 'cubic-bezier(0.2, 0, 0.38, 0.9)'
+        })
+      ]);
+    }
 
     setLessonIndex(nextIndex);
     renderStage();
     await nextFrame();
 
-    await Promise.all([
-      animateElement(dom.topbar, [
-        { opacity: 0, transform: `translate3d(${inOffset * 0.35}px, 6px, 0)`, filter: 'blur(1.5px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0)' }
-      ], {
-        duration: 360,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-      }),
-      animateElement(dom.sceneCard, [
-        { opacity: 0, transform: `translate3d(${inOffset}px, 10px, 0) scale(0.985)`, filter: 'blur(2px)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0)' }
-      ], {
-        duration: 420,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-      })
-    ]);
+    if (!fastMode) {
+      await Promise.all([
+        animateElement(dom.topbar, [
+          { opacity: 0.25, transform: `translate3d(${inOffset * 0.3}px, 4px, 0)` },
+          { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+        ], {
+          duration: 150,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+        }),
+        animateElement(dom.sceneCard, [
+          { opacity: 0.2, transform: `translate3d(${inOffset}px, 6px, 0)` },
+          { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+        ], {
+          duration: 180,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+        })
+      ]);
+    }
 
     state.isTransitioning = false;
     dom.experience.classList.remove('is-transitioning');
@@ -2155,6 +2201,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   async function toggleAutoplay() {
     const lesson = getCurrentLesson();
+    const lessonTiles = getLessonTiles(lesson);
 
     if (state.autoplaying) {
       stopAutoplay('Auto play stopped. Tap any tile to listen again.');
@@ -2182,15 +2229,15 @@ import { playAudio, stopAudio } from './audio-manager.js';
       await wait(180);
     }
 
-    const startIndex = state.tileIndex >= 0 && state.tileIndex < lesson.tiles.length - 1 ? state.tileIndex : 0;
+    const startIndex = state.tileIndex >= 0 && state.tileIndex < lessonTiles.length - 1 ? state.tileIndex : 0;
     setAutoplayStage('Sound tiles');
 
-    for (let index = startIndex; index < lesson.tiles.length; index += 1) {
+    for (let index = startIndex; index < lessonTiles.length; index += 1) {
       if (!state.autoplaying || currentToken !== state.autoplayToken) {
         return;
       }
 
-      setAutoplayStage(`Sound tiles · ${index + 1} / ${lesson.tiles.length}`);
+      setAutoplayStage(`Sound tiles · ${index + 1} / ${lessonTiles.length}`);
 
       await playTile(index);
       await wait(90);
@@ -2358,7 +2405,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
       case 'ArrowDown': {
         event.preventDefault();
         const lesson = getCurrentLesson();
-        const nextTile = Math.min(lesson.tiles.length - 1, (state.tileIndex < 0 ? -1 : state.tileIndex) + 1);
+        const lessonTiles = getLessonTiles(lesson);
+        const nextTile = Math.min(lessonTiles.length - 1, (state.tileIndex < 0 ? -1 : state.tileIndex) + 1);
         void playTile(nextTile);
         break;
       }
@@ -2385,7 +2433,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
         event.preventDefault();
         const tileNum = event.key === '0' ? 10 : Number(event.key);
         const lesson = getCurrentLesson();
-        if (tileNum <= lesson.tiles.length) {
+        if (tileNum <= getLessonTiles(lesson).length) {
           void playTile(tileNum - 1);
         }
         break;
@@ -2441,7 +2489,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
       duration: 420,
       easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
     })
-  ]).then(() => animateLessonReveal(1));
+  ]).then(() => {
+    animateLessonReveal(1);
+    window.dispatchEvent(new Event('stage:ready'));
+  });
 })();
 
 
