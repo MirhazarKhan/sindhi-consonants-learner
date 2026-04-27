@@ -166,9 +166,9 @@ const baseExtractedStageAudio = {
   'jeem-tile-08': 'extracted_audio/sound_1306.mp3',
   'jeem-tile-09': 'extracted_audio/sound_1310.mp3',
   'jeem-tile-10': 'extracted_audio/sound_1314.mp3',
-  'nye-info': 'extracted_audio/sound1784.mp3',
+  // 'nye-info': removed
   'nye-main': 'extracted_audio/sound_1469.mp3',
-  'nye-meta': 'extracted_audio/sound1706.mp3',
+  // 'nye-meta': removed
   'nye-word-01': 'extracted_audio/sound_1439.mp3',
   'nye-example': 'extracted_audio/sound_1453.mp3',
   'nye-tile-01': 'extracted_audio/sound_1386.mp3',
