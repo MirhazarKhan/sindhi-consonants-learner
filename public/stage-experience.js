@@ -494,7 +494,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "te-meta": "/extracted_audio/sound_0816.mp3",
     "te-word-01": "/extracted_audio/sound_0837.mp3",
     "te-word-02": "/extracted_audio/sound_0830.mp3",
-      "tte-word-02": "/extracted_audio/sound_1032.mp3",
+    "tte-word-02": "/extracted_audio/sound_1032.mp3",
     "the-info": "/extracted_audio/sound_0915.mp3",
     "the-main": "/extracted_audio/sound_0959.mp3",
     "the-meta": "/extracted_audio/sound_0915.mp3",
@@ -586,44 +586,64 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "dhal-main": "/extracted_audio/sound_2233.mp3",
     "dhal-meta": "/extracted_audio/sound_2136.mp3",
     "dhal-example": "/extracted_audio/sound_2226.mp3",
+    "dhal-tile-01": "/extracted_audio/sound_2170.mp3",
+    "dhal-tile-02": "/extracted_audio/sound_2173.mp3",
+    "dhal-tile-03": "/extracted_audio/sound_2176.mp3",
+    "dhal-tile-04": "/extracted_audio/sound_2179.mp3",
+    "dhal-tile-05": "/extracted_audio/sound_2182.mp3",
+    "dhal-tile-06": "/extracted_audio/sound_2185.mp3",
+    "dhal-tile-07": "/extracted_audio/sound_2188.mp3",
+    "dhal-tile-08": "/extracted_audio/sound_2191.mp3",
+    "dhal-tile-09": "/extracted_audio/sound_2194.mp3",
+    "dhal-tile-10": "/extracted_audio/sound_2197.mp3",
     "ddal-info": "/extracted_audio/sound_2401.mp3",
     "ddal-main": "/extracted_audio/sound_2320.mp3",
     "ddal-meta": "/extracted_audio/sound_2401.mp3",
     "ddal-word-01": "/extracted_audio/sound_2295.mp3",
     "ddal-word-02": "/extracted_audio/sound_2305.mp3",
     "ddal-example": "/extracted_audio/sound_2312.mp3",
-    "ddal-tile-01": "/extracted_audio/sound_2250.mp3",
-    "ddal-tile-02": "/extracted_audio/sound_2253.mp3",
-    "ddal-tile-03": "/extracted_audio/sound_2256.mp3",
-    "ddal-tile-04": "/extracted_audio/sound_2260.mp3",
-    "ddal-tile-05": "/extracted_audio/sound_2264.mp3",
-    "ddal-tile-06": "/extracted_audio/sound_2268.mp3",
-    "ddal-tile-07": "/extracted_audio/sound_2271.mp3",
-    "ddal-tile-08": "/extracted_audio/sound_2275.mp3",
-    "ddal-tile-09": "/extracted_audio/sound_2278.mp3",
-    "ddal-tile-10": "/extracted_audio/sound_2282.mp3",
+    "ddal-tile-01": "/extracted_audio/sound_2340.mp3",
+    "ddal-tile-02": "/extracted_audio/sound_2343.mp3",
+    "ddal-tile-03": "/extracted_audio/sound_2347.mp3",
+    "ddal-tile-04": "/extracted_audio/sound_2351.mp3",
+    "ddal-tile-05": "/extracted_audio/sound_2355.mp3",
+    "ddal-tile-06": "/extracted_audio/sound_2358.mp3",
+    "ddal-tile-07": "/extracted_audio/sound_2361.mp3",
+    "ddal-tile-08": "/extracted_audio/sound_2364.mp3",
+    "ddal-tile-09": "/extracted_audio/sound_2367.mp3",
+    "ddal-tile-10": "/extracted_audio/sound_2370.mp3",
     "ddha-info": "/extracted_audio/sound_2401.mp3",
     "ddha-main": "/extracted_audio/sound_2424.mp3",
     "ddha-meta": "/extracted_audio/sound_2490.mp3",
     "ddha-word-01": "/extracted_audio/sound_2384.mp3",
     "ddha-word-02": "/extracted_audio/sound_2390.mp3",
     "ddha-example": "/extracted_audio/sound_2397.mp3",
-    "ddha-tile-10": "/extracted_audio/sound_2367.mp3",
-    "ddha-tile-09": "/extracted_audio/sound_2364.mp3",
-    "ddha-tile-08": "/extracted_audio/sound_2361.mp3",
-    "ddha-tile-07": "/extracted_audio/sound_2358.mp3",
-    "ddha-tile-06": "/extracted_audio/sound_2355.mp3",
-    "ddha-tile-05": "/extracted_audio/sound_2351.mp3",
-    "ddha-tile-04": "/extracted_audio/sound_2347.mp3",
-    "ddha-tile-03": "/extracted_audio/sound_2343.mp3",
-    "ddha-tile-02": "/extracted_audio/sound_2340.mp3",
-    "ddha-tile-01": "/extracted_audio/sound_2340.mp3",
+    "ddha-tile-01": "/extracted_audio/sound_2424.mp3",
+    "ddha-tile-02": "/extracted_audio/sound_2428.mp3",
+    "ddha-tile-03": "/extracted_audio/sound_2432.mp3",
+    "ddha-tile-04": "/extracted_audio/sound_2436.mp3",
+    "ddha-tile-05": "/extracted_audio/sound_2441.mp3",
+    "ddha-tile-06": "/extracted_audio/sound_2445.mp3",
+    "ddha-tile-07": "/extracted_audio/sound_2448.mp3",
+    "ddha-tile-08": "/extracted_audio/sound_2451.mp3",
+    "ddha-tile-09": "/extracted_audio/sound_2454.mp3",
+    "ddha-tile-10": "/extracted_audio/sound_2457.mp3",
     "ddhal-info": "/extracted_audio/sound_2575.mp3",
     "ddhal-main": "/extracted_audio/sound_2490.mp3",
     "ddhal-meta": "/extracted_audio/sound_2575.mp3",
     "ddhal-word-01": "/extracted_audio/sound_2471.mp3",
     "ddhal-word-02": "/extracted_audio/sound_2477.mp3",
     "ddhal-example": "/extracted_audio/sound_2483.mp3",
+    "ddhal-tile-01": "/extracted_audio/sound_2428.mp3",
+    "ddhal-tile-02": "/extracted_audio/sound_2432.mp3",
+    "ddhal-tile-03": "/extracted_audio/sound_2436.mp3",
+    "ddhal-tile-04": "/extracted_audio/sound_2441.mp3",
+    "ddhal-tile-05": "/extracted_audio/sound_2445.mp3",
+    "ddhal-tile-06": "/extracted_audio/sound_2448.mp3",
+    "ddhal-tile-07": "/extracted_audio/sound_2451.mp3",
+    "ddhal-tile-08": "/extracted_audio/sound_2454.mp3",
+    "ddhal-tile-09": "/extracted_audio/sound_2457.mp3",
+    "ddhal-tile-10": "/extracted_audio/sound_2282.mp3",
     "zal-info": "/extracted_audio/sound_2569.mp3",
     "zal-main": "/extracted_audio/sound_2575.mp3",
     "zal-meta": "/extracted_audio/sound_2660.mp3",
@@ -809,16 +829,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ye-word-02": "/extracted_audio/sound_undefined.mp3",
     "ye-example": "/extracted_audio/sound_undefined.mp3",
 
-    "ddhal-tile-01": "/extracted_audio/sound_2428.mp3",
-    "ddhal-tile-02": "/extracted_audio/sound_2432.mp3",
-    "ddhal-tile-03": "/extracted_audio/sound_2436.mp3",
-    "ddhal-tile-04": "/extracted_audio/sound_2441.mp3",
-    "ddhal-tile-05": "/extracted_audio/sound_2445.mp3",
-    "ddhal-tile-06": "/extracted_audio/sound_2448.mp3",
-    "ddhal-tile-07": "/extracted_audio/sound_2451.mp3",
-    "ddhal-tile-08": "/extracted_audio/sound_2454.mp3",
-    "ddhal-tile-09": "/extracted_audio/sound_2457.mp3",
-    "ddhal-tile-10": "/extracted_audio/sound_2282.mp3",
     "ze-word-02": "/extracted_audio/sound_2822.mp3",
     "ze-word-01": "/extracted_audio/sound_2816.mp3",
     "ze-tile-10": "/extracted_audio/sound_2800.mp3",
@@ -1284,6 +1294,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
       key.startsWith('hamza-') ||
       key.startsWith('bbe-') ||
       key.startsWith('nye-') ||
+      key.startsWith('dhal-tile-') ||
       key.startsWith('ddal-tile-') ||
       key.startsWith('ddha-') ||
       key.startsWith('ddhal-tile-')
@@ -1349,6 +1360,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   // Shift tile audio one letter back starting at nye:
   // nye -> jeem, jhe -> nye, ... , hamza -> heh.
+  // Keep manually curated dental/retroflex families stable.
+  const protectedTileIds = new Set(['dhal', 'ddha', 'ddhal']);
   const backShiftIds = [
     'jeem', 'nye', 'jhe', 'nyay', 'che', 'chhe', 'he', 'khe', 'dal', 'dhal',
     'ddal', 'ddha', 'ddhal', 'zal', 're', 'rre', 'ze', 'seen', 'sheen', 'swad',
@@ -1359,6 +1372,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
   for (let index = 1; index < backShiftIds.length; index++) {
     const sourceId = backShiftIds[index];
     const targetId = backShiftIds[index - 1];
+    if (protectedTileIds.has(sourceId) || protectedTileIds.has(targetId)) {
+      continue;
+    }
     for (let i = 1; i <= 10; i++) {
       const suffix = String(i).padStart(2, '0');
       const sourceKey = `${sourceId}-tile-${suffix}`;
