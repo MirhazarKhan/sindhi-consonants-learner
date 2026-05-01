@@ -119,12 +119,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
         audioKey: 'be-main',
         voiceText: 'be'
       },
-      meta: {
-        roman: 'be',
-        caption: 'As in bus',
-        audioKey: 'be-meta',
-        voiceText: 'be'
-      },
+      // remove meta panel for `be`
+      meta: null,
       words: [
         { english: 'ice', roman: 'barfa', script: 'برف', audioKey: 'be-word-01', voiceText: 'ice, barfa' },
         { english: 'bus', roman: 'basi', script: 'بسي', audioKey: 'be-word-02', voiceText: 'bus, basi' }
@@ -137,18 +133,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
         audioKey: 'be-example',
         voiceText: 'badaka, duck'
       },
-      tiles: [
-        { script: 'بَ', roman: 'ba', audioKey: 'be-tile-01', voiceText: 'ba' },
-        { script: 'با', roman: 'baa', audioKey: 'be-tile-02', voiceText: 'baa' },
-        { script: 'بِ', roman: 'bi', audioKey: 'be-tile-03', voiceText: 'bi' },
-        { script: 'بِي', roman: 'bii', audioKey: 'be-tile-04', voiceText: 'bii' },
-        { script: 'بُ', roman: 'bu', audioKey: 'be-tile-05', voiceText: 'bu' },
-        { script: 'بُو', roman: 'boo', audioKey: 'be-tile-06', voiceText: 'boo' },
-        { script: 'بي', roman: 'be', audioKey: 'be-tile-07', voiceText: 'be' },
-        { script: 'بَي', roman: 'bai', audioKey: 'be-tile-08', voiceText: 'bai' },
-        { script: 'بو', roman: 'bo', audioKey: 'be-tile-09', voiceText: 'bo' },
-        { script: 'بَو', roman: 'bao', audioKey: 'be-tile-10', voiceText: 'bao' }
-      ]
+      // tiles intentionally cleared — hide sound tiles for this lesson
+      tiles: []
     },
     {
       id: 'bbe',
@@ -162,21 +148,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
         glow: 'rgba(44, 195, 127, 0.28)',
         glowSecondary: 'rgba(255, 192, 109, 0.22)'
       },
-      info: {
-        lines: ['a peculiar Sindhi sound'],
-        audioKey: 'bbe-info',
-        voiceText: 'a peculiar Sindhi sound'
-      },
+      // remove info panel for `bbe`
+      info: null,
       main: {
         audioKey: 'bbe-main',
         voiceText: 'bbe'
       },
-      meta: {
-        roman: 'bbe',
-        caption: 'Peculiar Sindhi sound',
-        audioKey: 'bbe-meta',
-        voiceText: 'bbe. peculiar Sindhi sound'
-      },
+      // remove meta panel for `bbe`
+      meta: null,
       words: [
         { english: 'boat', roman: 'beri', script: 'ٻيڙي', audioKey: 'bbe-word-01', voiceText: 'boat, beri' },
         { english: 'cat', roman: 'bili', script: 'ٻلي', audioKey: 'bbe-word-02', voiceText: 'cat, bili' }
@@ -189,18 +168,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
         audioKey: 'bbe-example',
         voiceText: 'bakri, goat'
       },
-      tiles: [
-        { script: 'ٻَ', roman: 'b̤a', audioKey: 'bbe-tile-01', voiceText: 'b̤a' },
-        { script: 'ٻا', roman: 'b̤aa', audioKey: 'bbe-tile-02', voiceText: 'b̤aa' },
-        { script: 'ٻِ', roman: 'b̤i', audioKey: 'bbe-tile-03', voiceText: 'b̤i' },
-        { script: 'ٻِي', roman: 'b̤ii', audioKey: 'bbe-tile-04', voiceText: 'b̤ii' },
-        { script: 'ٻُ', roman: 'b̤u', audioKey: 'bbe-tile-05', voiceText: 'b̤u' },
-        { script: 'ٻُو', roman: 'b̤oo', audioKey: 'bbe-tile-06', voiceText: 'b̤oo' },
-        { script: 'ٻي', roman: 'b̤e', audioKey: 'bbe-tile-07', voiceText: 'b̤e' },
-        { script: 'ٻَي', roman: 'b̤ai', audioKey: 'bbe-tile-08', voiceText: 'b̤ai' },
-        { script: 'ٻو', roman: 'b̤o', audioKey: 'bbe-tile-09', voiceText: 'b̤o' },
-        { script: 'ٻَو', roman: 'b̤ao', audioKey: 'bbe-tile-10', voiceText: 'b̤ao' }
-      ]
+      // tiles intentionally cleared — hide sound tiles for this lesson
+      tiles: []
     }
   ];
 
@@ -394,7 +363,11 @@ import { playAudio, stopAudio } from './audio-manager.js';
     };
   }
 
+  // For a few consonants we don't want the meta panel; override after generation.
   stageLessons.push(...remainingConsonants.map((config, index) => buildGeneratedLesson(config, index)));
+  // remove meta panel for `pe`
+  const peLesson = stageLessons.find(l => l.id === 'pe');
+  if (peLesson) peLesson.meta = null;
 
   function getLessonTiles(lesson) {
     if (Array.isArray(lesson?.tiles) && lesson.tiles.length > 0) {
@@ -467,19 +440,19 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "alif-tile-10": "/extracted_audio/sound_0303.mp3",
     "be-info": "/extracted_audio/sound_0363.mp3",
     "be-main": "/extracted_audio/sound_0363.mp3",
-    "be-meta": "/extracted_audio/sound_0363.mp3",
+
     "be-word-01": "/extracted_audio/sound_0377.mp3",
     "be-word-02": "/extracted_audio/sound_0384.mp3",
     "be-example": "/extracted_audio/sound_0393.mp3",
-    "bbe-info": "/extracted_audio/sound_0520.mp3",
+
     "bbe-main": "/extracted_audio/sound_0520.mp3",
-    "bbe-meta": "/extracted_audio/sound_0520.mp3",
+
     "bbe-word-01": "/extracted_audio/sound_0526.mp3",
     "bbe-word-02": "/extracted_audio/sound_0532.mp3",
     "bbe-example": "/extracted_audio/sound_0520.mp3",
     "pe-info": "/extracted_audio/sound_0621.mp3",
     "pe-main": "/extracted_audio/sound_0621.mp3",
-    "pe-meta": "/extracted_audio/sound_0621.mp3",
+
     "pe-word-01": "/extracted_audio/sound_0628.mp3",
     "pe-word-02": "/extracted_audio/sound_0636.mp3",
     "pe-example": "/extracted_audio/sound_0642.mp3",
@@ -1077,9 +1050,13 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "te-main": "/extracted_audio/sound_0858.mp3"
   });
 
+  const cleanedBaseExtractedStageAudio = Object.fromEntries(
+    Object.entries(baseExtractedStageAudio).filter(([key]) => !key.endsWith('-meta'))
+  );
+
   const extractedStageAudio = {
-    ...baseExtractedStageAudio,
-    ...buildAutoExtractedAudioMap(stageLessons, baseExtractedStageAudio)
+    ...cleanedBaseExtractedStageAudio,
+    ...buildAutoExtractedAudioMap(stageLessons, cleanedBaseExtractedStageAudio)
   };
 
   function normalizeMappingLabel(value) {
@@ -1216,7 +1193,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
         if (tileCount === 0) continue;
 
         // RTL letters where tiles are visual RTL but audio is LTR (need to invert mapping)
-        const shouldInvert = ['bhe', 'se', 'he', 're', 'rre', 'zoe', 'ain', 'fe', 'zwad'].includes(lesson.id);
+        // Note: `rre` intentionally excluded to match existing mapped order.
+        const shouldInvert = ['bhe', 'se', 'he', 're', 'zoe', 'ain', 'fe', 'zwad'].includes(lesson.id);
 
         for (let t = 0; t < tileCount; t++) {
           let uiIndex;
@@ -1283,7 +1261,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
   await applyCleanAudioMappingOverrides(stageAudio, stageLessons);
 
   // Re-apply explicit overrides from baseExtractedStageAudio so our manual fixes take precedence over sindhi_app_data.json
-  for (const key of Object.keys(baseExtractedStageAudio)) {
+  for (const key of Object.keys(cleanedBaseExtractedStageAudio)) {
     if (
       key.startsWith('alif-') ||
       key.startsWith('the-') ||
@@ -1297,9 +1275,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
       key.startsWith('dhal-tile-') ||
       key.startsWith('ddal-tile-') ||
       key.startsWith('ddha-') ||
-      key.startsWith('ddhal-tile-')
+      key.startsWith('ddhal-')
     ) {
-      let url = baseExtractedStageAudio[key];
+      let url = cleanedBaseExtractedStageAudio[key];
       if (url.match(/\/sound(\d+)\.(mp3|wav)$/i)) {
         url = url.replace(/\/sound(\d+)\.(mp3|wav)$/i, '/sound_$1.$2');
       }
@@ -1309,6 +1287,19 @@ import { playAudio, stopAudio } from './audio-manager.js';
       stageAudio[key] = url;
     }
   }
+
+  // Pin dal's ten tile sounds explicitly so they stay on the correct lesson
+  // even if the generic JSON-driven mapper changes order later.
+  stageAudio['dal-tile-01'] = '/extracted_audio/sound_2111.mp3';
+  stageAudio['dal-tile-02'] = '/extracted_audio/sound_2081.mp3';
+  stageAudio['dal-tile-03'] = '/extracted_audio/sound_2085.mp3';
+  stageAudio['dal-tile-04'] = '/extracted_audio/sound_2089.mp3';
+  stageAudio['dal-tile-05'] = '/extracted_audio/sound_2093.mp3';
+  stageAudio['dal-tile-06'] = '/extracted_audio/sound_2096.mp3';
+  stageAudio['dal-tile-07'] = '/extracted_audio/sound_2099.mp3';
+  stageAudio['dal-tile-08'] = '/extracted_audio/sound_2102.mp3';
+  stageAudio['dal-tile-09'] = '/extracted_audio/sound_2105.mp3';
+  stageAudio['dal-tile-10'] = '/extracted_audio/sound_2108.mp3';
 
   // Swap tile audio between tte and se for all 10 variations.
   for (let i = 1; i <= 10; i++) {
@@ -1482,11 +1473,18 @@ import { playAudio, stopAudio } from './audio-manager.js';
   }
 
   function showInfoPanel(lesson = getCurrentLesson()) {
-    return lesson.id !== 'alif' && lesson.id !== 'tthe';
+    if (!lesson) return false;
+    // If explicitly cleared, hide.
+    if (lesson.info === null) return false;
+    // Hide for a few special-case lessons.
+    if (lesson.id === 'alif' || lesson.id === 'tthe') return false;
+    // If there's no useful info data, don't show an empty panel.
+    if (!lesson.caption && !lesson.romanBase && !(lesson.info && lesson.info.lines && lesson.info.lines.length)) return false;
+    return true;
   }
 
-  function showMetaPanel(lesson = getCurrentLesson()) {
-    return lesson.id !== 'alif' && lesson.id !== 'he';
+  function showMetaPanel() {
+    return false;
   }
 
   let isPlaying = false;
@@ -1598,10 +1596,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
   function preloadLessonAudio(lesson) {
     const lessonTiles = getLessonTiles(lesson);
     const keys = [
-      lesson.info.audioKey,
-      lesson.main.audioKey,
-      lesson.meta.audioKey,
-      lesson.example.audioKey,
+      lesson.info?.audioKey,
+      lesson.main?.audioKey,
+      lesson.meta?.audioKey,
+      lesson.example?.audioKey,
       ...lesson.words.map(w => w.audioKey),
       ...lessonTiles.map(t => t.audioKey)
     ].filter(Boolean);
