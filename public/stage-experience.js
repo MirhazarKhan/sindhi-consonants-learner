@@ -1301,6 +1301,18 @@ import { playAudio, stopAudio } from './audio-manager.js';
   stageAudio['dal-tile-09'] = '/extracted_audio/sound_2105.mp3';
   stageAudio['dal-tile-10'] = '/extracted_audio/sound_2108.mp3';
 
+  // Pin rre's ten tile sounds explicitly to ensure correct ordering
+  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2679.mp3';
+  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2682.mp3';
+  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2685.mp3';
+  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2688.mp3';
+  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2691.mp3';
+  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2695.mp3';
+  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2699.mp3';
+  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2703.mp3';
+  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2706.mp3';
+  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2709.mp3';
+
   // Swap tile audio between tte and se for all 10 variations.
   for (let i = 1; i <= 10; i++) {
     const suffix = String(i).padStart(2, '0');
