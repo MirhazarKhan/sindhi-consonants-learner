@@ -222,7 +222,7 @@
   {
     "soundFile": "sound_1933.mp3",
     "labels": [
-      "as 'h' in 'hut'"
+      "as kh in khan"
     ]
   },
   {
@@ -284,7 +284,7 @@
   {
     "soundFile": "sound_2136.mp3",
     "labels": [
-      "as 'd' in 'Delhi'"
+      "as d in dog"
     ]
   },
   {
@@ -1141,7 +1141,7 @@
   {
     "soundFile": "sound_5037.mp3",
     "labels": [
-      "as 'h' in 'hut'"
+      "as kh in khan"
     ]
   },
   {
@@ -1595,7 +1595,7 @@
   {
     "soundFile": "sound_6003.mp3",
     "labels": [
-      "as 'h' in 'hut'"
+      "as kh in khan"
     ]
   },
   {
@@ -2508,7 +2508,7 @@
   {
     "soundFile": "sound_7452.mp3",
     "labels": [
-      "as 'h' in 'hut'"
+      "as kh in khan"
     ]
   },
   {

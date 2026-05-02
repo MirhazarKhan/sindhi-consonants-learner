@@ -199,7 +199,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     { id: 'che', letter: 'چ', name: 'che', romanBase: 'ch', caption: 'as ch in chair' },
     { id: 'chhe', letter: 'ڇ', name: 'chhe', romanBase: 'chh', caption: 'Aspirated ch sound' },
     { id: 'he', letter: 'ح', name: 'he', romanBase: 'h', caption: 'as h in hello' },
-    { id: 'khe', letter: 'خ', name: 'khe', romanBase: 'kh', caption: 'Guttural kh sound' },
+    { id: 'khe', letter: 'خ', name: 'khe', romanBase: 'kh', caption: 'as kh in khan' },
     { id: 'dal', letter: 'د', name: 'dal', romanBase: 'd', caption: 'as d in dog' },
     { id: 'dhal', letter: 'ڌ', name: 'dhal', romanBase: 'dh', caption: 'Aspirated d sound' },
     { id: 'ddal', letter: 'ڊ', name: 'ddal', romanBase: 'dd', caption: 'Retroflex d sound' },
