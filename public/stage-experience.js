@@ -110,6 +110,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
         glow: 'rgba(39, 184, 204, 0.28)',
         glowSecondary: 'rgba(123, 116, 255, 0.22)'
       },
+      romanBase: 'b',
+      caption: 'as b in bus',
       info: {
         lines: ['as \'b\' in \'bus\''],
         audioKey: 'be-info',
@@ -183,55 +185,55 @@ import { playAudio, stopAudio } from './audio-manager.js';
   ];
 
   const remainingConsonants = [
-    { id: 'pe', letter: 'پ', name: 'pe', romanBase: 'p', caption: 'As in pen' },
+    { id: 'pe', letter: 'پ', name: 'pe', romanBase: 'p', caption: 'as p in pen' },
     { id: 'bhe', letter: 'ڀ', name: 'bhe', romanBase: 'bh', caption: 'Breathy b sound' },
-    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'Soft t sound' },
+    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'as t in tap' },
     { id: 'the', letter: 'ٿ', name: 'the', romanBase: 'th', caption: 'Aspirated t sound' },
     { id: 'tte', letter: 'ٽ', name: 'tte', romanBase: 'tt', caption: 'Retroflex t sound' },
     { id: 'tthe', letter: 'ٺ', name: 'tthe', romanBase: 'tth', caption: 'Aspirated retroflex t' },
-    { id: 'se', letter: 'ث', name: 'se', romanBase: 's', caption: 'S-class consonant' },
-    { id: 'jeem', letter: 'ج', name: 'jeem', romanBase: 'j', caption: 'As in jam' },
+    { id: 'se', letter: 'ث', name: 'se', romanBase: 's', caption: 'as s in sun' },
+    { id: 'jeem', letter: 'ج', name: 'jeem', romanBase: 'j', caption: 'as j in jam' },
     { id: 'nye', letter: 'ڄ', name: 'nye', romanBase: 'nj', caption: 'Sindhi nye sound' },
-    { id: 'jhe', letter: 'جھ', name: 'jhe', romanBase: 'jh', caption: 'Aspirated j sound' },
+    { id: 'jhe', letter: 'جھ', name: 'jhe', romanBase: 'jh', caption: 'as j in jug' },
     { id: 'nyay', letter: 'ڃ', name: 'nyay', romanBase: 'ny', caption: 'Nasal ny sound' },
-    { id: 'che', letter: 'چ', name: 'che', romanBase: 'ch', caption: 'As in chair' },
+    { id: 'che', letter: 'چ', name: 'che', romanBase: 'ch', caption: 'as ch in chair' },
     { id: 'chhe', letter: 'ڇ', name: 'chhe', romanBase: 'chh', caption: 'Aspirated ch sound' },
-    { id: 'he', letter: 'ح', name: 'he', romanBase: 'h', caption: 'Deep h sound' },
+    { id: 'he', letter: 'ح', name: 'he', romanBase: 'h', caption: 'as h in hello' },
     { id: 'khe', letter: 'خ', name: 'khe', romanBase: 'kh', caption: 'Guttural kh sound' },
-    { id: 'dal', letter: 'د', name: 'dal', romanBase: 'd', caption: 'Soft d sound' },
+    { id: 'dal', letter: 'د', name: 'dal', romanBase: 'd', caption: 'as d in dog' },
     { id: 'dhal', letter: 'ڌ', name: 'dhal', romanBase: 'dh', caption: 'Aspirated d sound' },
     { id: 'ddal', letter: 'ڊ', name: 'ddal', romanBase: 'dd', caption: 'Retroflex d sound' },
     { id: 'ddha', letter: 'ڍ', name: 'ddha', romanBase: 'ddh', caption: 'Implosive retroflex d' },
     { id: 'ddhal', letter: 'ڏ', name: 'ddhal', romanBase: 'ddh', caption: 'Breathy retroflex d' },
-    { id: 'zal', letter: 'ذ', name: 'zal', romanBase: 'z', caption: 'Z-class consonant' },
-    { id: 're', letter: 'ر', name: 're', romanBase: 'r', caption: 'Rolled r sound' },
+    { id: 'zal', letter: 'ذ', name: 'zal', romanBase: 'z', caption: 'as z in zoo' },
+    { id: 're', letter: 'ر', name: 're', romanBase: 'r', caption: 'as r in red' },
     { id: 'rre', letter: 'ڙ', name: 'rre', romanBase: 'rr', caption: 'Retroflex r sound' },
-    { id: 'ze', letter: 'ز', name: 'ze', romanBase: 'z', caption: 'Z sound' },
-    { id: 'seen', letter: 'س', name: 'seen', romanBase: 's', caption: 'S sound' },
-    { id: 'sheen', letter: 'ش', name: 'sheen', romanBase: 'sh', caption: 'Sh sound' },
+    { id: 'ze', letter: 'ز', name: 'ze', romanBase: 'z', caption: 'as z in zoo' },
+    { id: 'seen', letter: 'س', name: 'seen', romanBase: 's', caption: 'as s in sun' },
+    { id: 'sheen', letter: 'ش', name: 'sheen', romanBase: 'sh', caption: 'as sh in shop' },
     { id: 'swad', letter: 'ص', name: 'swad', romanBase: 's', caption: 'Emphatic s sound' },
     { id: 'zwad', letter: 'ض', name: 'zwad', romanBase: 'z', caption: 'Emphatic z sound' },
     { id: 'toe', letter: 'ط', name: 'toe', romanBase: 't', caption: 'Emphatic t sound' },
     { id: 'zoe', letter: 'ظ', name: 'zoe', romanBase: 'z', caption: 'Heavy z sound' },
     { id: 'ain', letter: 'ع', name: 'ain', romanBase: 'a', caption: 'Throat consonant' },
     { id: 'ghain', letter: 'غ', name: 'ghain', romanBase: 'gh', caption: 'Gh sound' },
-    { id: 'fe', letter: 'ف', name: 'fe', romanBase: 'f', caption: 'F sound' },
-    { id: 'phe', letter: 'ڦ', name: 'phe', romanBase: 'ph', caption: 'Aspirated p sound' },
-    { id: 'qaf', letter: 'ق', name: 'qaf', romanBase: 'q', caption: 'Q sound' },
-    { id: 'kaf', letter: 'ڪ', name: 'kaf', romanBase: 'k', caption: 'K sound' },
+    { id: 'fe', letter: 'ف', name: 'fe', romanBase: 'f', caption: 'as f in fun' },
+    { id: 'phe', letter: 'ڦ', name: 'phe', romanBase: 'ph', caption: 'as ph in phone' },
+    { id: 'qaf', letter: 'ق', name: 'qaf', romanBase: 'q', caption: 'as q in quit' },
+    { id: 'kaf', letter: 'ڪ', name: 'kaf', romanBase: 'k', caption: 'as k in kite' },
     { id: 'khaf', letter: 'ک', name: 'khaf', romanBase: 'kh', caption: 'Aspirated k sound' },
-    { id: 'gaf', letter: 'گ', name: 'gaf', romanBase: 'g', caption: 'G sound' },
+    { id: 'gaf', letter: 'گ', name: 'gaf', romanBase: 'g', caption: 'as g in go' },
     { id: 'ggaf', letter: 'ڳ', name: 'ggaf', romanBase: 'gg', caption: 'Implosive g sound' },
     { id: 'ghaf', letter: 'گھ', name: 'ghaf', romanBase: 'gh', caption: 'Aspirated g sound' },
-    { id: 'ngoe', letter: 'ڱ', name: 'ngoe', romanBase: 'ng', caption: 'Ng sound' },
-    { id: 'lam', letter: 'ل', name: 'lam', romanBase: 'l', caption: 'L sound' },
-    { id: 'meem', letter: 'م', name: 'meem', romanBase: 'm', caption: 'M sound' },
-    { id: 'noon', letter: 'ن', name: 'noon', romanBase: 'n', caption: 'N sound' },
+    { id: 'ngoe', letter: 'ڱ', name: 'ngoe', romanBase: 'ng', caption: 'as ng in ring' },
+    { id: 'lam', letter: 'ل', name: 'lam', romanBase: 'l', caption: 'as l in lamp' },
+    { id: 'meem', letter: 'م', name: 'meem', romanBase: 'm', caption: 'as m in man' },
+    { id: 'noon', letter: 'ن', name: 'noon', romanBase: 'n', caption: 'as n in net' },
     { id: 'nnoon', letter: 'ڻ', name: 'nnoon', romanBase: 'nn', caption: 'Retroflex n sound' },
-    { id: 'waw', letter: 'و', name: 'waw', romanBase: 'w', caption: 'W or v sound' },
-    { id: 'heh', letter: 'ه', name: 'heh', romanBase: 'h', caption: 'H sound' },
+    { id: 'waw', letter: 'و', name: 'waw', romanBase: 'w', caption: 'as w in water' },
+    { id: 'heh', letter: 'ه', name: 'heh', romanBase: 'h', caption: 'as h in hello' },
     { id: 'hamza', letter: 'ء', name: 'hamza', romanBase: 'a', caption: 'Glottal stop marker' },
-    { id: 'ye', letter: 'ي', name: 'ye', romanBase: 'y', caption: 'Y sound' }
+    { id: 'ye', letter: 'ي', name: 'ye', romanBase: 'y', caption: 'as y in yes' }
   ];
 
   const generatedLessonOverrides = {
@@ -247,6 +249,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
         visual: '🅿️',
         voiceText: 'paa'
       }
+    },
+    nye: {
+      infoLines: []
     },
     jeem: {
       example: {
@@ -330,6 +335,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
       subtitle: 'Consonants',
       letter: config.letter,
       name: config.name,
+      romanBase: config.romanBase,
+      caption: config.caption,
       theme,
       info: {
         lines: infoLines,
@@ -521,9 +528,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "nye-word-01": "/extracted_audio/sound_1439.mp3",
     "nye-word-02": "/extracted_audio/sound_1446.mp3",
     "nye-example": "/extracted_audio/sound_1453.mp3",
-    "jhe-info": "/extracted_audio/sound_1469.mp3",
+    "jhe-info": "/extracted_audio/sound_1588.mp3",
     "jhe-main": "/extracted_audio/sound_1588.mp3",
-    "jhe-meta": "/extracted_audio/sound_1469.mp3",
+    "jhe-meta": "/extracted_audio/sound_1810.mp3",
     "jhe-example": "/extracted_audio/sound_1556.mp3",
     "nyay-info": "/extracted_audio/sound_1543.mp3",
     "nyay-main": "/extracted_audio/sound_1688.mp3",
@@ -1363,8 +1370,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   // Shift tile audio one letter back starting at nye:
   // nye -> jeem, jhe -> nye, ... , hamza -> heh.
-  // Keep manually curated dental/retroflex families stable.
-  const protectedTileIds = new Set(['dhal', 'ddha', 'ddhal']);
+  // Keep manually curated families stable and do not rewrite re/rre.
+  const protectedTileIds = new Set(['dhal', 'ddha', 'ddhal', 're', 'rre']);
   const backShiftIds = [
     'jeem', 'nye', 'jhe', 'nyay', 'che', 'chhe', 'he', 'khe', 'dal', 'dhal',
     'ddal', 'ddha', 'ddhal', 'zal', 're', 'rre', 'ze', 'seen', 'sheen', 'swad',
@@ -1430,6 +1437,19 @@ import { playAudio, stopAudio } from './audio-manager.js';
   stageAudio['hamza-tile-08'] = '/extracted_audio/sound_5092.mp3';
   stageAudio['hamza-tile-09'] = '/extracted_audio/sound_5095.mp3';
   stageAudio['hamza-tile-10'] = '/extracted_audio/sound_5098.mp3';
+
+  // Final lock: keep RRE tile variations in ascending order.
+  // This must stay after backShiftIds processing, which can otherwise overwrite `rre-*`.
+  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2679.mp3';
+  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2682.mp3';
+  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2685.mp3';
+  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2688.mp3';
+  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2691.mp3';
+  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2695.mp3';
+  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2699.mp3';
+  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2703.mp3';
+  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2706.mp3';
+  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2709.mp3';
 
   // Heh should use Hamza note/info-meta, words, and example audio.
   stageAudio['heh-info'] = stageAudio['hamza-info'];
