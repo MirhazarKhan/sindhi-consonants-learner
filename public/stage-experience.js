@@ -186,14 +186,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   const remainingConsonants = [
     { id: 'pe', letter: 'پ', name: 'pe', romanBase: 'p', caption: 'as p in pen' },
-    { id: 'bhe', letter: 'ڀ', name: 'bhe', romanBase: 'bh', caption: 'Breathy b sound' },
-    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'as t in tap' },
+    { id: 'bhe', letter: 'ڀ', name: 'bhe', romanBase: 'bh', caption: 'as b in Bharat', infoAudioKey: 'bhe-info' },
+    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'as t in Taiwan', infoAudioKey: 'te-info' },
     { id: 'the', letter: 'ٿ', name: 'the', romanBase: 'th', caption: 'Aspirated t sound' },
     { id: 'tte', letter: 'ٽ', name: 'tte', romanBase: 'tt', caption: 'Retroflex t sound' },
     { id: 'tthe', letter: 'ٺ', name: 'tthe', romanBase: 'tth', caption: 'Aspirated retroflex t' },
     { id: 'se', letter: 'ث', name: 'se', romanBase: 's', caption: 'as s in sun' },
     { id: 'jeem', letter: 'ج', name: 'jeem', romanBase: 'j', caption: 'as j in jam' },
-    { id: 'nye', letter: 'ڄ', name: 'nye', romanBase: 'nj', caption: 'Sindhi nye sound' },
+    { id: 'nye', letter: 'ڄ', name: 'nye', romanBase: 'nj', caption: 'Sindhi nye sound', hideInfo: true },
     { id: 'jhe', letter: 'جھ', name: 'jhe', romanBase: 'jh', caption: 'as j in jug' },
     { id: 'nyay', letter: 'ڃ', name: 'nyay', romanBase: 'ny', caption: 'Nasal ny sound' },
     { id: 'che', letter: 'چ', name: 'che', romanBase: 'ch', caption: 'as ch in chair' },
@@ -338,9 +338,10 @@ import { playAudio, stopAudio } from './audio-manager.js';
       romanBase: config.romanBase,
       caption: config.caption,
       theme,
-      info: {
+      info: config.hideInfo ? null : {
         lines: infoLines,
-        audioKey: `${config.id}-info`,
+        // Prefer the dedicated lesson note clip when present.
+        audioKey: config.infoAudioKey || `${config.id}-info`,
         voiceText: `${config.name}. ${config.caption}`
       },
       main: {
@@ -579,9 +580,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ddal-info": "/extracted_audio/sound_2401.mp3",
     "ddal-main": "/extracted_audio/sound_2320.mp3",
     "ddal-meta": "/extracted_audio/sound_2401.mp3",
-    "ddal-word-01": "/extracted_audio/sound_2295.mp3",
-    "ddal-word-02": "/extracted_audio/sound_2305.mp3",
-    "ddal-example": "/extracted_audio/sound_2312.mp3",
+    "ddal-word-01": "/extracted_audio/sound_2305.mp3",
+    "ddal-word-02": "/extracted_audio/sound_2312.mp3",
+    "ddal-example": "/extracted_audio/sound_2295.mp3",
     "ddal-tile-01": "/extracted_audio/sound_2340.mp3",
     "ddal-tile-02": "/extracted_audio/sound_2343.mp3",
     "ddal-tile-03": "/extracted_audio/sound_2347.mp3",
@@ -608,21 +609,21 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ddha-tile-08": "/extracted_audio/sound_2451.mp3",
     "ddha-tile-09": "/extracted_audio/sound_2454.mp3",
     "ddha-tile-10": "/extracted_audio/sound_2457.mp3",
-    "ddhal-info": "/extracted_audio/sound_2575.mp3",
-    "ddhal-main": "/extracted_audio/sound_2490.mp3",
-    "ddhal-meta": "/extracted_audio/sound_2575.mp3",
-    "ddhal-word-01": "/extracted_audio/sound_2471.mp3",
-    "ddhal-word-02": "/extracted_audio/sound_2477.mp3",
-    "ddhal-example": "/extracted_audio/sound_2483.mp3",
-    "ddhal-tile-01": "/extracted_audio/sound_2428.mp3",
-    "ddhal-tile-02": "/extracted_audio/sound_2432.mp3",
-    "ddhal-tile-03": "/extracted_audio/sound_2436.mp3",
-    "ddhal-tile-04": "/extracted_audio/sound_2441.mp3",
-    "ddhal-tile-05": "/extracted_audio/sound_2445.mp3",
-    "ddhal-tile-06": "/extracted_audio/sound_2448.mp3",
-    "ddhal-tile-07": "/extracted_audio/sound_2451.mp3",
-    "ddhal-tile-08": "/extracted_audio/sound_2454.mp3",
-    "ddhal-tile-09": "/extracted_audio/sound_2457.mp3",
+    "ddhal-info": "/extracted_audio/sound_2320.mp3",
+    "ddhal-main": "/extracted_audio/sound_2320.mp3",
+    "ddhal-meta": "/extracted_audio/sound_2320.mp3",
+    "ddhal-word-01": "/extracted_audio/sound_2305.mp3",
+    "ddhal-word-02": "/extracted_audio/sound_2312.mp3",
+    "ddhal-example": "/extracted_audio/sound_2295.mp3",
+    "ddhal-tile-01": "/extracted_audio/sound_2250.mp3",
+    "ddhal-tile-02": "/extracted_audio/sound_2253.mp3",
+    "ddhal-tile-03": "/extracted_audio/sound_2256.mp3",
+    "ddhal-tile-04": "/extracted_audio/sound_2260.mp3",
+    "ddhal-tile-05": "/extracted_audio/sound_2264.mp3",
+    "ddhal-tile-06": "/extracted_audio/sound_2268.mp3",
+    "ddhal-tile-07": "/extracted_audio/sound_2271.mp3",
+    "ddhal-tile-08": "/extracted_audio/sound_2275.mp3",
+    "ddhal-tile-09": "/extracted_audio/sound_2278.mp3",
     "ddhal-tile-10": "/extracted_audio/sound_2282.mp3",
     "zal-info": "/extracted_audio/sound_2569.mp3",
     "zal-main": "/extracted_audio/sound_2575.mp3",
@@ -1183,11 +1184,38 @@ import { playAudio, stopAudio } from './audio-manager.js';
       let appliedCount = 0;
       for (let i = 0; i < lessons.length; i++) {
         const lesson = lessons[i];
-        const group = groups[i];
 
+        // Prefer to locate the JSON group for this lesson by matching the
+        // intro (letter_sound) filename against our explicit `cleanedBaseExtractedStageAudio`.
+        // This avoids index-shift bugs when the extractor splits groups.
+        let group = null;
+        try {
+          const explicitMain = cleanedBaseExtractedStageAudio?.[`${lesson.id}-main`] || cleanedBaseExtractedStageAudio?.[`${lesson.id}-info`] || cleanedBaseExtractedStageAudio?.[`${lesson.id}-meta`];
+          let desiredFilename = null;
+          if (explicitMain && typeof explicitMain === 'string') {
+            const m = String(explicitMain).match(/sound_?\d+\.mp3$/i);
+            if (m) desiredFilename = m[0].toLowerCase();
+          }
+
+          if (desiredFilename) {
+            group = groups.find(g => {
+              if (!g || !g.intro) return false;
+              if (String(g.intro.soundFile || '').toLowerCase() === desiredFilename) return true;
+              return (g.tiles || []).some(t => String(t.soundFile || '').toLowerCase() === desiredFilename);
+            }) || null;
+          }
+        } catch (err) {
+          console.warn('[sindhi-audio] ⚠️ Error while locating matching group for', lesson.id, err);
+          group = null;
+        }
+
+        // Fallback to index-based mapping when no matching intro filename was found
         if (!group) {
-          console.warn(`[sindhi-audio] ⚠️ No sound group found for lesson index ${i} (${lesson.id})`);
-          continue;
+          group = groups[i];
+          if (!group) {
+            console.warn(`[sindhi-audio] ⚠️ No sound group found for lesson index ${i} (${lesson.id})`);
+            continue;
+          }
         }
 
         // If group has 9 tiles, prepend the intro sound as tile-01 (Legacy SWF behavior)
@@ -1198,6 +1226,17 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
         const tileCount = Math.min(tileSounds.length, 10);
         if (tileCount === 0) continue;
+
+        // Skip auto-mapping tiles for lessons that have explicit tile mappings already defined
+        // This prevents incorrect mappings due to JSON group boundary issues (e.g., split "the" lesson)
+        const hasExplicitTiles = [...Array(10).keys()].some(i => {
+          const key = `${lesson.id}-tile-${String(i + 1).padStart(2, '0')}`;
+          return cleanedBaseExtractedStageAudio?.[key];
+        });
+
+        if (hasExplicitTiles) {
+          continue; // Skip auto-mapping, use the explicit mappings instead
+        }
 
         // RTL letters where tiles are visual RTL but audio is LTR (need to invert mapping)
         // Note: `rre` intentionally excluded to match existing mapped order.
