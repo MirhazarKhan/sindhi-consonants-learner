@@ -230,7 +230,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     { id: 'meem', letter: 'م', name: 'meem', romanBase: 'm', caption: 'as m in man' },
     { id: 'noon', letter: 'ن', name: 'noon', romanBase: 'n', caption: 'as n in net' },
     { id: 'nnoon', letter: 'ڻ', name: 'nnoon', romanBase: 'nn', caption: 'Retroflex n sound' },
-    { id: 'waw', letter: 'و', name: 'waw', romanBase: 'w', caption: 'as w in water' },
+    { id: 'waw', letter: 'و', name: 'waw', romanBase: 'w', caption: 'as V in Van Pronounced "V"' },
     { id: 'heh', letter: 'ه', name: 'heh', romanBase: 'h', caption: 'as h in hello' },
     { id: 'hamza', letter: 'ء', name: 'hamza', romanBase: 'a', caption: 'Glottal stop marker' },
     { id: 'ye', letter: 'ي', name: 'ye', romanBase: 'y', caption: 'as y in yes' }
@@ -1988,7 +1988,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
     // If explicitly cleared, hide.
     if (lesson.info === null) return false;
     // Hide for a few special-case lessons.
-    if (lesson.id === 'alif' || lesson.id === 'tthe' || lesson.id === 'ye') return false;
+    if (lesson.id === 'alif' || lesson.id === 'tthe' || lesson.id === 'ye' || lesson.id === 'hamza') return false;
     // If there's no useful info data, don't show an empty panel.
     if (!lesson.caption && !lesson.romanBase && !(lesson.info && lesson.info.lines && lesson.info.lines.length)) return false;
     return true;
