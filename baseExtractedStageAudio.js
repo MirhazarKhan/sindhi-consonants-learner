@@ -721,7 +721,6 @@ const baseExtractedStageAudio = {
   'heh-tile-08': 'extracted_audio/sound5668.mp3',
   'heh-tile-09': 'extracted_audio/sound5668.mp3',
   'heh-tile-10': 'extracted_audio/sound5668.mp3',
-  'hamza-info': 'extracted_audio/sound5719.mp3',
   'hamza-main': 'extracted_audio/sound5719.mp3',
   'hamza-meta': 'extracted_audio/sound5717.mp3',
   'hamza-word-01': 'extracted_audio/sound5714.mp3',

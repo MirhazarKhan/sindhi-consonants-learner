@@ -980,7 +980,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "hamza-tile-08": "/extracted_audio/h8.mp3",
     "hamza-tile-09": "/extracted_audio/h9.mp3",
     "hamza-tile-10": "/extracted_audio/h10.mp3",
-    "hamza-info": "/extracted_audio/sound_5037.mp3",
     "hamza-meta": "/extracted_audio/sound_5037.mp3",
     "hamza-word-01": "/extracted_audio/sound_5034.mp3",
     "hamza-word-02": "/extracted_audio/sound_5027.mp3",
@@ -1605,7 +1604,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   // Final lock: keep Hamza audio on the intended custom set.
   stageAudio['hamza-main'] = '/extracted_audio/sound_5143.mp3';
-  stageAudio['hamza-info'] = '/extracted_audio/sound_5037.mp3';
   stageAudio['hamza-meta'] = '/extracted_audio/sound_5037.mp3';
   stageAudio['hamza-word-01'] = '/extracted_audio/sound_5124.mp3';
   stageAudio['hamza-word-02'] = '/extracted_audio/sound_5130.mp3';
@@ -1925,7 +1923,7 @@ import { playAudio, stopAudio } from './audio-manager.js';
   stageAudio['sheen-meta'] = '/extracted_audio/sound_2992.mp3';
 
   // Heh should use Hamza note/info-meta, words, and example audio.
-  stageAudio['heh-info'] = stageAudio['hamza-info'];
+  stageAudio['heh-info'] = stageAudio['hamza-meta'];
   stageAudio['heh-meta'] = stageAudio['hamza-meta'];
   stageAudio['heh-word-01'] = '/extracted_audio/sound_5020.mp3';
   stageAudio['heh-word-02'] = '/extracted_audio/sound_5027.mp3';
