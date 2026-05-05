@@ -1,30 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Page() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const handleReady = () => setIsLoading(false);
-    const handleLoad = () => setIsLoading(false);
-    const safetyTimer = window.setTimeout(handleReady, 2200);
-
-    window.addEventListener('stage:ready', handleReady);
-
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-    }
-
-    return () => {
-      window.removeEventListener('stage:ready', handleReady);
-      window.removeEventListener("load", handleLoad);
-      window.clearTimeout(safetyTimer);
-    };
-  }, []);
-
   useEffect(() => {
     // Load GSAP first, then stage script, so motion upgrades are available immediately.
     const existingGsap = typeof window !== "undefined" && (window as { gsap?: unknown }).gsap;
@@ -50,7 +28,7 @@ export default function Page() {
       gsapScript.onerror = mountStageScript;
       document.head.appendChild(gsapScript);
     }
-
+    
     return () => {
       if (document.body.contains(stageScript)) {
         document.body.removeChild(stageScript);
@@ -69,7 +47,9 @@ export default function Page() {
         <section id="stageSceneCard" class="stage-scene-card">
           <div class="stage-scene-frame">
             <div id="stageGrid" class="stage-grid" dir="rtl">
+              <button id="stageInfoBtn" class="stage-panel stage-info-panel" type="button"></button>
               <button id="stageLetterBtn" class="stage-panel stage-letter-panel" type="button"></button>
+              <button id="stageMetaBtn" class="stage-panel stage-meta-panel" type="button"></button>
               <div id="stageWordsPanel" class="stage-panel stage-words-panel" hidden></div>
               <button id="stageExampleBtn" class="stage-panel stage-example-panel" type="button"></button>
             </div>
@@ -99,17 +79,12 @@ export default function Page() {
             <span class="stage-kbd">Space</span> full lesson ·
             <span class="stage-kbd">Esc</span> stop ·
             <span class="stage-kbd">1</span>–<span class="stage-kbd">0</span> jump tile
-            &nbsp; | &nbsp;
-            <a href="/audio-mapper.html" style="color:#8a74ff; text-decoration: underline;">Open Audio Mapper</a>
           </p>
         </section>
       </main>
   `;
 
   return (
-    <>
-      {isLoading && <div className="loading-bar"></div>}
-      <div className="stage-app-shell" dangerouslySetInnerHTML={{ __html: rawHTML }} suppressHydrationWarning></div>
-    </>
+    <div className="stage-app-shell" dangerouslySetInnerHTML={{ __html: rawHTML }} suppressHydrationWarning></div>
   );
 }

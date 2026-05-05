@@ -186,14 +186,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   const remainingConsonants = [
     { id: 'pe', letter: 'پ', name: 'pe', romanBase: 'p', caption: 'as p in pen' },
-    { id: 'bhe', letter: 'ڀ', name: 'bhe', romanBase: 'bh', caption: 'as b in Bharat', infoAudioKey: 'bhe-info' },
-    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'as t in Taiwan', infoAudioKey: 'te-info' },
+    { id: 'bhe', letter: 'ڀ', name: 'bhe', romanBase: 'bh', caption: 'Breathy b sound' },
+    { id: 'te', letter: 'ت', name: 'te', romanBase: 't', caption: 'as t in tap' },
     { id: 'the', letter: 'ٿ', name: 'the', romanBase: 'th', caption: 'Aspirated t sound' },
     { id: 'tte', letter: 'ٽ', name: 'tte', romanBase: 'tt', caption: 'Retroflex t sound' },
     { id: 'tthe', letter: 'ٺ', name: 'tthe', romanBase: 'tth', caption: 'Aspirated retroflex t' },
     { id: 'se', letter: 'ث', name: 'se', romanBase: 's', caption: 'as s in sun' },
     { id: 'jeem', letter: 'ج', name: 'jeem', romanBase: 'j', caption: 'as j in jam' },
-    { id: 'nye', letter: 'ڄ', name: 'nye', romanBase: 'nj', caption: 'Sindhi nye sound', hideInfo: true },
+    { id: 'nye', letter: 'ڄ', name: 'nye', romanBase: 'nj', caption: 'Sindhi nye sound' },
     { id: 'jhe', letter: 'جھ', name: 'jhe', romanBase: 'jh', caption: 'as j in jug' },
     { id: 'nyay', letter: 'ڃ', name: 'nyay', romanBase: 'ny', caption: 'Nasal ny sound' },
     { id: 'che', letter: 'چ', name: 'che', romanBase: 'ch', caption: 'as ch in chair' },
@@ -338,10 +338,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
       romanBase: config.romanBase,
       caption: config.caption,
       theme,
-      info: config.hideInfo ? null : {
+      info: {
         lines: infoLines,
-        // Prefer the dedicated lesson note clip when present.
-        audioKey: config.infoAudioKey || `${config.id}-info`,
+        audioKey: `${config.id}-info`,
         voiceText: `${config.name}. ${config.caption}`
       },
       main: {
@@ -376,6 +375,181 @@ import { playAudio, stopAudio } from './audio-manager.js';
   // remove meta panel for `pe`
   const peLesson = stageLessons.find(l => l.id === 'pe');
   if (peLesson) peLesson.meta = null;
+
+  // remove meta and info panel for `nye`
+  const nyeLesson = stageLessons.find(l => l.id === 'nye');
+  if (nyeLesson) {
+    nyeLesson.meta = null;
+    nyeLesson.info = null;
+  }
+
+  // remove meta and info panel for `jhe`
+  const jheLesson = stageLessons.find(l => l.id === 'jhe');
+  if (jheLesson) {
+    jheLesson.meta = null;
+    jheLesson.info = null;
+  }
+
+  // remove meta and info panel for `nyay`
+  const nyayLesson = stageLessons.find(l => l.id === 'nyay');
+  if (nyayLesson) {
+    nyayLesson.meta = null;
+    nyayLesson.info = null;
+  }
+
+  // remove meta and info panel for `ddhal`
+  const ddhalLesson = stageLessons.find(l => l.id === 'ddhal');
+  if (ddhalLesson) {
+    ddhalLesson.meta = null;
+    ddhalLesson.info = null;
+  }
+
+  // remove meta and info panel for `rre`
+  const rreLesson = stageLessons.find(l => l.id === 'rre');
+  if (rreLesson) {
+    rreLesson.meta = null;
+    rreLesson.info = null;
+  }
+
+  // remove meta panel for `seen`
+  const seenLesson = stageLessons.find(l => l.id === 'seen');
+  if (seenLesson) {
+    seenLesson.meta = null;
+  }
+
+  // remove meta panel for `sheen`
+  const sheenLesson = stageLessons.find(l => l.id === 'sheen');
+  if (sheenLesson) {
+    sheenLesson.meta = null;
+  }
+
+  // remove meta panel for `swad`
+  const swadLesson = stageLessons.find(l => l.id === 'swad');
+  if (swadLesson) {
+    swadLesson.meta = null;
+  }
+
+  // remove meta panel for `zwad`
+  const zwadLesson = stageLessons.find(l => l.id === 'zwad');
+  if (zwadLesson) {
+    zwadLesson.meta = null;
+  }
+
+  // remove meta panel for `toe`
+  const toeLesson = stageLessons.find(l => l.id === 'toe');
+  if (toeLesson) {
+    toeLesson.meta = null;
+  }
+
+  // remove meta panel for `zoe`
+  const zoeLesson = stageLessons.find(l => l.id === 'zoe');
+  if (zoeLesson) {
+    zoeLesson.meta = null;
+  }
+
+  // remove meta and info panel for `ain`
+  const ainLesson = stageLessons.find(l => l.id === 'ain');
+  if (ainLesson) {
+    ainLesson.meta = null;
+    ainLesson.info = null;
+  }
+
+  // remove meta and info panel for `ghain`
+  const ghainLesson = stageLessons.find(l => l.id === 'ghain');
+  if (ghainLesson) {
+    ghainLesson.meta = null;
+    ghainLesson.info = null;
+  }
+
+  // remove meta panel for `fe`
+  const feLesson = stageLessons.find(l => l.id === 'fe');
+  if (feLesson) {
+    feLesson.meta = null;
+  }
+
+  // remove meta and info panel for `phe`
+  const pheLesson = stageLessons.find(l => l.id === 'phe');
+  if (pheLesson) {
+    pheLesson.meta = null;
+    pheLesson.info = null;
+  }
+
+  // remove meta panel for `qaf`
+  const qafLesson = stageLessons.find(l => l.id === 'qaf');
+  if (qafLesson) {
+    qafLesson.meta = null;
+  }
+
+  // remove meta and info panel for `kaf`
+  const kafLesson = stageLessons.find(l => l.id === 'kaf');
+  if (kafLesson) {
+    kafLesson.meta = null;
+    kafLesson.info = null;
+  }
+
+  // remove meta panel for `khaf`
+  const khafLesson = stageLessons.find(l => l.id === 'khaf');
+  if (khafLesson) {
+    khafLesson.meta = null;
+  }
+
+  // remove meta panel for `gaf`
+  const gafLesson = stageLessons.find(l => l.id === 'gaf');
+  if (gafLesson) {
+    gafLesson.meta = null;
+  }
+
+  // remove meta and info panel for `ggaf`
+  const ggafLesson = stageLessons.find(l => l.id === 'ggaf');
+  if (ggafLesson) {
+    ggafLesson.meta = null;
+    ggafLesson.info = null;
+  }
+
+  // remove meta and info panel for `ghaf`
+  const ghafLesson = stageLessons.find(l => l.id === 'ghaf');
+  if (ghafLesson) {
+    ghafLesson.meta = null;
+    ghafLesson.info = null;
+  }
+
+  // remove meta and info panel for `ngoe`
+  const ngoeLesson = stageLessons.find(l => l.id === 'ngoe');
+  if (ngoeLesson) {
+    ngoeLesson.meta = null;
+    ngoeLesson.info = null;
+  }
+
+  // remove meta panel for `lam`
+  const lamLesson = stageLessons.find(l => l.id === 'lam');
+  if (lamLesson) {
+    lamLesson.meta = null;
+  }
+
+  // remove meta panel for `meem`
+  const meemLesson = stageLessons.find(l => l.id === 'meem');
+  if (meemLesson) {
+    meemLesson.meta = null;
+  }
+
+  // remove meta panel for `noon`
+  const noonLesson = stageLessons.find(l => l.id === 'noon');
+  if (noonLesson) {
+    noonLesson.meta = null;
+  }
+
+  // remove meta and info panel for `nnoon`
+  const nnoonLesson = stageLessons.find(l => l.id === 'nnoon');
+  if (nnoonLesson) {
+    nnoonLesson.meta = null;
+    nnoonLesson.info = null;
+  }
+
+  // remove meta panel for `waw`
+  const wawLesson = stageLessons.find(l => l.id === 'waw');
+  if (wawLesson) {
+    wawLesson.meta = null;
+  }
 
   function getLessonTiles(lesson) {
     if (Array.isArray(lesson?.tiles) && lesson.tiles.length > 0) {
@@ -455,22 +629,37 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
     "bbe-main": "/extracted_audio/sound_0520.mp3",
 
+    "bbe-word-01": "/extracted_audio/sound_0526.mp3",
+    "bbe-word-02": "/extracted_audio/sound_0532.mp3",
+    "bbe-example": "/extracted_audio/sound_0520.mp3",
+    "pe-info": "/extracted_audio/sound_0621.mp3",
+    "pe-main": "/extracted_audio/sound_0621.mp3",
 
     "pe-word-01": "/extracted_audio/sound_0628.mp3",
-    "seen-info": "/extracted_audio/sound_2914.mp3",
-    "seen-main": "/extracted_audio/sound_2918.mp3",
-    "seen-meta": "/extracted_audio/sound_2914.mp3",
-    "seen-word-01": "/extracted_audio/sound_2900.mp3",
-    "seen-word-02": "/extracted_audio/sound_2904.mp3",
-    "seen-example": "/extracted_audio/sound_2910.mp3",
+    "pe-word-02": "/extracted_audio/sound_0636.mp3",
+    "pe-example": "/extracted_audio/sound_0642.mp3",
+    "bhe-info": "/extracted_audio/sound_0679.mp3",
+    "bhe-main": "/extracted_audio/sound_0679.mp3",
+    "bhe-meta": "/extracted_audio/sound_0679.mp3",
+    "bhe-word-01": "/extracted_audio/sound_0692.mp3",
+    "bhe-word-02": "/extracted_audio/sound_0698.mp3",
+    "bhe-example": "/extracted_audio/sound_0704.mp3",
+    "te-info": "/extracted_audio/sound_0816.mp3",
+    "te-main": "/extracted_audio/sound_0858.mp3",
+    "te-meta": "/extracted_audio/sound_0816.mp3",
     "te-word-01": "/extracted_audio/sound_0837.mp3",
     "te-word-02": "/extracted_audio/sound_0830.mp3",
-    "seen-info": "/extracted_audio/sound_2914.mp3",
-    "seen-main": "/extracted_audio/sound_2918.mp3",
-    "seen-meta": "/extracted_audio/sound_2914.mp3",
-    "seen-word-01": "/extracted_audio/sound_2900.mp3",
-    "seen-word-02": "/extracted_audio/sound_2904.mp3",
-    "seen-example": "/extracted_audio/sound_2910.mp3",
+    "tte-word-02": "/extracted_audio/sound_1032.mp3",
+    "the-info": "/extracted_audio/sound_0915.mp3",
+    "the-main": "/extracted_audio/sound_0959.mp3",
+    "the-meta": "/extracted_audio/sound_0915.mp3",
+    "the-word-01": "/extracted_audio/sound_0925.mp3",
+    "the-word-02": "/extracted_audio/sound_0932.mp3",
+    "the-example": "/extracted_audio/sound_0939.mp3",
+    "the-tile-01": "/extracted_audio/sound_0880.mp3",
+    "the-tile-02": "/extracted_audio/sound_0883.mp3",
+    "the-tile-03": "/extracted_audio/sound_0886.mp3",
+    "the-tile-04": "/extracted_audio/sound_0889.mp3",
     "the-tile-05": "/extracted_audio/sound_0893.mp3",
     "the-tile-06": "/extracted_audio/sound_0896.mp3",
     "the-tile-07": "/extracted_audio/sound_0899.mp3",
@@ -565,9 +754,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ddal-info": "/extracted_audio/sound_2401.mp3",
     "ddal-main": "/extracted_audio/sound_2320.mp3",
     "ddal-meta": "/extracted_audio/sound_2401.mp3",
-    "ddal-word-01": "/extracted_audio/sound_2305.mp3",
-    "ddal-word-02": "/extracted_audio/sound_2312.mp3",
-    "ddal-example": "/extracted_audio/sound_2295.mp3",
+    "ddal-word-01": "/extracted_audio/sound_2390.mp3",
+    "ddal-word-02": "/extracted_audio/sound_2397.mp3",
+    "ddal-example": "/extracted_audio/sound_2384.mp3",
     "ddal-tile-01": "/extracted_audio/sound_2340.mp3",
     "ddal-tile-02": "/extracted_audio/sound_2343.mp3",
     "ddal-tile-03": "/extracted_audio/sound_2347.mp3",
@@ -581,9 +770,9 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ddha-info": "/extracted_audio/sound_2401.mp3",
     "ddha-main": "/extracted_audio/sound_2424.mp3",
     "ddha-meta": "/extracted_audio/sound_2490.mp3",
-    "ddha-word-01": "/extracted_audio/sound_2384.mp3",
-    "ddha-word-02": "/extracted_audio/sound_2390.mp3",
-    "ddha-example": "/extracted_audio/sound_2397.mp3",
+    "ddha-word-01": "/extracted_audio/sound_2471.mp3",
+    "ddha-word-02": "/extracted_audio/sound_2477.mp3",
+    "ddha-example": "/extracted_audio/sound_2483.mp3",
     "ddha-tile-01": "/extracted_audio/sound_2424.mp3",
     "ddha-tile-02": "/extracted_audio/sound_2428.mp3",
     "ddha-tile-03": "/extracted_audio/sound_2432.mp3",
@@ -594,12 +783,12 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "ddha-tile-08": "/extracted_audio/sound_2451.mp3",
     "ddha-tile-09": "/extracted_audio/sound_2454.mp3",
     "ddha-tile-10": "/extracted_audio/sound_2457.mp3",
-    "ddhal-info": "/extracted_audio/sound_2320.mp3",
+    "ddhal-info": "/extracted_audio/sound_2575.mp3",
     "ddhal-main": "/extracted_audio/sound_2320.mp3",
-    "ddhal-meta": "/extracted_audio/sound_2320.mp3",
-    "ddhal-word-01": "/extracted_audio/sound_2305.mp3",
-    "ddhal-word-02": "/extracted_audio/sound_2312.mp3",
-    "ddhal-example": "/extracted_audio/sound_2295.mp3",
+    "ddhal-meta": "/extracted_audio/sound_2575.mp3",
+    "ddhal-word-01": "/extracted_audio/sound_2295.mp3",
+    "ddhal-word-02": "/extracted_audio/sound_2305.mp3",
+    "ddhal-example": "/extracted_audio/sound_2312.mp3",
     "ddhal-tile-01": "/extracted_audio/sound_2250.mp3",
     "ddhal-tile-02": "/extracted_audio/sound_2253.mp3",
     "ddhal-tile-03": "/extracted_audio/sound_2256.mp3",
@@ -633,136 +822,143 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "seen-word-01": "/extracted_audio/sound_2900.mp3",
     "seen-word-02": "/extracted_audio/sound_2904.mp3",
     "seen-example": "/extracted_audio/sound_2910.mp3",
-    "sheen-info": "/extracted_audio/sound_2810.mp3",
-    "sheen-main": "/extracted_audio/sound_2810.mp3",
-    "sheen-meta": "/extracted_audio/sound_2810.mp3",
-    "sheen-example": "/extracted_audio/sound_2822.mp3",
-    "swad-info": "/extracted_audio/sound_2914.mp3",
-    "swad-main": "/extracted_audio/sound_2914.mp3",
-    "swad-meta": "/extracted_audio/sound_2914.mp3",
-    "swad-word-01": "/extracted_audio/sound_2900.mp3",
-    "swad-word-02": "/extracted_audio/sound_2904.mp3",
-    "swad-example": "/extracted_audio/sound_2910.mp3",
-    "zwad-info": "/extracted_audio/sound_2992.mp3",
-    "zwad-main": "/extracted_audio/sound_2992.mp3",
-    "zwad-meta": "/extracted_audio/sound_2992.mp3",
-    "zwad-word-01": "/extracted_audio/sound_3000.mp3",
-    "zwad-word-02": "/extracted_audio/sound_3007.mp3",
-    "zwad-example": "/extracted_audio/sound_3013.mp3",
-    "toe-info": "/extracted_audio/sound_3108.mp3",
-    "toe-main": "/extracted_audio/sound_3108.mp3",
-    "toe-meta": "/extracted_audio/sound_3108.mp3",
-    "toe-word-01": "/extracted_audio/sound_3093.mp3",
-    "toe-word-02": "/extracted_audio/sound_3099.mp3",
-    "toe-example": "/extracted_audio/sound_3105.mp3",
-    "zoe-info": "/extracted_audio/sound_3184.mp3",
-    "zoe-main": "/extracted_audio/sound_3184.mp3",
-    "zoe-meta": "/extracted_audio/sound_3184.mp3",
-    "zoe-word-01": "/extracted_audio/sound_3191.mp3",
-    "zoe-word-02": "/extracted_audio/sound_3197.mp3",
-    "zoe-example": "/extracted_audio/sound_3203.mp3",
+    "sheen-info": "/extracted_audio/sound_2992.mp3",
+    "sheen-main": "/extracted_audio/sound_3032.mp3",
+    "sheen-meta": "/extracted_audio/sound_2992.mp3",
+    "sheen-word-01": "/extracted_audio/sound_3000.mp3",
+    "sheen-word-02": "/extracted_audio/sound_3007.mp3",
+    "sheen-example": "/extracted_audio/sound_3013.mp3",
+    "swad-info": "/extracted_audio/sound_3108.mp3",
+    "swad-main": "/extracted_audio/sound_3128.mp3",
+    "swad-meta": "/extracted_audio/sound_3108.mp3",
+    "swad-word-01": "/extracted_audio/sound_3093.mp3",
+    "swad-word-02": "/extracted_audio/sound_3099.mp3",
+    "swad-example": "/extracted_audio/sound_3105.mp3",
+    "zwad-info": "/extracted_audio/sound_3184.mp3",
+    "zwad-main": "/extracted_audio/sound_3224.mp3",
+    "zwad-meta": "/extracted_audio/sound_3184.mp3",
+    "zwad-word-01": "/extracted_audio/sound_3191.mp3",
+    "zwad-word-02": "/extracted_audio/sound_3197.mp3",
+    "zwad-example": "/extracted_audio/sound_3203.mp3",
+    "toe-info": "/extracted_audio/sound_3306.mp3",
+    "toe-main": "/extracted_audio/sound_3321.mp3",
+    "toe-meta": "/extracted_audio/sound_3306.mp3",
+    "toe-word-01": "/extracted_audio/sound_3287.mp3",
+    "toe-word-02": "/extracted_audio/sound_3294.mp3",
+    "toe-example": "/extracted_audio/sound_3301.mp3",
+    "zoe-info": "/extracted_audio/sound_3382.mp3",
+    "zoe-main": "/extracted_audio/sound_3412.mp3",
+    "zoe-meta": "/extracted_audio/sound_3382.mp3",
+    "zoe-word-01": "/extracted_audio/sound_3387.mp3",
+    "zoe-word-02": "/extracted_audio/sound_3393.mp3",
+    "zoe-example": "/extracted_audio/sound_3399.mp3",
     "ain-info": "/extracted_audio/sound_3306.mp3",
     "ain-main": "/extracted_audio/sound_3306.mp3",
     "ain-meta": "/extracted_audio/sound_3306.mp3",
     "ain-word-01": "/extracted_audio/sound_3287.mp3",
     "ain-word-02": "/extracted_audio/sound_3294.mp3",
-    "ain-example": "/extracted_audio/sound_3301.mp3",
-    "ghain-info": "/extracted_audio/sound_3382.mp3",
-    "ghain-main": "/extracted_audio/sound_3382.mp3",
-    "ghain-meta": "/extracted_audio/sound_3382.mp3",
-    "ghain-word-01": "/extracted_audio/sound_3387.mp3",
-    "ghain-word-02": "/extracted_audio/sound_3393.mp3",
-    "ghain-example": "/extracted_audio/sound_3399.mp3",
-    "fe-info": "/extracted_audio/sound_3478.mp3",
-    "fe-main": "/extracted_audio/sound_3478.mp3",
-    "fe-meta": "/extracted_audio/sound_3478.mp3",
-    "fe-word-01": "/extracted_audio/sound_3478.mp3",
-    "fe-word-02": "/extracted_audio/sound_3486.mp3",
-    "fe-example": "/extracted_audio/sound_3492.mp3",
-    "phe-info": "/extracted_audio/sound_3574.mp3",
-    "phe-main": "/extracted_audio/sound_3574.mp3",
-    "phe-meta": "/extracted_audio/sound_3574.mp3",
-    "phe-word-01": "/extracted_audio/sound_3574.mp3",
-    "phe-word-02": "/extracted_audio/sound_3579.mp3",
-    "phe-example": "/extracted_audio/sound_3585.mp3",
-    "qaf-info": "/extracted_audio/sound_3681.mp3",
-    "qaf-main": "/extracted_audio/sound_3681.mp3",
-    "qaf-meta": "/extracted_audio/sound_3681.mp3",
-    "qaf-word-01": "/extracted_audio/sound_3662.mp3",
-    "qaf-word-02": "/extracted_audio/sound_3670.mp3",
-    "qaf-example": "/extracted_audio/sound_3677.mp3",
-    "kaf-info": "/extracted_audio/sound_3765.mp3",
-    "kaf-main": "/extracted_audio/sound_3765.mp3",
-    "kaf-meta": "/extracted_audio/sound_3765.mp3",
-    "kaf-word-01": "/extracted_audio/sound_3765.mp3",
-    "kaf-word-02": "/extracted_audio/sound_3772.mp3",
-    "kaf-example": "/extracted_audio/sound_3779.mp3",
-    "khaf-info": "/extracted_audio/sound_3895.mp3",
-    "khaf-main": "/extracted_audio/sound_3895.mp3",
-    "khaf-meta": "/extracted_audio/sound_3895.mp3",
-    "khaf-word-01": "/extracted_audio/sound_3875.mp3",
-    "khaf-word-02": "/extracted_audio/sound_3883.mp3",
-    "khaf-example": "/extracted_audio/sound_3890.mp3",
-    "gaf-info": "/extracted_audio/sound_3971.mp3",
-    "gaf-main": "/extracted_audio/sound_3971.mp3",
-    "gaf-meta": "/extracted_audio/sound_3971.mp3",
-    "gaf-word-01": "/extracted_audio/sound_3971.mp3",
-    "gaf-word-02": "/extracted_audio/sound_3977.mp3",
-    "gaf-example": "/extracted_audio/sound_3983.mp3",
-    "ggaf-info": "/extracted_audio/sound_4075.mp3",
-    "ggaf-main": "/extracted_audio/sound_4075.mp3",
-    "ggaf-meta": "/extracted_audio/sound_4075.mp3",
-    "ggaf-word-01": "/extracted_audio/sound_4060.mp3",
-    "ggaf-word-02": "/extracted_audio/sound_4066.mp3",
-    "ggaf-example": "/extracted_audio/sound_4071.mp3",
-    "ghaf-info": "/extracted_audio/sound_4152.mp3",
-    "ghaf-main": "/extracted_audio/sound_4152.mp3",
-    "ghaf-meta": "/extracted_audio/sound_4152.mp3",
-    "ghaf-word-01": "/extracted_audio/sound_4158.mp3",
-    "ghaf-word-02": "/extracted_audio/sound_4164.mp3",
-    "ghaf-example": "/extracted_audio/sound_4173.mp3",
-    "ngoe-info": "/extracted_audio/sound_4250.mp3",
-    "ngoe-main": "/extracted_audio/sound_4250.mp3",
-    "ngoe-meta": "/extracted_audio/sound_4250.mp3",
-    "ngoe-word-01": "/extracted_audio/sound_4250.mp3",
-    "ngoe-word-02": "/extracted_audio/sound_4256.mp3",
-    "ngoe-example": "/extracted_audio/sound_4263.mp3",
-    "lam-info": "/extracted_audio/sound_4348.mp3",
-    "lam-main": "/extracted_audio/sound_4348.mp3",
-    "lam-meta": "/extracted_audio/sound_4348.mp3",
-    "lam-word-01": "/extracted_audio/sound_4348.mp3",
-    "lam-word-02": "/extracted_audio/sound_4355.mp3",
-    "lam-example": "/extracted_audio/sound_4361.mp3",
-    "meem-info": "/extracted_audio/sound_4461.mp3",
-    "meem-main": "/extracted_audio/sound_4461.mp3",
-    "meem-meta": "/extracted_audio/sound_4461.mp3",
-    "meem-word-01": "/extracted_audio/sound_4461.mp3",
-    "meem-word-02": "/extracted_audio/sound_4467.mp3",
-    "meem-example": "/extracted_audio/sound_4474.mp3",
-    "noon-info": "/extracted_audio/sound_4554.mp3",
-    "noon-main": "/extracted_audio/sound_4554.mp3",
-    "noon-meta": "/extracted_audio/sound_4554.mp3",
-    "noon-word-01": "/extracted_audio/sound_4560.mp3",
-    "noon-word-02": "/extracted_audio/sound_4567.mp3",
-    "noon-example": "/extracted_audio/sound_4574.mp3",
-    "nnoon-info": "/extracted_audio/sound_4668.mp3",
-    "nnoon-main": "/extracted_audio/sound_4668.mp3",
-    "nnoon-meta": "/extracted_audio/sound_4668.mp3",
-    "nnoon-word-01": "/extracted_audio/sound_4651.mp3",
-    "nnoon-word-02": "/extracted_audio/sound_4658.mp3",
-    "nnoon-example": "/extracted_audio/sound_4664.mp3",
-    "waw-info": "/extracted_audio/sound_4742.mp3",
-    "waw-main": "/extracted_audio/sound_4742.mp3",
-    "waw-meta": "/extracted_audio/sound_4742.mp3",
-    "waw-word-01": "/extracted_audio/sound_4749.mp3",
-    "waw-word-02": "/extracted_audio/sound_4754.mp3",
-    "waw-example": "/extracted_audio/sound_4761.mp3",
+    "ain-info": "/extracted_audio/sound_3463.mp3",
+    "ain-main": "/extracted_audio/sound_3463.mp3",
+    "ain-meta": "/extracted_audio/sound_3463.mp3",
+    "ain-word-01": "/extracted_audio/sound_3478.mp3",
+    "ain-word-02": "/extracted_audio/sound_3486.mp3",
+    "ain-example": "/extracted_audio/sound_3492.mp3",
+    "ghain-info": "/extracted_audio/sound_3599.mp3",
+    "ghain-main": "/extracted_audio/sound_3599.mp3",
+    "ghain-meta": "/extracted_audio/sound_3599.mp3",
+    "ghain-word-01": "/extracted_audio/sound_3574.mp3",
+    "ghain-word-02": "/extracted_audio/sound_3579.mp3",
+    "ghain-example": "/extracted_audio/sound_3585.mp3",
+    "fe-info": "/extracted_audio/sound_3681.mp3",
+    "fe-main": "/extracted_audio/sound_3700.mp3",
+    "fe-meta": "/extracted_audio/sound_3681.mp3",
+    "fe-word-01": "/extracted_audio/sound_3662.mp3",
+    "fe-word-02": "/extracted_audio/sound_3670.mp3",
+    "fe-example": "/extracted_audio/sound_3677.mp3",
+    "phe-info": "/extracted_audio/sound_3797.mp3",
+    "phe-main": "/extracted_audio/sound_3797.mp3",
+    "phe-meta": "/extracted_audio/sound_3797.mp3",
+    "phe-word-01": "/extracted_audio/sound_3765.mp3",
+    "phe-word-02": "/extracted_audio/sound_3772.mp3",
+    "phe-example": "/extracted_audio/sound_3779.mp3",
+    "qaf-info": "/extracted_audio/sound_3895.mp3",
+    "qaf-main": "/extracted_audio/sound_3910.mp3",
+    "qaf-meta": "/extracted_audio/sound_3895.mp3",
+    "qaf-word-01": "/extracted_audio/sound_3875.mp3",
+    "qaf-word-02": "/extracted_audio/sound_3883.mp3",
+    "qaf-example": "/extracted_audio/sound_3890.mp3",
+    "kaf-info": "/extracted_audio/sound_3997.mp3",
+    "kaf-main": "/extracted_audio/sound_3997.mp3",
+    "kaf-meta": "/extracted_audio/sound_3997.mp3",
+    "kaf-word-01": "/extracted_audio/sound_3971.mp3",
+    "kaf-word-02": "/extracted_audio/sound_3977.mp3",
+    "kaf-example": "/extracted_audio/sound_3983.mp3",
+    "khaf-info": "/extracted_audio/sound_4075.mp3",
+    "khaf-main": "/extracted_audio/sound_4089.mp3",
+    "khaf-meta": "/extracted_audio/sound_4075.mp3",
+    "khaf-word-01": "/extracted_audio/sound_4060.mp3",
+    "khaf-word-02": "/extracted_audio/sound_4066.mp3",
+    "khaf-example": "/extracted_audio/sound_4071.mp3",
+    "gaf-info": "/extracted_audio/sound_4152.mp3",
+    "gaf-main": "/extracted_audio/sound_4186.mp3",
+    "gaf-meta": "/extracted_audio/sound_4152.mp3",
+    "gaf-word-01": "/extracted_audio/sound_4158.mp3",
+    "gaf-word-02": "/extracted_audio/sound_4164.mp3",
+    "gaf-example": "/extracted_audio/sound_4173.mp3",
+    "ggaf-info": "/extracted_audio/sound_4250.mp3",
+    "ggaf-main": "/extracted_audio/sound_4278.mp3",
+    "ggaf-meta": "/extracted_audio/sound_4250.mp3",
+    "ggaf-word-01": "/extracted_audio/sound_4250.mp3",
+    "ggaf-word-02": "/extracted_audio/sound_4256.mp3",
+    "ggaf-example": "/extracted_audio/sound_4263.mp3",
+    "ghaf-info": "/extracted_audio/sound_4348.mp3",
+    "ghaf-main": "/extracted_audio/sound_4395.mp3",
+    "ghaf-meta": "/extracted_audio/sound_4348.mp3",
+    "ghaf-word-01": "/extracted_audio/sound_4348.mp3",
+    "ghaf-word-02": "/extracted_audio/sound_4355.mp3",
+    "ghaf-example": "/extracted_audio/sound_4361.mp3",
+    "ngoe-info": "/extracted_audio/sound_4461.mp3",
+    "ngoe-main": "/extracted_audio/sound_4492.mp3",
+    "ngoe-meta": "/extracted_audio/sound_4461.mp3",
+    "ngoe-word-01": "/extracted_audio/sound_4461.mp3",
+    "ngoe-word-02": "/extracted_audio/sound_4467.mp3",
+    "ngoe-example": "/extracted_audio/sound_4474.mp3",
+    "lam-info": "/extracted_audio/sound_4554.mp3",
+    "lam-main": "/extracted_audio/sound_4588.mp3",
+    "lam-meta": "/extracted_audio/sound_4554.mp3",
+    "lam-word-01": "/extracted_audio/sound_4560.mp3",
+    "lam-word-02": "/extracted_audio/sound_4567.mp3",
+    "lam-example": "/extracted_audio/sound_4574.mp3",
+    "meem-info": "/extracted_audio/sound_4668.mp3",
+    "meem-main": "/extracted_audio/sound_4683.mp3",
+    "meem-meta": "/extracted_audio/sound_4668.mp3",
+    "meem-word-01": "/extracted_audio/sound_4651.mp3",
+    "meem-word-02": "/extracted_audio/sound_4658.mp3",
+    "meem-example": "/extracted_audio/sound_4664.mp3",
+    "noon-info": "/extracted_audio/sound_4742.mp3",
+    "noon-main": "/extracted_audio/sound_4775.mp3",
+    "noon-meta": "/extracted_audio/sound_4742.mp3",
+    "noon-word-01": "/extracted_audio/sound_4749.mp3",
+    "noon-word-02": "/extracted_audio/sound_4754.mp3",
+    "noon-example": "/extracted_audio/sound_4761.mp3",
+    "nnoon-info": "/extracted_audio/sound_4836.mp3",
+    "nnoon-main": "/extracted_audio/sound_4873.mp3",
+    "nnoon-meta": "/extracted_audio/sound_4836.mp3",
+    "nnoon-word-01": "/extracted_audio/sound_4836.mp3",
+    "nnoon-word-02": "/extracted_audio/sound_4841.mp3",
+    "nnoon-example": "/extracted_audio/sound_4848.mp3",
+    "waw-info": "/extracted_audio/sound_4934.mp3",
+    "waw-main": "/extracted_audio/sound_4969.mp3",
+    "waw-meta": "/extracted_audio/sound_4934.mp3",
+    "waw-word-01": "/extracted_audio/sound_4941.mp3",
+    "waw-word-02": "/extracted_audio/sound_4947.mp3",
+    "waw-example": "/extracted_audio/sound_4953.mp3",
     "heh-info": "/extracted_audio/sound_5699.mp3",
     "heh-main": "/extracted_audio/sound_5699.mp3",
     "heh-meta": "/extracted_audio/sound_5664.mp3",
-    "heh-word-01": "/extracted_audio/sound_5666.mp3",
-    "heh-word-02": "/extracted_audio/sound_5668.mp3",
-    "heh-example": "/extracted_audio/sound_5666.mp3",
+    "heh-word-01": "/extracted_audio/sound_5020.mp3",
+    "heh-word-02": "/extracted_audio/sound_5027.mp3",
+    "heh-example": "/extracted_audio/sound_5034.mp3",
     "heh-tile-01": "/extracted_audio/sound_5650.mp3",
     "heh-tile-02": "/extracted_audio/sound_5654.mp3",
     "heh-tile-03": "/extracted_audio/sound_5656.mp3",
@@ -789,12 +985,12 @@ import { playAudio, stopAudio } from './audio-manager.js';
     "hamza-word-01": "/extracted_audio/sound_5034.mp3",
     "hamza-word-02": "/extracted_audio/sound_5027.mp3",
     "hamza-example": "/extracted_audio/sound_5020.mp3",
-    "ye-info": "/extracted_audio/sound_undefined.mp3",
-    "ye-main": "/extracted_audio/sound_undefined.mp3",
-    "ye-meta": "/extracted_audio/sound_undefined.mp3",
-    "ye-word-01": "/extracted_audio/sound_undefined.mp3",
-    "ye-word-02": "/extracted_audio/sound_undefined.mp3",
-    "ye-example": "/extracted_audio/sound_undefined.mp3",
+    "ye-info": "/extracted_audio/sound_5236.mp3",
+    "ye-main": "/extracted_audio/sound_5236.mp3",
+    "ye-meta": "/extracted_audio/sound_5220.mp3",
+    "ye-word-01": "/extracted_audio/sound_5202.mp3",
+    "ye-word-02": "/extracted_audio/sound_5209.mp3",
+    "ye-example": "/extracted_audio/sound_5215.mp3",
 
     "ze-word-02": "/extracted_audio/sound_2822.mp3",
     "ze-word-01": "/extracted_audio/sound_2816.mp3",
@@ -1170,38 +1366,11 @@ import { playAudio, stopAudio } from './audio-manager.js';
       let appliedCount = 0;
       for (let i = 0; i < lessons.length; i++) {
         const lesson = lessons[i];
+        const group = groups[i];
 
-        // Prefer to locate the JSON group for this lesson by matching the
-        // intro (letter_sound) filename against our explicit `cleanedBaseExtractedStageAudio`.
-        // This avoids index-shift bugs when the extractor splits groups.
-        let group = null;
-        try {
-          const explicitMain = cleanedBaseExtractedStageAudio?.[`${lesson.id}-main`] || cleanedBaseExtractedStageAudio?.[`${lesson.id}-info`] || cleanedBaseExtractedStageAudio?.[`${lesson.id}-meta`];
-          let desiredFilename = null;
-          if (explicitMain && typeof explicitMain === 'string') {
-            const m = String(explicitMain).match(/sound_?\d+\.mp3$/i);
-            if (m) desiredFilename = m[0].toLowerCase();
-          }
-
-          if (desiredFilename) {
-            group = groups.find(g => {
-              if (!g || !g.intro) return false;
-              if (String(g.intro.soundFile || '').toLowerCase() === desiredFilename) return true;
-              return (g.tiles || []).some(t => String(t.soundFile || '').toLowerCase() === desiredFilename);
-            }) || null;
-          }
-        } catch (err) {
-          console.warn('[sindhi-audio] ⚠️ Error while locating matching group for', lesson.id, err);
-          group = null;
-        }
-
-        // Fallback to index-based mapping when no matching intro filename was found
         if (!group) {
-          group = groups[i];
-          if (!group) {
-            console.warn(`[sindhi-audio] ⚠️ No sound group found for lesson index ${i} (${lesson.id})`);
-            continue;
-          }
+          console.warn(`[sindhi-audio] ⚠️ No sound group found for lesson index ${i} (${lesson.id})`);
+          continue;
         }
 
         // If group has 9 tiles, prepend the intro sound as tile-01 (Legacy SWF behavior)
@@ -1212,17 +1381,6 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
         const tileCount = Math.min(tileSounds.length, 10);
         if (tileCount === 0) continue;
-
-        // Skip auto-mapping tiles for lessons that have explicit tile mappings already defined
-        // This prevents incorrect mappings due to JSON group boundary issues (e.g., split "the" lesson)
-        const hasExplicitTiles = [...Array(10).keys()].some(i => {
-          const key = `${lesson.id}-tile-${String(i + 1).padStart(2, '0')}`;
-          return cleanedBaseExtractedStageAudio?.[key];
-        });
-
-        if (hasExplicitTiles) {
-          continue; // Skip auto-mapping, use the explicit mappings instead
-        }
 
         // RTL letters where tiles are visual RTL but audio is LTR (need to invert mapping)
         // Note: `rre` intentionally excluded to match existing mapped order.
@@ -1322,28 +1480,28 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   // Pin dal's ten tile sounds explicitly so they stay on the correct lesson
   // even if the generic JSON-driven mapper changes order later.
-  stageAudio['dal-tile-01'] = '/extracted_audio/sound_2111.mp3';
-  stageAudio['dal-tile-02'] = '/extracted_audio/sound_2081.mp3';
-  stageAudio['dal-tile-03'] = '/extracted_audio/sound_2085.mp3';
-  stageAudio['dal-tile-04'] = '/extracted_audio/sound_2089.mp3';
-  stageAudio['dal-tile-05'] = '/extracted_audio/sound_2093.mp3';
-  stageAudio['dal-tile-06'] = '/extracted_audio/sound_2096.mp3';
-  stageAudio['dal-tile-07'] = '/extracted_audio/sound_2099.mp3';
-  stageAudio['dal-tile-08'] = '/extracted_audio/sound_2102.mp3';
-  stageAudio['dal-tile-09'] = '/extracted_audio/sound_2105.mp3';
-  stageAudio['dal-tile-10'] = '/extracted_audio/sound_2108.mp3';
+  stageAudio['dal-tile-01'] = '/extracted_audio/sound_2081.mp3';
+  stageAudio['dal-tile-02'] = '/extracted_audio/sound_2085.mp3';
+  stageAudio['dal-tile-03'] = '/extracted_audio/sound_2089.mp3';
+  stageAudio['dal-tile-04'] = '/extracted_audio/sound_2093.mp3';
+  stageAudio['dal-tile-05'] = '/extracted_audio/sound_2096.mp3';
+  stageAudio['dal-tile-06'] = '/extracted_audio/sound_2099.mp3';
+  stageAudio['dal-tile-07'] = '/extracted_audio/sound_2102.mp3';
+  stageAudio['dal-tile-08'] = '/extracted_audio/sound_2105.mp3';
+  stageAudio['dal-tile-09'] = '/extracted_audio/sound_2108.mp3';
+  stageAudio['dal-tile-10'] = '/extracted_audio/sound_2111.mp3';
 
-  // Pin rre's ten tile sounds explicitly to ensure correct ordering
-  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2679.mp3';
-  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2682.mp3';
-  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2685.mp3';
-  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2688.mp3';
-  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2691.mp3';
-  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2695.mp3';
-  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2699.mp3';
-  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2703.mp3';
-  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2706.mp3';
-  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2709.mp3';
+  // Pin rre's ten tile sounds explicitly to ensure correct ordering (inverted)
+  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2709.mp3';
+  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2706.mp3';
+  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2703.mp3';
+  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2699.mp3';
+  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2695.mp3';
+  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2691.mp3';
+  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2688.mp3';
+  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2685.mp3';
+  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2682.mp3';
+  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2679.mp3';
 
   // Swap tile audio between tte and se for all 10 variations.
   for (let i = 1; i <= 10; i++) {
@@ -1395,8 +1553,8 @@ import { playAudio, stopAudio } from './audio-manager.js';
 
   // Shift tile audio one letter back starting at nye:
   // nye -> jeem, jhe -> nye, ... , hamza -> heh.
-  // Keep manually curated families stable and do not rewrite re/rre.
-  const protectedTileIds = new Set(['dhal', 'ddha', 'ddhal', 're', 'rre']);
+  // Keep manually curated families stable and do not rewrite re/rre/khe/dal/zal.
+  const protectedTileIds = new Set(['dhal', 'ddha', 'ddhal', 're', 'rre', 'khe', 'dal', 'zal']);
   const backShiftIds = [
     'jeem', 'nye', 'jhe', 'nyay', 'che', 'chhe', 'he', 'khe', 'dal', 'dhal',
     'ddal', 'ddha', 'ddhal', 'zal', 're', 'rre', 'ze', 'seen', 'sheen', 'swad',
@@ -1463,27 +1621,325 @@ import { playAudio, stopAudio } from './audio-manager.js';
   stageAudio['hamza-tile-09'] = '/extracted_audio/sound_5095.mp3';
   stageAudio['hamza-tile-10'] = '/extracted_audio/sound_5098.mp3';
 
-  // Final lock: keep RRE tile variations in ascending order.
+  // Final lock: keep RRE tile variations in inverted order.
   // This must stay after backShiftIds processing, which can otherwise overwrite `rre-*`.
-  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2679.mp3';
-  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2682.mp3';
-  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2685.mp3';
-  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2688.mp3';
-  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2691.mp3';
-  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2695.mp3';
-  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2699.mp3';
-  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2703.mp3';
-  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2706.mp3';
-  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2709.mp3';
+  stageAudio['rre-tile-01'] = '/extracted_audio/sound_2709.mp3';
+  stageAudio['rre-tile-02'] = '/extracted_audio/sound_2706.mp3';
+  stageAudio['rre-tile-03'] = '/extracted_audio/sound_2703.mp3';
+  stageAudio['rre-tile-04'] = '/extracted_audio/sound_2699.mp3';
+  stageAudio['rre-tile-05'] = '/extracted_audio/sound_2695.mp3';
+  stageAudio['rre-tile-06'] = '/extracted_audio/sound_2691.mp3';
+  stageAudio['rre-tile-07'] = '/extracted_audio/sound_2688.mp3';
+  stageAudio['rre-tile-08'] = '/extracted_audio/sound_2685.mp3';
+  stageAudio['rre-tile-09'] = '/extracted_audio/sound_2682.mp3';
+  stageAudio['rre-tile-10'] = '/extracted_audio/sound_2679.mp3';
+
+  // Final lock: keep Khe tile variations on their correct mapped audio files.
+  const kheTileSounds = [1982, 1985, 1988, 1992, 1996, 2000, 2003, 2006, 2009, 2013];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`khe-tile-${suffix}`] = `/extracted_audio/sound_${kheTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: explicitly set ddal word and example sounds
+  stageAudio['ddal-word-01'] = '/extracted_audio/sound_2390.mp3';
+  stageAudio['ddal-word-02'] = '/extracted_audio/sound_2397.mp3';
+  stageAudio['ddal-example'] = '/extracted_audio/sound_2384.mp3';
+
+  // Final lock: explicitly set ddha word and example sounds
+  stageAudio['ddha-word-01'] = '/extracted_audio/sound_2471.mp3';
+  stageAudio['ddha-word-02'] = '/extracted_audio/sound_2477.mp3';
+  stageAudio['ddha-example'] = '/extracted_audio/sound_2483.mp3';
+
+  // Final lock: explicitly set ddhal sounds
+  stageAudio['ddhal-main'] = '/extracted_audio/sound_2320.mp3';
+  stageAudio['ddhal-word-01'] = '/extracted_audio/sound_2295.mp3';
+  stageAudio['ddhal-word-02'] = '/extracted_audio/sound_2305.mp3';
+  stageAudio['ddhal-example'] = '/extracted_audio/sound_2312.mp3';
+  const ddhalTileSounds = [2250, 2253, 2256, 2260, 2264, 2268, 2271, 2275, 2278, 2282];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`ddhal-tile-${suffix}`] = `/extracted_audio/sound_${ddhalTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: keep Zal tile variations on their correct mapped audio files.
+  const zalTileSounds = [2510, 2513, 2516, 2520, 2524, 2527, 2530, 2533, 2536, 2539];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`zal-tile-${suffix}`] = `/extracted_audio/sound_${zalTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: keep Re tile variations on their correct mapped audio files.
+  const reTileSounds = [2619, 2616, 2613, 2609, 2605, 2602, 2599, 2596, 2593, 2590];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`re-tile-${suffix}`] = `/extracted_audio/sound_${reTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: keep RRE meta sounds locked.
+  stageAudio['rre-meta'] = '/extracted_audio/sound_2642.mp3';
+
+  // Final lock: explicitly set seen sounds
+  stageAudio['seen-main'] = '/extracted_audio/sound_2918.mp3';
+  stageAudio['seen-word-01'] = '/extracted_audio/sound_2900.mp3';
+  stageAudio['seen-word-02'] = '/extracted_audio/sound_2904.mp3';
+  stageAudio['seen-example'] = '/extracted_audio/sound_2910.mp3';
+  stageAudio['seen-info'] = '/extracted_audio/sound_2914.mp3';
+  stageAudio['seen-meta'] = '/extracted_audio/sound_2914.mp3';
+
+  // Final lock: Invert swad tile order.
+  const swadTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    swadTileUrls.push(stageAudio[`swad-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`swad-tile-${suffix}`] = swadTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set swad sounds
+  stageAudio['swad-main'] = '/extracted_audio/sound_3128.mp3';
+  stageAudio['swad-word-01'] = '/extracted_audio/sound_3093.mp3';
+  stageAudio['swad-word-02'] = '/extracted_audio/sound_3099.mp3';
+  stageAudio['swad-example'] = '/extracted_audio/sound_3105.mp3';
+  stageAudio['swad-info'] = '/extracted_audio/sound_3108.mp3';
+  stageAudio['swad-meta'] = '/extracted_audio/sound_3108.mp3';
+
+  // Final lock: Invert zwad tile order.
+  const zwadTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    zwadTileUrls.push(stageAudio[`zwad-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`zwad-tile-${suffix}`] = zwadTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set zwad sounds
+  stageAudio['zwad-main'] = '/extracted_audio/sound_3224.mp3';
+  stageAudio['zwad-word-01'] = '/extracted_audio/sound_3191.mp3';
+  stageAudio['zwad-word-02'] = '/extracted_audio/sound_3197.mp3';
+  stageAudio['zwad-example'] = '/extracted_audio/sound_3203.mp3';
+  stageAudio['zwad-info'] = '/extracted_audio/sound_3184.mp3';
+  stageAudio['zwad-meta'] = '/extracted_audio/sound_3184.mp3';
+
+  // Final lock: Invert toe tile order.
+  const toeTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    toeTileUrls.push(stageAudio[`toe-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`toe-tile-${suffix}`] = toeTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set toe sounds
+  stageAudio['toe-main'] = '/extracted_audio/sound_3321.mp3';
+  stageAudio['toe-word-01'] = '/extracted_audio/sound_3287.mp3';
+  stageAudio['toe-word-02'] = '/extracted_audio/sound_3294.mp3';
+  stageAudio['toe-example'] = '/extracted_audio/sound_3301.mp3';
+  stageAudio['toe-info'] = '/extracted_audio/sound_3306.mp3';
+  stageAudio['toe-meta'] = '/extracted_audio/sound_3306.mp3';
+
+  // Final lock: explicitly set zoe sounds
+  stageAudio['zoe-main'] = '/extracted_audio/sound_3412.mp3';
+  stageAudio['zoe-word-01'] = '/extracted_audio/sound_3387.mp3';
+  stageAudio['zoe-word-02'] = '/extracted_audio/sound_3393.mp3';
+  stageAudio['zoe-example'] = '/extracted_audio/sound_3399.mp3';
+  stageAudio['zoe-info'] = '/extracted_audio/sound_3382.mp3';
+  stageAudio['zoe-meta'] = '/extracted_audio/sound_3382.mp3';
+
+  // Final lock: Invert ain tile order.
+  const ainTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    ainTileUrls.push(stageAudio[`ain-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`ain-tile-${suffix}`] = ainTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set ain sounds
+  stageAudio['ain-main'] = '/extracted_audio/sound_3463.mp3';
+  stageAudio['ain-word-01'] = '/extracted_audio/sound_3478.mp3';
+  stageAudio['ain-word-02'] = '/extracted_audio/sound_3486.mp3';
+  stageAudio['ain-example'] = '/extracted_audio/sound_3492.mp3';
+  stageAudio['ain-info'] = '/extracted_audio/sound_3463.mp3';
+  stageAudio['ain-meta'] = '/extracted_audio/sound_3463.mp3';
+
+  // Final lock: Invert ghain tile order.
+  const ghainTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    ghainTileUrls.push(stageAudio[`ghain-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`ghain-tile-${suffix}`] = ghainTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set ghain sounds
+  stageAudio['ghain-main'] = '/extracted_audio/sound_3599.mp3';
+  stageAudio['ghain-word-01'] = '/extracted_audio/sound_3574.mp3';
+  stageAudio['ghain-word-02'] = '/extracted_audio/sound_3579.mp3';
+  stageAudio['ghain-example'] = '/extracted_audio/sound_3585.mp3';
+
+  // Final lock: Invert fe tile order.
+  const feTileUrls = [];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    feTileUrls.push(stageAudio[`fe-tile-${suffix}`]);
+  }
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`fe-tile-${suffix}`] = feTileUrls[10 - i];
+  }
+
+  // Final lock: explicitly set fe sounds
+  stageAudio['fe-main'] = '/extracted_audio/sound_3700.mp3';
+  stageAudio['fe-word-01'] = '/extracted_audio/sound_3662.mp3';
+  stageAudio['fe-word-02'] = '/extracted_audio/sound_3670.mp3';
+  stageAudio['fe-example'] = '/extracted_audio/sound_3677.mp3';
+  stageAudio['fe-info'] = '/extracted_audio/sound_3681.mp3';
+  stageAudio['fe-meta'] = '/extracted_audio/sound_3681.mp3';
+
+  // Final lock: explicitly set phe sounds
+  stageAudio['phe-main'] = '/extracted_audio/sound_3797.mp3';
+  stageAudio['phe-word-01'] = '/extracted_audio/sound_3765.mp3';
+  stageAudio['phe-word-02'] = '/extracted_audio/sound_3772.mp3';
+  stageAudio['phe-example'] = '/extracted_audio/sound_3779.mp3';
+  stageAudio['phe-info'] = '/extracted_audio/sound_3797.mp3';
+  stageAudio['phe-meta'] = '/extracted_audio/sound_3797.mp3';
+
+  // Final lock: explicitly set qaf sounds
+  stageAudio['qaf-main'] = '/extracted_audio/sound_3910.mp3';
+  stageAudio['qaf-word-01'] = '/extracted_audio/sound_3875.mp3';
+  stageAudio['qaf-word-02'] = '/extracted_audio/sound_3883.mp3';
+  stageAudio['qaf-example'] = '/extracted_audio/sound_3890.mp3';
+  stageAudio['qaf-info'] = '/extracted_audio/sound_3895.mp3';
+  stageAudio['qaf-meta'] = '/extracted_audio/sound_3895.mp3';
+
+  // Final lock: explicitly set kaf sounds
+  stageAudio['kaf-main'] = '/extracted_audio/sound_3997.mp3';
+  stageAudio['kaf-word-01'] = '/extracted_audio/sound_3971.mp3';
+  stageAudio['kaf-word-02'] = '/extracted_audio/sound_3977.mp3';
+  stageAudio['kaf-example'] = '/extracted_audio/sound_3983.mp3';
+  stageAudio['kaf-info'] = '/extracted_audio/sound_3997.mp3';
+  stageAudio['kaf-meta'] = '/extracted_audio/sound_3997.mp3';
+
+  // Final lock: explicitly set khaf sounds
+  stageAudio['khaf-main'] = '/extracted_audio/sound_4089.mp3';
+  stageAudio['khaf-word-01'] = '/extracted_audio/sound_4060.mp3';
+  stageAudio['khaf-word-02'] = '/extracted_audio/sound_4066.mp3';
+  stageAudio['khaf-example'] = '/extracted_audio/sound_4071.mp3';
+  stageAudio['khaf-info'] = '/extracted_audio/sound_4075.mp3';
+  stageAudio['khaf-meta'] = '/extracted_audio/sound_4075.mp3';
+
+  // Final lock: explicitly set gaf sounds
+  stageAudio['gaf-main'] = '/extracted_audio/sound_4186.mp3';
+  stageAudio['gaf-word-01'] = '/extracted_audio/sound_4158.mp3';
+  stageAudio['gaf-word-02'] = '/extracted_audio/sound_4164.mp3';
+  stageAudio['gaf-example'] = '/extracted_audio/sound_4173.mp3';
+  stageAudio['gaf-info'] = '/extracted_audio/sound_4152.mp3';
+  stageAudio['gaf-meta'] = '/extracted_audio/sound_4152.mp3';
+
+  // Final lock: explicitly set ggaf sounds
+  stageAudio['ggaf-main'] = '/extracted_audio/sound_4278.mp3';
+  stageAudio['ggaf-word-01'] = '/extracted_audio/sound_4250.mp3';
+  stageAudio['ggaf-word-02'] = '/extracted_audio/sound_4256.mp3';
+  stageAudio['ggaf-example'] = '/extracted_audio/sound_4263.mp3';
+  stageAudio['ggaf-info'] = '/extracted_audio/sound_4250.mp3';
+  stageAudio['ggaf-meta'] = '/extracted_audio/sound_4250.mp3';
+
+  // Final lock: explicitly set ghaf sounds
+  stageAudio['ghaf-main'] = '/extracted_audio/sound_4395.mp3';
+  stageAudio['ghaf-word-01'] = '/extracted_audio/sound_4348.mp3';
+  stageAudio['ghaf-word-02'] = '/extracted_audio/sound_4355.mp3';
+  stageAudio['ghaf-example'] = '/extracted_audio/sound_4361.mp3';
+  stageAudio['ghaf-info'] = '/extracted_audio/sound_4348.mp3';
+  stageAudio['ghaf-meta'] = '/extracted_audio/sound_4348.mp3';
+
+  // Final lock: explicitly set ngoe sounds
+  stageAudio['ngoe-main'] = '/extracted_audio/sound_4492.mp3';
+  stageAudio['ngoe-word-01'] = '/extracted_audio/sound_4461.mp3';
+  stageAudio['ngoe-word-02'] = '/extracted_audio/sound_4467.mp3';
+  stageAudio['ngoe-example'] = '/extracted_audio/sound_4474.mp3';
+  stageAudio['ngoe-info'] = '/extracted_audio/sound_4461.mp3';
+  stageAudio['ngoe-meta'] = '/extracted_audio/sound_4461.mp3';
+
+  // Final lock: explicitly set lam sounds
+  stageAudio['lam-main'] = '/extracted_audio/sound_4588.mp3';
+  stageAudio['lam-word-01'] = '/extracted_audio/sound_4560.mp3';
+  stageAudio['lam-word-02'] = '/extracted_audio/sound_4567.mp3';
+  stageAudio['lam-example'] = '/extracted_audio/sound_4574.mp3';
+  stageAudio['lam-info'] = '/extracted_audio/sound_4554.mp3';
+  stageAudio['lam-meta'] = '/extracted_audio/sound_4554.mp3';
+
+  // Final lock: explicitly set meem sounds
+  stageAudio['meem-main'] = '/extracted_audio/sound_4683.mp3';
+  stageAudio['meem-word-01'] = '/extracted_audio/sound_4651.mp3';
+  stageAudio['meem-word-02'] = '/extracted_audio/sound_4658.mp3';
+  stageAudio['meem-example'] = '/extracted_audio/sound_4664.mp3';
+  stageAudio['meem-info'] = '/extracted_audio/sound_4668.mp3';
+  stageAudio['meem-meta'] = '/extracted_audio/sound_4668.mp3';
+
+  // Final lock: explicitly set noon sounds
+  stageAudio['noon-main'] = '/extracted_audio/sound_4775.mp3';
+  stageAudio['noon-word-01'] = '/extracted_audio/sound_4749.mp3';
+  stageAudio['noon-word-02'] = '/extracted_audio/sound_4754.mp3';
+  stageAudio['noon-example'] = '/extracted_audio/sound_4761.mp3';
+  stageAudio['noon-info'] = '/extracted_audio/sound_4742.mp3';
+  stageAudio['noon-meta'] = '/extracted_audio/sound_4742.mp3';
+
+  // Final lock: explicitly set nnoon sounds
+  stageAudio['nnoon-main'] = '/extracted_audio/sound_4873.mp3';
+  stageAudio['nnoon-word-01'] = '/extracted_audio/sound_4836.mp3';
+  stageAudio['nnoon-word-02'] = '/extracted_audio/sound_4841.mp3';
+  stageAudio['nnoon-example'] = '/extracted_audio/sound_4848.mp3';
+  stageAudio['nnoon-info'] = '/extracted_audio/sound_4836.mp3';
+  stageAudio['nnoon-meta'] = '/extracted_audio/sound_4836.mp3';
+
+  // Final lock: explicitly set waw sounds
+  stageAudio['waw-main'] = '/extracted_audio/sound_4969.mp3';
+  stageAudio['waw-word-01'] = '/extracted_audio/sound_4941.mp3';
+  stageAudio['waw-word-02'] = '/extracted_audio/sound_4947.mp3';
+  stageAudio['waw-example'] = '/extracted_audio/sound_4953.mp3';
+  stageAudio['waw-info'] = '/extracted_audio/sound_4934.mp3';
+  stageAudio['waw-meta'] = '/extracted_audio/sound_4934.mp3';
+  const wawTileSounds = [4892, 4895, 4898, 4901, 4904, 4907, 4910, 4913, 4916, 4920];
+  for (let i = 1; i <= 10; i++) {
+    const suffix = String(i).padStart(2, '0');
+    stageAudio[`waw-tile-${suffix}`] = `/extracted_audio/sound_${wawTileSounds[i - 1]}.mp3`;
+  }
+
+  // Final lock: explicitly set sheen sounds
+  stageAudio['sheen-main'] = '/extracted_audio/sound_3032.mp3';
+  stageAudio['sheen-word-01'] = '/extracted_audio/sound_3000.mp3';
+  stageAudio['sheen-word-02'] = '/extracted_audio/sound_3007.mp3';
+  stageAudio['sheen-example'] = '/extracted_audio/sound_3013.mp3';
+  stageAudio['sheen-info'] = '/extracted_audio/sound_2992.mp3';
+  stageAudio['sheen-meta'] = '/extracted_audio/sound_2992.mp3';
 
   // Heh should use Hamza note/info-meta, words, and example audio.
   stageAudio['heh-info'] = stageAudio['hamza-info'];
   stageAudio['heh-meta'] = stageAudio['hamza-meta'];
-  stageAudio['heh-word-01'] = stageAudio['hamza-word-01'];
-  stageAudio['heh-word-02'] = stageAudio['hamza-word-02'];
-  stageAudio['heh-example'] = stageAudio['hamza-example'];
+  stageAudio['heh-word-01'] = '/extracted_audio/sound_5020.mp3';
+  stageAudio['heh-word-02'] = '/extracted_audio/sound_5027.mp3';
+  stageAudio['heh-example'] = '/extracted_audio/sound_5034.mp3';
   // Also use the main 'he' audio for heh main pronunciation.
   stageAudio['heh-main'] = stageAudio['he-main'];
+
+  // Final lock: explicitly set ye sounds
+  stageAudio['ye-main'] = '/extracted_audio/sound_5236.mp3';
+  stageAudio['ye-word-01'] = '/extracted_audio/sound_5202.mp3';
+  stageAudio['ye-word-02'] = '/extracted_audio/sound_5209.mp3';
+  stageAudio['ye-example'] = '/extracted_audio/sound_5215.mp3';
+  stageAudio['ye-meta'] = '/extracted_audio/sound_5220.mp3';
+  stageAudio['ye-info'] = '/extracted_audio/sound_5236.mp3';
 
   // Fill known sparse keys with safe fallbacks so warnings don't block playback UX.
   const fallbackAudioKeys = {
@@ -1534,13 +1990,14 @@ import { playAudio, stopAudio } from './audio-manager.js';
     // If explicitly cleared, hide.
     if (lesson.info === null) return false;
     // Hide for a few special-case lessons.
-    if (lesson.id === 'alif' || lesson.id === 'tthe') return false;
+    if (lesson.id === 'alif' || lesson.id === 'tthe' || lesson.id === 'ye') return false;
     // If there's no useful info data, don't show an empty panel.
     if (!lesson.caption && !lesson.romanBase && !(lesson.info && lesson.info.lines && lesson.info.lines.length)) return false;
     return true;
   }
 
-  function showMetaPanel() {
+  function showMetaPanel(lesson = getCurrentLesson()) {
+    if (lesson?.id === 'ye') return true;
     return false;
   }
 

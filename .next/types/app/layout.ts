@@ -1,4 +1,4 @@
-// File: F:\sindhi-consonants-learner\app\layout.tsx
+// File: f:\sindhi-consonants-learner\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
