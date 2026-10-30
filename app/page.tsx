@@ -82,6 +82,8 @@ export default function Page() {
           </p>
         </section>
       </main>
+
+      <div class="stage-watermark" aria-hidden="true">MIRHAZAR KHAN</div>
   `;
 
   return (

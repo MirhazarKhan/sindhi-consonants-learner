@@ -103,6 +103,49 @@ body.stage-app-body {
   overflow-x: clip;
 }
 
+.stage-watermark {
+  position: fixed;
+  right: clamp(12px, 2vw, 24px);
+  bottom: clamp(10px, 1.8vw, 22px);
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-ui);
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(242, 207, 115, 0.62);
+  mix-blend-mode: screen;
+  text-shadow: 0 0 18px rgba(242, 207, 115, 0.16);
+  opacity: 0.78;
+  transform: rotate(-8deg);
+  transform-origin: bottom right;
+  white-space: nowrap;
+}
+
+.stage-watermark::before {
+  content: '';
+  position: absolute;
+  inset: -0.35rem -0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 207, 115, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  filter: blur(0.2px);
+  z-index: -1;
+}
+
+@media (max-width: 640px) {
+  .stage-watermark {
+    right: 10px;
+    bottom: 10px;
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+    opacity: 0.65;
+    transform: rotate(-6deg);
+  }
+}
+
 .stage-ambient-orb {
   position: absolute;
   width: clamp(200px, 28vw, 380px);
